@@ -32,7 +32,6 @@ const foods = [
   {id:31,name:"Veg Momos",category:"Snacks",price:79,desc:"Steamed vegetable dumplings.",image:"https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80"},
   {id:32,name:"Masala Maggi",category:"Snacks",price:59,desc:"Hot and spicy masala noodles.",image:"https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80"},
   {id:33,name:"Spring Rolls",category:"Snacks",price:89,desc:"Crispy vegetable spring rolls.",image:"https://images.unsplash.com/photo-1548507200-9a4d6f5a3b31?auto=format&fit=crop&w=600&q=80"},
-  {id:34,name:"Onion Rings",category:"Snacks",price:79,desc:"Golden crispy onion rings.",image:"https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=600&q=80"}
 ];
 
 const CART_KEY = "foodChefCart";
