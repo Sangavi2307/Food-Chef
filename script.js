@@ -7,7 +7,7 @@ const foods = [
   {id:5,name:"Classic Veg Burger",category:"Burgers",price:99,desc:"Crispy vegetable patty.",image:"https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80"},
   {id:6,name:"Cheese Burger",category:"Burgers",price:129,desc:"Burger with melted cheese.",image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"},
   {id:7,name:"Paneer Burger",category:"Burgers",price:149,desc:"Spicy paneer burger.",image:"https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=600&q=80"},
-  {id:8,name:"Double Patty Burger",category:"Burgers",price:179,desc:"Double patty and tasty sauce.",image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=85"},
+  {id:8,name:"Double Patty Burger",category:"Burgers",price:179,desc:"Double patty and tasty sauce.",image:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=600&q=85"},
   {id:9,name:"Aloo Samosa",category:"Indian Snacks",price:20,desc:"Potato-filled crispy samosa.",image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"},
   {id:10,name:"Paneer Samosa",category:"Indian Snacks",price:30,desc:"Spiced paneer filling.",image:"https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=600&q=80"},
   {id:11,name:"Pani Puri",category:"Indian Snacks",price:50,desc:"Tangy and crunchy street snack.",image:"https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80"},
