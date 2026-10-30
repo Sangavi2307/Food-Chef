@@ -424,4 +424,21 @@ footer>a {display:inline-block;color:var(--yellow);margin-top:12px}
 
 <aside class="drawer" id="cart-drawer" aria-label="Shopping cart">
   <div class="drawer-head">
-    <h2>Your Car
+    <h2>Your Cart 🛒</h2>
+    <button type="button" id="close-cart" aria-label="Close cart">✕</button>
+  </div>
+  <div class="drawer-items" id="drawer-items">
+    <p class="empty">Your cart is empty.</p>
+  </div>
+  <div class="drawer-foot">
+    <div class="total-line">
+      <b>Total</b>
+      <strong id="drawer-total">₹0</strong>
+    </div>
+    <button class="primary-btn" id="drawer-checkout" type="button">Proceed to Checkout</button>
+  </div>
+</aside>
+
+<script src="./script.js?v=3"></script>
+</body>
+</html>
