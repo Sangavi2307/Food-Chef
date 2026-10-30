@@ -29,7 +29,6 @@ button {cursor:pointer}
 a {text-decoration:none;color:inherit}
 img {max-width:100%}
 
-/* HEADER AND LOGO */
 header {
   position:sticky;top:0;z-index:20;
   display:flex;align-items:center;justify-content:space-between;
@@ -38,15 +37,10 @@ header {
   border-bottom:1px solid #eee3cb;
 }
 .brand {display:flex;align-items:center;gap:9px;flex-shrink:0}
-.chef-logo {
-  width:57px;height:57px;
-  filter:drop-shadow(3px 4px 3px #0003);
-}
+.chef-logo {width:57px;height:57px;filter:drop-shadow(3px 4px 3px #0003)}
 .brand-name {display:flex;flex-direction:column;line-height:1}
 .brand-name b {font-size:19px;letter-spacing:1px}
-.brand-name strong {
-  color:#d89d00;font-family:"Playfair Display",serif;font-size:27px
-}
+.brand-name strong {color:#d89d00;font-family:"Playfair Display",serif;font-size:27px}
 nav {display:flex;align-items:center;gap:20px}
 nav a {font-size:13px;font-weight:800}
 nav a:hover {color:#c18b00}
@@ -59,13 +53,9 @@ nav a:hover {color:#c18b00}
   background:var(--dark);color:white;border:0;border-radius:25px;
   padding:11px 15px;font-weight:800
 }
-.cart-button span {
-  background:var(--yellow);color:var(--dark);
-  padding:3px 7px;border-radius:50%;margin-left:4px
-}
+.cart-button span {background:var(--yellow);color:var(--dark);padding:3px 7px;border-radius:50%;margin-left:4px}
 .menu-toggle {display:none;background:var(--yellow);border:0;padding:9px 12px;border-radius:9px}
 
-/* BUTTONS */
 .primary-btn {
   display:inline-block;background:linear-gradient(145deg,#ffda52,#f0b400);
   color:#211d17;padding:14px 23px;border:0;border-radius:12px;
@@ -74,7 +64,6 @@ nav a:hover {color:#c18b00}
 }
 .primary-btn:hover {transform:translateY(3px);box-shadow:0 3px 0 #bd8500}
 
-/* HERO */
 .hero {
   padding:65px 7%;display:grid;grid-template-columns:.9fr 1.1fr;
   align-items:center;gap:45px;overflow:hidden
@@ -98,7 +87,6 @@ nav a:hover {color:#c18b00}
 .hero-note b,.hero-note small {display:block}
 .hero-note small {color:var(--muted);margin-top:4px}
 
-/* BENEFITS */
 .benefits {
   margin:0 6% 55px;padding:24px;background:white;border-radius:20px;
   box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(4,1fr);gap:15px
@@ -109,7 +97,6 @@ nav a:hover {color:#c18b00}
 .benefit b {font-size:13px}
 .benefit small {font-size:11px;color:var(--muted);margin-top:4px}
 
-/* SECTIONS AND MENU */
 section.content {padding:65px 7%}
 .menu-section {background:#fffdf8}
 .section-heading {
@@ -150,14 +137,12 @@ section.content {padding:65px 7%}
 .add-btn:hover {background:#b17d00}
 .no-food {grid-column:1/-1;text-align:center;padding:35px;color:var(--muted)}
 
-/* ABOUT */
 .about {display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
 .about img {width:100%;height:350px;object-fit:cover;border-radius:25px;box-shadow:15px 15px 0 #f5d77e}
 .about h2 {font-family:"Playfair Display",serif;font-size:50px;margin:15px 0}
 .about h2 span {color:#dca400}
 .about p {color:var(--muted);line-height:1.8;margin-bottom:25px}
 
-/* CHECKOUT */
 .checkout-section {background:#fffdf8}
 .checkout-layout {display:grid;grid-template-columns:1.35fr .8fr;gap:25px;align-items:start}
 .checkout-form,.summary-box,.history-box {
@@ -179,7 +164,6 @@ section.content {padding:65px 7%}
 .summary-line {display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid #eee8dd;font-size:13px}
 .total-line {display:flex;justify-content:space-between;margin-top:17px;padding-top:15px;border-top:1px solid #eee}
 
-/* TRACKING */
 .track-search {display:flex;gap:10px;max-width:600px}
 .track-search input {flex:1;min-width:0;padding:14px;border:1px solid #e5dac7;border-radius:10px}
 .track-result {margin-top:22px}
@@ -200,7 +184,6 @@ section.content {padding:65px 7%}
 .history-row small {color:var(--muted)}
 .history-row button {background:var(--yellow);border:0;border-radius:8px;padding:9px;font-weight:800}
 
-/* CART DRAWER */
 .overlay {position:fixed;inset:0;background:#0008;z-index:29;display:none}
 .overlay.show {display:block}
 .drawer {
@@ -224,7 +207,6 @@ section.content {padding:65px 7%}
 .drawer-foot .primary-btn {width:100%;margin-top:15px}
 .empty {text-align:center;color:var(--muted);padding:35px 10px}
 
-/* FOOTER */
 footer {background:#211d17;color:white;text-align:center;padding:35px 15px}
 footer .brand {justify-content:center;margin-bottom:12px}
 footer .brand-name b {color:white}
@@ -232,7 +214,6 @@ footer p {margin:8px}
 footer small {color:#b8ad9d}
 footer>a {display:inline-block;color:var(--yellow);margin-top:12px}
 
-/* RESPONSIVE */
 @media(max-width:1050px) {
   nav {gap:12px}
   .food-grid {grid-template-columns:repeat(3,1fr)}
@@ -275,7 +256,6 @@ footer>a {display:inline-block;color:var(--yellow);margin-top:12px}
 </head>
 
 <body>
-
 <header>
   <a class="brand" href="#home">
     <svg class="chef-logo" viewBox="0 0 100 100" role="img" aria-label="Food Chef chef hat">
@@ -326,7 +306,11 @@ footer>a {display:inline-block;color:var(--yellow);margin-top:12px}
 
 <section class="content menu-section" id="menu">
   <div class="section-heading">
-    <div><span class="eyebrow">OUR FOOD COLLECTION</span><h2 class="section-title">Explore Our <span>Menu</span></h2><p>Find something delicious for every craving.</p></div>
+    <div>
+      <span class="eyebrow">OUR FOOD COLLECTION</span>
+      <h2 class="section-title">Explore Our <span>Menu</span></h2>
+      <p>Find something delicious for every craving.</p>
+    </div>
     <div class="search-sort">
       <input id="food-search" placeholder="Search food...">
       <select id="sort-food" aria-label="Sort food">
@@ -366,7 +350,11 @@ footer>a {display:inline-block;color:var(--yellow);margin-top:12px}
 
 <section class="content checkout-section" id="checkout">
   <div class="section-heading">
-    <div><span class="eyebrow">READY WHEN YOU ARE</span><h2 class="section-title">Complete Your <span>Order</span></h2><p>Enter your delivery details to create a demo order.</p></div>
+    <div>
+      <span class="eyebrow">READY WHEN YOU ARE</span>
+      <h2 class="section-title">Complete Your <span>Order</span></h2>
+      <p>Enter your delivery details to create a demo order.</p>
+    </div>
   </div>
   <div class="checkout-layout">
     <form class="checkout-form" id="checkout-form">
@@ -400,7 +388,11 @@ footer>a {display:inline-block;color:var(--yellow);margin-top:12px}
 
 <section class="content" id="tracking">
   <div class="section-heading">
-    <div><span class="eyebrow">ORDER UPDATES</span><h2 class="section-title">Track Your <span>Order</span></h2><p>Enter the order ID received after placing your demo order.</p></div>
+    <div>
+      <span class="eyebrow">ORDER UPDATES</span>
+      <h2 class="section-title">Track Your <span>Order</span></h2>
+      <p>Enter the order ID received after placing your demo order.</p>
+    </div>
   </div>
   <div class="track-search">
     <input id="tracking-id" placeholder="Example: FC12345678">
@@ -428,350 +420,8 @@ footer>a {display:inline-block;color:var(--yellow);margin-top:12px}
   <a href="#home">Back to top ↑</a>
 </footer>
 
-<div class="overlay" id="overlay"></div>
-<aside class="drawer" id="drawer">
-  <div class="drawer-head"><h2>Your Cart <span id="side-count">0</span></h2><button id="close-cart">✕</button></div>
-  <div class="drawer-items" id="drawer-items"><p class="empty">Your cart is empty.</p></div>
-  <div class="drawer-foot">
-    <div class="total-line"><b>Total</b><strong id="drawer-total">₹0</strong></div>
-    <button class="primary-btn" id="go-checkout">Proceed to Checkout →</button>
-  </div>
-</aside>
+<div class="overlay" id="cart-overlay"></div>
 
-<script>
-"use strict";
-
-/* FOOD MENU */
-const foods = [
- {id:1,name:"Margherita Pizza",category:"Pizza",price:199,desc:"Classic cheese and tomato pizza.",image:"https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80"},
- {id:2,name:"Farmhouse Pizza",category:"Pizza",price:249,desc:"Loaded with fresh vegetables.",image:"https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=600&q=80"},
- {id:3,name:"Paneer Tikka Pizza",category:"Pizza",price:269,desc:"Spicy paneer and melted cheese.",image:"https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=600&q=80"},
- {id:4,name:"Corn Cheese Pizza",category:"Pizza",price:229,desc:"Sweet corn and extra cheese.",image:"https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=600&q=80"},
- {id:5,name:"Classic Veg Burger",category:"Burgers",price:99,desc:"Crispy vegetable patty burger.",image:"https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80"},
- {id:6,name:"Cheese Burger",category:"Burgers",price:129,desc:"Burger with melted cheese.",image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"},
- {id:7,name:"Paneer Burger",category:"Burgers",price:149,desc:"Delicious spicy paneer burger.",image:"https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=600&q=80"},
- {id:8,name:"Double Patty Burger",category:"Burgers",price:179,desc:"Double patty and tasty sauce.",image:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=600&q=80"},
- {id:9,name:"Aloo Samosa",category:"Indian Snacks",price:20,desc:"Crispy potato-filled samosa.",image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"},
- {id:10,name:"Paneer Samosa",category:"Indian Snacks",price:30,desc:"Spiced paneer filling.",image:"https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=600&q=80"},
- {id:11,name:"Pani Puri",category:"Indian Snacks",price:50,desc:"Tangy and crunchy street snack.",image:"https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80"},
- {id:12,name:"Bhel Puri",category:"Indian Snacks",price:60,desc:"Crunchy puffed rice mixture.",image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"},
- {id:13,name:"Pav Bhaji",category:"Indian Snacks",price:90,desc:"Spiced vegetable mash and pav.",image:"https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=600&q=80"},
- {id:14,name:"Paneer Roll",category:"Indian Snacks",price:89,desc:"Paneer wrap with vegetables.",image:"https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80"},
- {id:15,name:"French Fries",category:"Fries",price:89,desc:"Golden crispy potato fries.",image:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"},
- {id:16,name:"Peri Peri Fries",category:"Fries",price:109,desc:"Fries with spicy seasoning.",image:"https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=600&q=80"},
- {id:17,name:"Cheese Fries",category:"Fries",price:129,desc:"Fries topped with cheese.",image:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"},
- {id:18,name:"Potato Wedges",category:"Fries",price:99,desc:"Seasoned crispy potato wedges.",image:"https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=600&q=80"},
- {id:19,name:"Veg Puff",category:"Bakery",price:25,desc:"Flaky pastry with veggie filling.",image:"https://images.unsplash.com/photo-1623334044303-241021148842?auto=format&fit=crop&w=600&q=80"},
- {id:20,name:"Veg Sandwich",category:"Bakery",price:79,desc:"Fresh vegetable sandwich.",image:"https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80"},
- {id:21,name:"Chocolate Brownie",category:"Desserts",price:99,desc:"Rich chocolate brownie.",image:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80"},
- {id:22,name:"Chocolate Donut",category:"Desserts",price:69,desc:"Soft donut with chocolate glaze.",image:"https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80"},
- {id:23,name:"Cold Coffee",category:"Drinks",price:99,desc:"Chilled creamy coffee.",image:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80"},
- {id:24,name:"Veg Momos",category:"Snacks",price:79,desc:"Steamed vegetable dumplings.",image:"https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80"}
-];
-
-const $ = id => document.getElementById(id);
-const rupees = n => "₹" + Number(n).toLocaleString("en-IN");
-
-function readData(key) {
-  try { return JSON.parse(localStorage.getItem(key)) || []; }
-  catch(error) { return []; }
-}
-let cart = readData("foodChefCart");
-let orders = readData("foodChefOrders");
-let selectedCategory = "All";
-
-function saveCart() {
-  localStorage.setItem("foodChefCart",JSON.stringify(cart));
-}
-function saveOrders() {
-  localStorage.setItem("foodChefOrders",JSON.stringify(orders));
-}
-function totalItems() {
-  return cart.reduce((sum,item)=>sum+item.quantity,0);
-}
-function totalPrice() {
-  return cart.reduce((sum,item)=>sum+item.price*item.quantity,0);
-}
-function safe(text) {
-  return String(text).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
-
-/* SHOW FOOD */
-function showFoods() {
-  const query = $("food-search").value.trim().toLowerCase();
-  const sort = $("sort-food").value;
-  let list = foods.filter(food =>
-    (selectedCategory==="All" || food.category===selectedCategory) &&
-    (food.name+" "+food.category).toLowerCase().includes(query)
-  );
-
-  if(sort==="low") list.sort((a,b)=>a.price-b.price);
-  if(sort==="high") list.sort((a,b)=>b.price-a.price);
-  if(sort==="name") list.sort((a,b)=>a.name.localeCompare(b.name));
-
-  if(!list.length) {
-    $("food-items").innerHTML='<p class="no-food">No food found. Try another search.</p>';
-    return;
-  }
-
-  $("food-items").innerHTML=list.map(food=>`
-    <article class="food-card">
-      <img src="${food.image}" alt="${safe(food.name)}" loading="lazy">
-      <div class="food-info">
-        <span class="food-category">${safe(food.category)}</span>
-        <h3>${safe(food.name)}</h3>
-        <p>${safe(food.desc)}</p>
-        <div class="rating">★ 4.8 <span style="color:#888">• Popular choice</span></div>
-        <div class="food-bottom">
-          <b class="food-price">${rupees(food.price)}</b>
-          <button class="add-btn" data-add="${food.id}">+ Add to Cart</button>
-        </div>
-      </div>
-    </article>
-  `).join("");
-}
-
-/* CART */
-function addFood(id) {
-  const food=foods.find(item=>item.id===id);
-  if(!food) return;
-  const existing=cart.find(item=>item.id===id);
-  if(existing) existing.quantity++;
-  else cart.push({...food,quantity:1});
-  saveCart();
-  showCart();
-}
-function changeQty(id,change) {
-  const item=cart.find(food=>food.id===id);
-  if(!item) return;
-  item.quantity+=change;
-  if(item.quantity<=0) cart=cart.filter(food=>food.id!==id);
-  saveCart();
-  showCart();
-}
-function removeFood(id) {
-  cart=cart.filter(item=>item.id!==id);
-  saveCart();
-  showCart();
-}
-function showCart() {
-  const count=totalItems();
-  const total=rupees(totalPrice());
-  $("cart-count").textContent=count;
-  $("side-count").textContent=count;
-  $("drawer-total").textContent=total;
-  $("checkout-total").textContent=total;
-
-  $("drawer-items").innerHTML=cart.length?cart.map(item=>`
-    <div class="drawer-item">
-      <img src="${item.image}" alt="${safe(item.name)}">
-      <div class="drawer-item-info">
-        <b>${safe(item.name)}</b>
-        <small>${rupees(item.price)} each</small>
-        <div class="quantity">
-          <button data-minus="${item.id}">−</button>
-          <b>${item.quantity}</b>
-          <button data-plus="${item.id}">+</button>
-          <button class="remove" data-remove="${item.id}">🗑</button>
-        </div>
-      </div>
-    </div>
-  `).join(""):'<p class="empty">Your cart is empty. Explore our menu!</p>';
-
-  $("checkout-summary").innerHTML=cart.length?cart.map(item=>`
-    <div class="summary-line">
-      <span>${safe(item.name)} × ${item.quantity}</span>
-      <b>${rupees(item.price*item.quantity)}</b>
-    </div>
-  `).join(""):"Your cart is empty.";
-}
-function openCart() {
-  $("drawer").classList.add("show");
-  $("overlay").classList.add("show");
-}
-function closeCart() {
-  $("drawer").classList.remove("show");
-  $("overlay").classList.remove("show");
-}
-function checkout() {
-  if(!cart.length) {
-    alert("Your cart is empty. Please add food first.");
-    return;
-  }
-  closeCart();
-  $("checkout").scrollIntoView({behavior:"smooth"});
-}
-
-/* ORDER TRACKING */
-const stages=[
-  {name:"Order Placed",icon:"✓"},
-  {name:"Confirmed",icon:"☑"},
-  {name:"Preparing",icon:"♨"},
-  {name:"Out for Delivery",icon:"🛵"},
-  {name:"Delivered",icon:"🏠"}
-];
-
-function showTracking(order) {
-  if(!order) {
-    $("tracking-result").innerHTML='<p class="placeholder">Order not found. Please check the order ID.</p>';
-    return;
-  }
-  const stage=Math.min(order.stage||0,4);
-  $("tracking-result").innerHTML=`
-    <div class="track-card">
-      <h3>Order Details — ${safe(order.id)}</h3>
-      <div class="order-meta">
-        <b>Customer:</b> ${safe(order.customer.name)}<br>
-        <b>Mobile:</b> ${safe(order.customer.phone)}<br>
-        <b>Hotel / Building:</b> ${safe(order.customer.hotel||"Not provided")}<br>
-        <b>District:</b> ${safe(order.customer.district)}<br>
-        <b>City:</b> ${safe(order.customer.city)}<br>
-        <b>PIN Code:</b> ${safe(order.customer.pincode)}<br>
-        <b>Address:</b> ${safe(order.customer.address)}<br>
-        <b>Date:</b> ${new Date(order.createdAt).toLocaleString("en-IN")}
-      </div>
-      <div class="track-steps">
-        ${stages.map((s,i)=>`
-          <div class="track-step ${i<=stage?"done":""}">
-            <div class="step-icon">${s.icon}</div>
-            <b>${s.name}</b>
-            <small>${i<stage?"Completed":i===stage?"Current":"Pending"}</small>
-          </div>
-        `).join("")}
-      </div>
-      <p><b>Current status:</b> ${stages[stage].name}</p>
-      <div class="track-items">
-        <b>Items Ordered</b><br>
-        ${order.items.map(item=>`${safe(item.name)} × ${item.quantity} — ${rupees(item.price*item.quantity)}`).join("<br>")}
-        <hr style="margin:10px 0">
-        <b>Order Total: ${rupees(order.total)}</b>
-      </div>
-      <p class="note">Demo tracking only. This is not a live delivery location.</p>
-    </div>
-  `;
-}
-
-function showHistory() {
-  $("order-history-list").innerHTML=orders.length?[...orders].reverse().map(order=>`
-    <div class="history-row">
-      <div>
-        <b>${safe(order.id)}</b><br>
-        <small>${new Date(order.createdAt).toLocaleDateString("en-IN")} • ${rupees(order.total)}</small>
-      </div>
-      <button data-view="${safe(order.id)}">View Details</button>
-    </div>
-  `).join(""):"No orders yet.";
-}
-
-/* PLACE ORDER */
-function placeOrder(event) {
-  event.preventDefault();
-  if(!cart.length) {
-    alert("Your cart is empty. Add food before placing an order.");
-    return;
-  }
-
-  const data=new FormData(event.target);
-  const customer={
-    name:data.get("name").trim(),
-    phone:data.get("phone").trim(),
-    hotel:data.get("hotel").trim(),
-    district:data.get("district"),
-    city:data.get("city").trim(),
-    pincode:data.get("pincode").trim(),
-    address:data.get("address").trim()
-  };
-
-  const order={
-    id:"FC"+Date.now().toString().slice(-8),
-    customer:customer,
-    items:cart.map(item=>({...item})),
-    total:totalPrice(),
-    createdAt:new Date().toISOString(),
-    stage:0
-  };
-
-  orders.push(order);
-  saveOrders();
-  cart=[];
-  saveCart();
-  showCart();
-  showHistory();
-  showTracking(order);
-  $("tracking-id").value=order.id;
-  event.target.reset();
-  alert("Demo order created successfully! Your order ID is "+order.id);
-  $("tracking").scrollIntoView({behavior:"smooth"});
-}
-
-/* EVENT LISTENERS */
-$("food-items").addEventListener("click",event=>{
-  const button=event.target.closest("[data-add]");
-  if(button) addFood(Number(button.dataset.add));
-});
-
-$("drawer-items").addEventListener("click",event=>{
-  const minus=event.target.closest("[data-minus]");
-  const plus=event.target.closest("[data-plus]");
-  const remove=event.target.closest("[data-remove]");
-  if(minus) changeQty(Number(minus.dataset.minus),-1);
-  if(plus) changeQty(Number(plus.dataset.plus),1);
-  if(remove) removeFood(Number(remove.dataset.remove));
-});
-
-$("categories").addEventListener("click",event=>{
-  const button=event.target.closest("[data-category]");
-  if(!button) return;
-  selectedCategory=button.dataset.category;
-  document.querySelectorAll(".category").forEach(b=>b.classList.remove("active"));
-  button.classList.add("active");
-  showFoods();
-});
-
-$("food-search").addEventListener("input",showFoods);
-$("sort-food").addEventListener("change",showFoods);
-$("top-search").addEventListener("input",()=>{
-  $("food-search").value=$("top-search").value;
-  showFoods();
-  $("menu").scrollIntoView({behavior:"smooth"});
-});
-
-$("open-cart").addEventListener("click",openCart);
-$("close-cart").addEventListener("click",closeCart);
-$("overlay").addEventListener("click",closeCart);
-$("go-checkout").addEventListener("click",checkout);
-$("checkout-form").addEventListener("submit",placeOrder);
-
-$("track-button").addEventListener("click",()=>{
-  const id=$("tracking-id").value.trim().toUpperCase();
-  const order=orders.find(item=>item.id.toUpperCase()===id);
-  showTracking(order);
-});
-$("tracking-id").addEventListener("keydown",event=>{
-  if(event.key==="Enter") $("track-button").click();
-});
-
-$("order-history-list").addEventListener("click",event=>{
-  const button=event.target.closest("[data-view]");
-  if(!button) return;
-  const order=orders.find(item=>item.id===button.dataset.view);
-  $("tracking-id").value=button.dataset.view;
-  showTracking(order);
-  $("tracking").scrollIntoView({behavior:"smooth"});
-});
-
-$("mobile-menu").addEventListener("click",()=>{
-  $("navigation").classList.toggle("open");
-});
-$("navigation").querySelectorAll("a").forEach(link=>{
-  link.addEventListener("click",()=>$("navigation").classList.remove("open"));
-});
-
-/* START WEBSITE */
-showFoods();
-showCart();
-showHistory();
-console.log("Food Chef is ready. Food items:",foods.length);
-</script>
-</body>
-</html>
+<aside class="drawer" id="cart-drawer" aria-label="Shopping cart">
+  <div class="drawer-head">
+    <h2>Your Car
