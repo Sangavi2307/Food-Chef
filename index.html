@@ -1,165 +1,224 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f8b923">
-  <meta name="description" content="Food Chef - Delicious snacks, fresh food and happy moments.">
-  <title>Food Chef | Delicious Food, Delivered</title>
+  <meta name="theme-color" content="#171613">
+  <title>Food Chef | Fresh Food, Happy Moments</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="header">
+<header class="topbar">
   <a href="#home" class="brand">
-    <svg class="logo" viewBox="0 0 100 100" aria-label="Food Chef chef hat logo">
-      <path d="M24 55C8 52 8 30 23 25C20 8 43 2 52 18C65 5 86 16 81 33C97 40 91 57 76 59L24 55Z" fill="#fff" stroke="#24211c" stroke-width="4"/>
-      <path d="M23 56H78V78H23Z" fill="#f8b923" stroke="#24211c" stroke-width="4"/>
-      <path d="M34 68H67" stroke="#24211c" stroke-width="4" stroke-linecap="round"/>
-    </svg>
-    <span>Food<span class="brand-gold">Chef.</span></span>
+    <img src="assets/food-chef-logo.png" alt="Food Chef logo">
+    <span>Fresh Food<br><b>Happy Moments ♡</b></span>
   </a>
 
-  <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation">☰</button>
+  <button class="mobile-menu" id="mobile-menu">☰</button>
 
-  <nav class="nav" id="nav">
-    <a href="#home">Home</a>
-    <a href="#menu">Our Menu</a>
+  <nav id="navigation">
+    <a class="active" href="#home">Home</a>
+    <a href="#menu">Menu</a>
     <a href="#about">About</a>
+    <a href="#tracking">Track Order</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <button class="header-cart" id="cart-button">
-    🛒 My Cart <span id="cart-count">0</span>
-  </button>
+  <div class="header-actions">
+    <label class="header-search">
+      <span>⌕</span>
+      <input id="top-search" placeholder="Search your favourite food...">
+    </label>
+    <button class="cart-open" id="open-cart">🛒 Cart <span id="cart-count">0</span></button>
+  </div>
 </header>
 
 <main>
   <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="hero-label">✦ FRESHLY MADE, HAPPINESS SERVED</div>
-      <h1>Good Food.<br><span>Good Mood.</span></h1>
-      <p>From crispy snacks to delicious meals, discover your favourites and make every moment tastier.</p>
-      <div class="hero-actions">
-        <a href="#menu" class="primary-btn">Explore Menu <span>→</span></a>
-        <a href="#about" class="text-link">Discover more ↗</a>
-      </div>
-      <div class="hero-note">
-        <span>⭐ 4.9/5</span>
-        <span>Made for food lovers</span>
-      </div>
+    <div class="hero-copy">
+      <span class="hero-tag">✦ FRESH FOOD • HAPPY MOMENTS</span>
+      <h1>Delicious Food,<br><span>Just a Click Away!</span></h1>
+      <p>Discover amazing flavours, crispy snacks and delicious treats. Your favourite food is waiting for you.</p>
+      <a href="#menu" class="hero-button">Order Now <span>→</span></a>
+      <div class="hero-rating">⭐ 4.9 <span>Food lovers' favourite</span></div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-photo">
-        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1100&q=85" alt="Fresh delicious pizza">
-      </div>
-      <div class="floating-card">
-        <span>🍕</span>
-        <div><strong>Delicious bites</strong><small>Made with love</small></div>
-      </div>
-      <div class="hero-sticker">FRESH<br> & TASTY</div>
+    <div class="hero-food">
+      <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=85" alt="Delicious pizza">
+      <div class="hero-float">🍔 <span><b>Fresh & Tasty</b><small>Made with love</small></span></div>
     </div>
   </section>
 
-  <section class="benefits">
-    <div><span>🥗</span><p><strong>Fresh Choices</strong><small>Something for everyone</small></p></div>
-    <div><span>🍔</span><p><strong>Lots of Flavours</strong><small>Explore our menu</small></p></div>
-    <div><span>🛍️</span><p><strong>Easy Ordering</strong><small>Simple cart experience</small></p></div>
-    <div><span>💛</span><p><strong>Made with Love</strong><small>Food for happy moments</small></p></div>
+  <section class="category-strip" id="categories">
+    <button class="category active" data-category="All">🍽️<span>All Items</span></button>
+    <button class="category" data-category="Pizza">🍕<span>Pizza</span></button>
+    <button class="category" data-category="Burgers">🍔<span>Burgers</span></button>
+    <button class="category" data-category="Indian Snacks">🥟<span>Indian Snacks</span></button>
+    <button class="category" data-category="Fries">🍟<span>Fries</span></button>
+    <button class="category" data-category="Bakery">🥐<span>Bakery</span></button>
+    <button class="category" data-category="Desserts">🍰<span>Desserts</span></button>
+    <button class="category" data-category="Drinks">🥤<span>Drinks</span></button>
+    <button class="category" data-category="Snacks">🍜<span>Snacks</span></button>
   </section>
 
-  <section class="menu-section section" id="menu">
-    <div class="section-heading">
-      <div>
-        <div class="eyebrow">EXPLORE OUR MENU</div>
-        <h2>Find Your <span>Favourite</span></h2>
-        <p>Explore delicious bites for every craving.</p>
+  <section class="shop-layout section" id="menu">
+    <div class="shop-main">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">OUR MENU</span>
+          <h2>Explore Our <span>Delicious</span> Food</h2>
+          <p>Fresh, tasty and made with love.</p>
+        </div>
+        <div class="menu-tools">
+          <input type="search" id="food-search" placeholder="⌕  Search food...">
+          <select id="sort-food" aria-label="Sort food">
+            <option value="default">Sort: Recommended</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="name">Name: A to Z</option>
+          </select>
+        </div>
       </div>
-      <div class="search-wrap">
-        <span>⌕</span>
-        <input type="search" id="search-input" placeholder="Search food...">
+
+      <div class="food-grid" id="food-items"></div>
+    </div>
+
+    <aside class="side-panel">
+      <div class="side-cart">
+        <div class="side-title">🛒 <h3>Your Cart</h3><span id="side-count">0</span></div>
+        <div id="side-cart-items" class="side-cart-items">
+          <p class="empty-cart">Your cart is empty. Add your favourite food!</p>
+        </div>
+        <div class="side-total"><b>Total Amount</b><strong id="side-total">₹0</strong></div>
+        <button class="checkout-btn" id="side-checkout">Proceed to Checkout →</button>
       </div>
-    </div>
 
-    <div class="categories" id="category-list">
-      <button class="category active" data-category="All">All Items</button>
-      <button class="category" data-category="Pizza">🍕 Pizza</button>
-      <button class="category" data-category="Burgers">🍔 Burgers</button>
-      <button class="category" data-category="Indian Snacks">🥟 Indian Snacks</button>
-      <button class="category" data-category="Fries">🍟 Fries</button>
-      <button class="category" data-category="Bakery">🥐 Bakery</button>
-      <button class="category" data-category="Desserts">🍰 Desserts</button>
-      <button class="category" data-category="Drinks">🥤 Drinks</button>
-    </div>
+      <div class="service-card">
+        <div>🥬 <span><b>Fresh & Quality Food</b><small>Always fresh ingredients</small></span></div>
+        <div>🛵 <span><b>Delivery Experience</b><small>Demo delivery tracking</small></span></div>
+        <div>💳 <span><b>Easy Ordering</b><small>Simple checkout process</small></span></div>
+      </div>
 
-    <div class="food-grid" id="food-items">
-      <p class="loading">Loading delicious food...</p>
-    </div>
-  </section>
-
-  <section class="promo">
-    <div>
-      <div class="eyebrow">A LITTLE SOMETHING FOR YOU</div>
-      <h2>Make Every Bite<br>Count!</h2>
-      <p>Discover delicious food, explore new flavours and enjoy your favourites.</p>
-      <a href="#menu" class="dark-btn">Order Your Favourites →</a>
-    </div>
-    <div class="promo-emoji">🍕 🍔 🍟</div>
-  </section>
-
-  <section class="about-section section" id="about">
-    <div class="eyebrow">OUR STORY</div>
-    <h2>More Than Food.<br><span>It's Happiness.</span></h2>
-    <p>Food Chef brings your favourite snacks and treats together in one place. Browse our menu, add items to your cart and enter your delivery details with ease.</p>
-    <div class="about-points">
-      <div>✓ A wide variety of snacks</div>
-      <div>✓ Simple and convenient ordering</div>
-      <div>✓ A delightful food experience</div>
-    </div>
-  </section>
-
-  <section class="cart-section section" id="cart">
-    <div class="eyebrow">YOUR SELECTION</div>
-    <h2>Your Shopping Cart 🛒</h2>
-    <div id="cart-items" class="cart-items">Your cart is empty. Explore the menu to add food!</div>
-    <div class="cart-bottom">
-      <h3 id="cart-total">Total: ₹0</h3>
-      <button class="primary-btn" id="checkout-button">Continue to Checkout →</button>
-    </div>
+      <div class="side-promo">
+        <h3>Good Food<br>Good Mood ♡</h3>
+        <span>🍕 🍟 🍔</span>
+      </div>
+    </aside>
   </section>
 
   <section class="checkout-section section" id="checkout">
-    <div class="eyebrow">ALMOST THERE</div>
+    <span class="eyebrow">COMPLETE YOUR ORDER</span>
     <h2>Delivery <span>Details</span></h2>
-    <p class="checkout-intro">Enter your information and delivery address.</p>
-    <form id="checkout-form" class="checkout-form">
-      <div class="form-row">
-        <div><label for="customer-name">Full Name *</label><input id="customer-name" name="name" placeholder="Your name" required></div>
-        <div><label for="customer-phone">Mobile Number *</label><input id="customer-phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number" required></div>
+    <p class="muted">Enter your information to create a demo order.</p>
+
+    <div class="checkout-layout">
+      <form id="checkout-form" class="checkout-form">
+        <h3>Customer Information</h3>
+        <label for="customer-name">Full Name *</label>
+        <input id="customer-name" name="name" placeholder="Enter your name" required>
+
+        <label for="customer-phone">Mobile Number *</label>
+        <input id="customer-phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number" required>
+
+        <h3>Delivery Address</h3>
+        <label for="hotel-name">Hotel / Building Name</label>
+        <input id="hotel-name" name="hotel" placeholder="Hotel or building name (optional)">
+
+        <div class="form-row">
+          <div>
+            <label for="district">District *</label>
+            <select id="district" name="district" required>
+              <option value="">Select district</option>
+              <option>Chennai</option><option>Coimbatore</option>
+              <option>Madurai</option><option>Salem</option>
+              <option>Thiruvannamalai</option><option>Tiruppur</option>
+              <option>Erode</option><option>Vellore</option>
+              <option>Thanjavur</option><option>Tiruchirappalli</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="city">City / Town *</label>
+            <input id="city" name="city" required placeholder="Enter city">
+          </div>
+        </div>
+
+        <label for="pincode">Pincode *</label>
+        <input id="pincode" name="pincode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required placeholder="6-digit pincode">
+
+        <label for="address">Full Address *</label>
+        <textarea id="address" name="address" rows="3" required placeholder="Door number, street, area and landmark"></textarea>
+
+        <button type="submit" class="checkout-btn">Place My Demo Order →</button>
+        <p class="demo-note">Demo only. No real payment or restaurant order is processed.</p>
+      </form>
+
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div id="checkout-summary">Your cart is empty.</div>
+        <div class="summary-total"><span>Total</span><strong id="checkout-total">₹0</strong></div>
       </div>
-      <div><label for="hotel-name">Hotel / Building Name</label><input id="hotel-name" name="hotel" placeholder="Hotel or building name (optional)"></div>
-      <div class="form-row">
-        <div><label for="district">District *</label><select id="district" name="district" required><option value="">Select district</option><option>Chennai</option><option>Coimbatore</option><option>Madurai</option><option>Thiruvannamalai</option><option>Salem</option><option>Tiruchirappalli</option><option>Tiruppur</option><option>Vellore</option><option>Erode</option><option>Thanjavur</option><option>Other</option></select></div>
-        <div><label for="city">City / Town *</label><input id="city" name="city" placeholder="City or town" required></div>
-      </div>
-      <div><label for="pincode">Pincode *</label><input id="pincode" name="pincode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="6-digit pincode" required></div>
-      <div><label for="address">Full Address *</label><textarea id="address" name="address" rows="4" placeholder="Door number, street, area and landmark" required></textarea></div>
-      <button class="primary-btn submit-btn" type="submit">Place Demo Order →</button>
-    </form>
-    <p class="demo-notice">Demo project: this form does not send orders to a real restaurant or delivery service.</p>
-    <div id="order-message" role="status"></div>
+    </div>
+  </section>
+
+  <section class="tracking-section section" id="tracking">
+    <span class="eyebrow">ORDER UPDATES</span>
+    <h2>Track Your <span>Order</span></h2>
+    <p class="muted">Enter your Food Chef demo order ID to see its details and progress.</p>
+
+    <div class="tracking-search">
+      <input id="tracking-id" placeholder="Example: FC12345678">
+      <button class="checkout-btn" id="track-button">Track Order</button>
+    </div>
+
+    <div id="tracking-result" class="tracking-result">
+      <div class="tracking-placeholder">📦 Your order tracking details will appear here after you place a demo order.</div>
+    </div>
+
+    <div class="order-history">
+      <h3>My Previous Orders</h3>
+      <div id="order-history-list">No orders yet.</div>
+    </div>
+  </section>
+
+  <section class="about-section section" id="about">
+    <span class="eyebrow">WHY FOOD CHEF?</span>
+    <h2>Good Food. <span>Happy Moments.</span></h2>
+    <div class="features">
+      <div>🍽️<h3>Wide Variety</h3><p>Many delicious choices.</p></div>
+      <div>🥗<h3>Fresh Taste</h3><p>Fresh food inspiration.</p></div>
+      <div>🛒<h3>Easy Ordering</h3><p>Simple cart and checkout.</p></div>
+      <div>📦<h3>Order Tracking</h3><p>View your demo order progress.</p></div>
+    </div>
   </section>
 </main>
 
+<div class="cart-overlay" id="cart-overlay"></div>
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="drawer-heading">
+    <h2>🛒 Your Cart</h2>
+    <button id="close-cart" aria-label="Close cart">✕</button>
+  </div>
+  <div id="drawer-items" class="drawer-items"></div>
+  <div class="drawer-footer">
+    <div class="drawer-total"><span>Total</span><strong id="drawer-total">₹0</strong></div>
+    <button class="checkout-btn" id="drawer-checkout">Continue to Checkout →</button>
+  </div>
+</aside>
+
 <footer id="contact">
-  <a href="#home" class="footer-brand">👨‍🍳 Food Chef.</a>
-  <p>Fresh Snacks. Happy Moments.</p>
-  <div class="footer-links"><a href="#home">Home</a><a href="#menu">Menu</a><a href="#about">About</a></div>
-  <p class="copyright">© 2026 Food Chef. All rights reserved.</p>
+  <div class="footer-brand">👨‍🍳 Food Chef.</div>
+  <p>Fresh Food • Happy Moments</p>
+  <div class="footer-links">
+    <a href="#home">Home</a><a href="#menu">Menu</a>
+    <a href="#tracking">Track Order</a><a href="#about">About</a>
+  </div>
+  <small>© 2026 Food Chef. Demo website.</small>
 </footer>
 
 <script src="script.js"></script>
