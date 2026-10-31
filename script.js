@@ -50,7 +50,7 @@ const setText = (id, v) => { const e = $(id); if (e) e.textContent = v; };
 function readStorage(key) {
   try { return JSON.parse(localStorage.getItem(key)) || []; } catch { return []; }
 }
-let cart = readStorage(CART_KEY);
+let cart = readStorage(CART_KEY).map(i => ({...i, key:i.key || String(i.id)}));
 let orders = readStorage(ORDERS_KEY);
 let activeCategory = "All";
 
@@ -63,51 +63,121 @@ function escapeHTML(value) {
   return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
 }
 
+/* ---------- Variety (options) for every category ---------- */
+// each option = [label, extra price]
+const VARIETY = {
+  "Pizza":[{name:"Size",opts:[['Regular 7"',0],['Medium 9"',80],['Large 12"',160]]},{name:"Crust",opts:[["Classic",0],["Thin",0],["Cheese Burst",60]]}],
+  "Burgers":[{name:"Type",opts:[["Single Patty",0],["Double Patty",50]]},{name:"Extra",opts:[["None",0],["Extra Cheese",20],["Extra Sauce",10]]}],
+  "Indian Snacks":[{name:"Portion",opts:[["Regular",0],["Large",30]]},{name:"Chutney",opts:[["Mint",0],["Tamarind",0],["Both",5]]}],
+  "Fries":[{name:"Size",opts:[["Small",0],["Medium",30],["Large",60]]},{name:"Dip",opts:[["Ketchup",0],["Mayo",15],["Cheese Dip",25]]}],
+  "Bakery":[{name:"Portion",opts:[["Single",0],["Family Pack",40]]},{name:"Serve",opts:[["Cold",0],["Warm / Grilled",10]]}],
+  "Desserts":[{name:"Size",opts:[["Regular",0],["Large",40]]},{name:"Topping",opts:[["None",0],["Choco Sauce",15],["Nuts",25]]}],
+  "Drinks":[{name:"Size",opts:[["Regular",0],["Small",-20],["Large",30]]},{name:"Sugar",opts:[["Normal",0],["Less Sugar",0],["No Sugar",0]]}],
+  "Snacks":[{name:"Portion",opts:[["Regular",0],["Large",30]]},{name:"Spice",opts:[["Mild",0],["Medium",0],["Hot",0]]}]
+};
+const groupsFor = f => VARIETY[f.category] || [];
+const defaultPicks = f => groupsFor(f).map(() => 0);
+const variantLabel = (f, p) => groupsFor(f).map((g,i) => g.opts[p[i]][0]).join(" · ");
+const variantPrice = (f, p) => f.price + groupsFor(f).reduce((s,g,i) => s + g.opts[p[i]][1], 0);
+
+/* ---------- Likes ---------- */
+const LIKES_KEY = "foodChefLikes";
+let likes = readStorage(LIKES_KEY);
+const saveLikes = () => { try { localStorage.setItem(LIKES_KEY, JSON.stringify(likes)); } catch {} };
+const syncHeart = (b, id) => { const on = likes.includes(id); b.classList.toggle("on", on); b.textContent = on ? "♥" : "♡"; };
+function toggleLike(id) {
+  likes = likes.includes(id) ? likes.filter(x => x !== id) : [...likes, id];
+  saveLikes();
+  document.querySelectorAll(`[data-like="${id}"]`).forEach(b => syncHeart(b, id));
+  if (activeCategory === "Liked") renderFoods();
+}
+
 /* ---------- Menu ---------- */
 function renderFoods() {
   const query = $("food-search").value.trim().toLowerCase();
   const sort = $("sort-food").value;
   const list = foods.filter(f =>
-    (activeCategory === "All" || f.category === activeCategory) &&
+    (activeCategory === "All" || (activeCategory === "Liked" ? likes.includes(f.id) : f.category === activeCategory)) &&
     (f.name + " " + f.category).toLowerCase().includes(query));
 
   if (sort === "low") list.sort((a,b) => a.price - b.price);
   if (sort === "high") list.sort((a,b) => b.price - a.price);
   if (sort === "name") list.sort((a,b) => a.name.localeCompare(b.name));
 
-  $("food-items").innerHTML = list.length ? list.map(f => `
-    <article class="food-card">
-      <img src="${f.image}" alt="${escapeHTML(f.name)}" loading="lazy">
+  $("food-items").innerHTML = list.length ? list.map(f => {
+    const g = groupsFor(f)[0], on = likes.includes(f.id);
+    return `
+    <article class="food-card" data-open="${f.id}">
+      <div class="food-img">
+        <img src="${f.image}" alt="${escapeHTML(f.name)}" loading="lazy">
+        <button class="like-btn ${on ? "on" : ""}" data-like="${f.id}" aria-label="Like ${escapeHTML(f.name)}">${on ? "♥" : "♡"}</button>
+      </div>
       <div class="food-info">
         <span class="food-category">${f.category}</span>
         <h3>${escapeHTML(f.name)}</h3>
         <p class="food-description">${escapeHTML(f.desc)}</p>
+        ${g ? `<div class="variety-chips">${g.opts.map(o => `<span>${escapeHTML(o[0])}</span>`).join("")}</div>` : ""}
         <div class="food-rating">★ 4.8 <span>• Popular choice</span></div>
         <div class="food-bottom">
           <strong class="food-price">${money(f.price)}</strong>
-          <button class="add-btn" data-add="${f.id}">+ Add to Cart</button>
+          <div class="btns">
+            <button class="opt-btn" data-open="${f.id}">Options</button>
+            <button class="add-btn" data-add="${f.id}">+ Add</button>
+          </div>
         </div>
       </div>
-    </article>`).join("") : '<p class="empty-message">No food found. Try another search.</p>';
+    </article>`;
+  }).join("") : `<p class="empty-message">${activeCategory === "Liked" ? "No liked items yet. Tap ♡ on any food." : "No food found. Try another search."}</p>`;
 }
 
-/* ---------- Cart ---------- */
-function addToCart(id) {
-  const food = foods.find(i => i.id === id);
-  if (!food) return;
-  const existing = cart.find(i => i.id === id);
-  if (existing) existing.quantity++; else cart.push({...food, quantity:1});
+/* ---------- Food detail (variety popup) ---------- */
+let detail = null;
+function openDetail(id) {
+  const food = foods.find(f => f.id === id); if (!food) return;
+  detail = {food, picks:defaultPicks(food)};
+  renderDetail();
+  $("detail-modal").classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+function closeDetail() {
+  $("detail-modal").classList.remove("show");
+  document.body.style.overflow = "";
+  detail = null;
+}
+function renderDetail() {
+  const {food, picks} = detail, img = $("detail-img");
+  delete img.dataset.fb; img.src = food.image; img.alt = food.name;
+  setText("detail-cat", food.category); setText("detail-name", food.name); setText("detail-desc", food.desc);
+  setText("detail-price", money(variantPrice(food, picks)));
+  $("detail-like").dataset.like = food.id; syncHeart($("detail-like"), food.id);
+  $("detail-options").innerHTML = groupsFor(food).map((g,gi) => `
+    <div class="opt-group"><b>${g.name}</b><div class="opt-row">
+      ${g.opts.map((o,oi) => `<button type="button" class="opt-chip ${picks[gi] === oi ? "active" : ""}" data-g="${gi}" data-o="${oi}">${escapeHTML(o[0])}${o[1] ? ` <small>${o[1] > 0 ? "+" : "−"}₹${Math.abs(o[1])}</small>` : ""}</button>`).join("")}
+    </div></div>`).join("");
+  $("detail-similar").innerHTML = foods.filter(f => f.category === food.category && f.id !== food.id).slice(0,8).map(f => `
+    <button class="similar-item" data-similar="${f.id}">
+      <img src="${f.image}" alt="${escapeHTML(f.name)}"><span>${escapeHTML(f.name)}</span><small>${money(f.price)}</small>
+    </button>`).join("");
+}
+
+/* ---------- Cart (each variety is its own line) ---------- */
+function addToCart(id, picks) {
+  const food = foods.find(i => i.id === id); if (!food) return;
+  picks = picks || defaultPicks(food);
+  const key = id + "-" + picks.join("");
+  const existing = cart.find(i => i.key === key);
+  if (existing) existing.quantity++;
+  else cart.push({...food, key, variant:variantLabel(food, picks), price:variantPrice(food, picks), quantity:1});
   saveCart(); renderCart();
 }
-function changeQuantity(id, amount) {
-  const item = cart.find(f => f.id === id);
-  if (!item) return;
+function changeQuantity(key, amount) {
+  const item = cart.find(f => f.key === key); if (!item) return;
   item.quantity += amount;
-  if (item.quantity <= 0) cart = cart.filter(f => f.id !== id);
+  if (item.quantity <= 0) cart = cart.filter(f => f.key !== key);
   saveCart(); renderCart();
 }
-function removeFromCart(id) {
-  cart = cart.filter(i => i.id !== id);
+function removeFromCart(key) {
+  cart = cart.filter(i => i.key !== key);
   saveCart(); renderCart();
 }
 function renderCart() {
@@ -121,19 +191,20 @@ function renderCart() {
       <img src="${item.image}" alt="${escapeHTML(item.name)}">
       <div>
         <b>${escapeHTML(item.name)}</b>
+        ${item.variant ? `<small>${escapeHTML(item.variant)}</small>` : ""}
         <small>${money(item.price)} each</small>
         <div class="qty-controls">
-          <button data-minus="${item.id}" aria-label="Decrease">−</button>
+          <button data-minus="${item.key}" aria-label="Decrease">−</button>
           <strong>${item.quantity}</strong>
-          <button data-plus="${item.id}" aria-label="Increase">+</button>
-          <button data-remove="${item.id}" aria-label="Remove item">🗑</button>
+          <button data-plus="${item.key}" aria-label="Increase">+</button>
+          <button data-remove="${item.key}" aria-label="Remove item">🗑</button>
         </div>
       </div>
     </div>`).join("") : '<p class="empty-cart">Your cart is empty. Explore our menu!</p>';
 
   $("checkout-summary").innerHTML = cart.length ? cart.map(item => `
     <div class="checkout-summary-item">
-      <span>${escapeHTML(item.name)} × ${item.quantity}</span>
+      <span>${escapeHTML(item.name)}${item.variant ? `<br><small>${escapeHTML(item.variant)}</small>` : ""} × ${item.quantity}</span>
       <strong>${money(item.price * item.quantity)}</strong>
     </div>`).join("") : "<p>Your cart is empty.</p>";
 }
@@ -185,7 +256,7 @@ function renderTracking(order) {
       <p class="order-meta">${stages[stage].description}</p>
       <div class="track-items">
         <h4>Items Ordered</h4>
-        ${order.items.map(i => `<p>${escapeHTML(i.name)} × ${i.quantity} — ${money(i.price * i.quantity)}</p>`).join("")}
+        ${order.items.map(i => `<p>${escapeHTML(i.name)}${i.variant ? " (" + escapeHTML(i.variant) + ")" : ""} × ${i.quantity} — ${money(i.price * i.quantity)}</p>`).join("")}
         <p><b>Order Total: ${money(order.total)}</b></p>
       </div>
       <p class="demo-note">Demo tracking only. This is not a live delivery location.</p>
@@ -234,15 +305,34 @@ function findOrder() {
 
 /* ---------- Events ---------- */
 $("food-items").addEventListener("click", e => {
-  const b = e.target.closest("[data-add]");
-  if (b) addToCart(Number(b.dataset.add));
+  const add = e.target.closest("[data-add]");
+  if (add) { addToCart(Number(add.dataset.add)); return; }
+  const like = e.target.closest("[data-like]");
+  if (like) { toggleLike(Number(like.dataset.like)); return; }
+  const open = e.target.closest("[data-open]");
+  if (open) openDetail(Number(open.dataset.open));
 });
 $("drawer-items").addEventListener("click", e => {
   const minus = e.target.closest("[data-minus]"), plus = e.target.closest("[data-plus]"), rem = e.target.closest("[data-remove]");
-  if (minus) changeQuantity(Number(minus.dataset.minus), -1);
-  if (plus) changeQuantity(Number(plus.dataset.plus), 1);
-  if (rem) removeFromCart(Number(rem.dataset.remove));
+  if (minus) changeQuantity(minus.dataset.minus, -1);
+  if (plus) changeQuantity(plus.dataset.plus, 1);
+  if (rem) removeFromCart(rem.dataset.remove);
 });
+$("detail-options").addEventListener("click", e => {
+  const b = e.target.closest(".opt-chip"); if (!b || !detail) return;
+  detail.picks[Number(b.dataset.g)] = Number(b.dataset.o);
+  renderDetail();
+});
+$("detail-add").addEventListener("click", () => { addToCart(detail.food.id, [...detail.picks]); closeDetail(); openCart(); });
+$("detail-like").addEventListener("click", () => detail && toggleLike(detail.food.id));
+$("detail-similar").addEventListener("click", e => {
+  const b = e.target.closest("[data-similar]"); if (!b) return;
+  detail = {food:foods.find(f => f.id === Number(b.dataset.similar)), picks:[]};
+  detail.picks = defaultPicks(detail.food);
+  renderDetail(); $("detail-modal").querySelector(".modal-card").scrollTo({top:0, behavior:"smooth"});
+});
+$("detail-close").addEventListener("click", closeDetail);
+$("detail-modal").addEventListener("click", e => { if (e.target === $("detail-modal")) closeDetail(); });
 $("categories").addEventListener("click", e => {
   const b = e.target.closest("[data-category]");
   if (!b) return;
@@ -276,119 +366,6 @@ $("order-history-list").addEventListener("click", e => {
 });
 $("mobile-menu").addEventListener("click", () => $("navigation").classList.toggle("open"));
 $("navigation").querySelectorAll("a").forEach(l => l.addEventListener("click", () => $("navigation").classList.remove("open")));
-document.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") { closeCart(); closeDetail(); } });
 
-renderFoods(); renderCart(); renderHistory();
-
-/* ================= Motion layer ================= */
-(() => {
-const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const $$ = s => [...document.querySelectorAll(s)];
-const $q = s => document.querySelector(s);
-
-/* Image fallback: any broken photo (e.g. Spring Rolls) becomes a styled placeholder */
-const emo = a => /roll/i.test(a) ? "🌯" : /pizza/i.test(a) ? "🍕" : /burger/i.test(a) ? "🍔" : /shake|coffee|juice/i.test(a) ? "🥤" : "🍽️";
-document.addEventListener("error", e => {
-  const i = e.target;
-  if (!i || i.tagName !== "IMG" || i.dataset.fb) return;
-  i.dataset.fb = 1;
-  i.src = "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#ffb800"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/><text x="200" y="185" font-size="120" text-anchor="middle">${emo(i.alt || "")}</text></svg>`);
-}, true);
-const checkImgs = () => $$("img").forEach(i => { if (i.complete && !i.naturalWidth) i.dispatchEvent(new Event("error")); });
-checkImgs();
-
-/* Scroll progress, hide-on-scroll header, hero parallax */
-const bar = document.createElement("div"); bar.className = "progress"; document.body.append(bar);
-const header = $q("header"), heroImg = $q(".hero-image"); let lastY = 0;
-addEventListener("scroll", () => {
-  const y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
-  bar.style.transform = `scaleX(${h ? y / h : 0})`;
-  header.classList.toggle("hide", y > lastY && y > 200);
-  if (heroImg && !reduce && y < 900) heroImg.style.setProperty("--py", y * .12 + "px");
-  lastY = y;
-}, {passive:true});
-
-/* Scroll reveal with stagger */
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (!e.isIntersecting) return;
-  const t = e.target; t.classList.add("in"); io.unobserve(t);
-  setTimeout(() => t.classList.remove("reveal", "in"), 1500 + (parseInt(t.style.getPropertyValue("--d")) || 0));
-}), {threshold:.1});
-const reveal = (el, d = 0) => {
-  if (reduce || el.classList.contains("reveal")) return;
-  el.style.setProperty("--d", d + "ms"); el.classList.add("reveal"); io.observe(el);
-};
-$$(".section-heading,.benefit,.about>*,.checkout-form,.summary-box,.track-search,.history-box").forEach((el,i) => reveal(el, (i % 4) * 110));
-const grid = $("food-items");
-const revealCards = () => { $$("#food-items .food-card").forEach((c,i) => reveal(c, (i % 4) * 90 + Math.floor(i / 4) * 40)); checkImgs(); };
-new MutationObserver(revealCards).observe(grid, {childList:true});
-revealCards();
-
-/* Hero: word-by-word headline, floating food bits, mouse tilt */
-const h1 = $q(".hero h1");
-if (h1 && !reduce) {
-  let n = 0; const w = document.createTreeWalker(h1, NodeFilter.SHOW_TEXT), nodes = [];
-  while (w.nextNode()) nodes.push(w.currentNode);
-  nodes.forEach(t => {
-    const f = document.createDocumentFragment();
-    t.textContent.split(/(\s+)/).forEach(p => {
-      if (!p.trim()) { f.append(p); return; }
-      const s = document.createElement("span"); s.className = "w"; s.style.setProperty("--i", n++); s.textContent = p; f.append(s);
-    });
-    t.replaceWith(f);
-  });
-}
-const hero = $q(".hero");
-if (hero && !reduce) {
-  const bits = document.createElement("div"); bits.className = "bits";
-  ["🍕","🍔","🍟","🥟","🍩","🥤","🧀","🌶️","🍰","🥪"].forEach(e => {
-    const s = document.createElement("span"); s.textContent = e;
-    s.style.cssText = `--x:${Math.random()*92}%;--y:${Math.random()*85}%;--s:${22+Math.random()*30}px;--t:${3+Math.random()*4}s`;
-    bits.append(s);
-  });
-  hero.prepend(bits);
-  hero.addEventListener("pointermove", e => {
-    if (e.pointerType !== "mouse" || !heroImg) return;
-    const r = hero.getBoundingClientRect();
-    heroImg.style.setProperty("--ry", ((e.clientX - r.left) / r.width - .5) * 10 + "deg");
-    heroImg.style.setProperty("--rx", (.5 - (e.clientY - r.top) / r.height) * 8 + "deg");
-  });
-  hero.addEventListener("pointerleave", () => { heroImg.style.setProperty("--ry","0deg"); heroImg.style.setProperty("--rx","0deg"); });
-}
-
-/* 3D tilt + glare on cards */
-if (!reduce) {
-  grid.addEventListener("pointermove", e => {
-    if (e.pointerType !== "mouse") return;
-    const c = e.target.closest(".food-card"); if (!c) return;
-    const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-    c.style.transform = `perspective(800px) rotateX(${(.5-y)*10}deg) rotateY(${(x-.5)*12}deg) translateY(-8px)`;
-    c.style.setProperty("--gx", x*100 + "%"); c.style.setProperty("--gy", y*100 + "%");
-  });
-  grid.addEventListener("pointerout", e => {
-    const c = e.target.closest(".food-card");
-    if (c && !c.contains(e.relatedTarget)) c.style.transform = "";
-  });
-
-  /* Magnetic buttons + ripple */
-  document.addEventListener("pointermove", e => {
-    if (e.pointerType !== "mouse") return;
-    const b = e.target.closest && e.target.closest(".primary-btn");
-    $$(".primary-btn").forEach(x => { if (x !== b) x.style.translate = ""; });
-    if (!b) return;
-    const r = b.getBoundingClientRect();
-    b.style.translate = `${(e.clientX - r.left - r.width/2)*.18}px ${(e.clientY - r.top - r.height/2)*.25}px`;
-  });
-  document.addEventListener("pointerdown", e => {
-    const b = e.target.closest(".add-btn,.primary-btn,.category"); if (!b) return;
-    const r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2, s = document.createElement("span");
-    s.className = "rip";
-    s.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;
-    b.append(s); setTimeout(() => s.remove(), 650);
-  });
-}
-
-/* Fly-to-cart + badge bump */
-const cartBtn = $("open-cart"), badge = $("cart-count");
-document.addEventListener("click", e => {
-  const b = e.target.closest("[data-add]"); if (!b || red
+renderFoods(); renderCart()
