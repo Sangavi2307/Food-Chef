@@ -2,547 +2,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FOOD CHEF | Premium Dining</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Food Chef – A royal dining experience. Discover delicious food and order online.">
+  <title>Food Chef | The Golden Taste</title>
 
-<style>
-:root{
- --gold:#d8ad62;
- --gold-light:#f1d69d;
- --black:#15130f;
- --dark:#211d17;
- --cream:#f8f5ef;
- --muted:#8b8378;
- --white:#fff;
- --line:#e9e1d4;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
- font-family:'DM Sans',sans-serif;
- background:var(--cream);
- color:var(--black);
-}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-.topbar{
- background:var(--gold);color:#20180e;
- text-align:center;padding:8px 12px;
- font-size:11px;font-weight:800;letter-spacing:2px;
-}
-header{
- position:sticky;top:0;z-index:50;
- background:#171510f5;color:white;
- backdrop-filter:blur(15px);
- border-bottom:1px solid #ffffff18;
-}
-.nav-wrap{
- max-width:1300px;margin:auto;padding:15px 5%;
- display:flex;align-items:center;justify-content:space-between;
- gap:20px;
-}
-.brand{display:flex;align-items:center;gap:11px}
-.brand-icon{
- width:48px;height:48px;border:1px solid var(--gold);
- border-radius:50%;display:grid;place-items:center;
- color:var(--gold);font-size:26px;
- background:linear-gradient(145deg,#342a1b,#171510);
- box-shadow:0 0 18px #d8ad6220;
-}
-.brand-name{
- font-family:'Playfair Display',serif;
- font-size:23px;letter-spacing:2px;color:var(--gold-light);
-}
-.brand-sub{
- display:block;font-size:8px;letter-spacing:3px;
- color:#c9c0b2;margin-top:3px;font-family:'DM Sans',sans-serif;
-}
-.nav-links{display:flex;align-items:center;gap:27px}
-.nav-links a{
- font-size:12px;color:#e7dfd2;letter-spacing:1px;
- transition:.2s;
-}
-.nav-links a:hover{color:var(--gold)}
-.nav-cart{
- background:var(--gold);color:#21180d;border:0;
- padding:12px 18px;border-radius:3px;
- font-size:12px;font-weight:800;letter-spacing:1px;
-}
-.hero{
- min-height:660px;position:relative;isolation:isolate;
- overflow:hidden;display:flex;align-items:center;
- background:#171510;color:white;
-}
-.hero::before{
- content:"";position:absolute;inset:-7%;z-index:-2;
- background:url("https://images.unsplash.com/photo-1547592180-85f173990554?w=1800&auto=format&fit=crop") center/cover;
- animation:cinematic 22s ease-in-out infinite alternate;
-}
-.hero::after{
- content:"";position:absolute;inset:0;z-index:-1;
- background:linear-gradient(90deg,rgba(15,13,10,.94),rgba(15,13,10,.72) 48%,rgba(15,13,10,.15));
-}
-@keyframes cinematic{
- 0%{transform:scale(1);background-position:35% center}
- 50%{transform:scale(1.1);background-position:60% center}
- 100%{transform:scale(1.17);background-position:45% center}
-}
-.hero-inner{
- max-width:1300px;width:100%;margin:auto;
- padding:100px 7%;
- animation:rise 1s ease;
-}
-@keyframes rise{
- from{opacity:0;transform:translateY(25px)}
- to{opacity:1;transform:translateY(0)}
-}
-.eyebrow{
- color:var(--gold-light);font-size:11px;
- letter-spacing:4px;font-weight:800;
- display:flex;align-items:center;gap:12px;
-}
-.eyebrow:before{content:"";width:35px;height:1px;background:var(--gold)}
-.hero h1{
- font-family:'Playfair Display',serif;
- font-size:clamp(48px,7vw,88px);
- line-height:1.06;font-weight:700;
- max-width:760px;margin:25px 0;
-}
-.hero h1 span{color:var(--gold-light);font-style:italic}
-.hero-copy{
- color:#d5cec2;line-height:1.9;
- font-size:15px;max-width:480px;
-}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
-.gold-btn,.outline-btn{
- display:inline-flex;align-items:center;justify-content:center;
- padding:15px 25px;border-radius:3px;
- font-size:11px;font-weight:800;letter-spacing:1.5px;
- transition:.3s;border:1px solid var(--gold);
-}
-.gold-btn{background:var(--gold);color:#20180e}
-.outline-btn{color:white;background:transparent}
-.gold-btn:hover{background:var(--gold-light);transform:translateY(-3px)}
-.outline-btn:hover{background:var(--gold);color:#20180e}
-.hero-note{
- margin-top:60px;color:#c8bdac;
- font-size:10px;letter-spacing:2px;
-}
-.hero-note span{color:var(--gold)}
-section{padding:85px 6%}
-.container{max-width:1250px;margin:auto}
-.section-label{
- color:#a47a35;font-size:10px;
- font-weight:800;letter-spacing:3px;text-transform:uppercase;
- margin-bottom:12px;
-}
-.section-title{
- font-family:'Playfair Display',serif;
- font-size:clamp(30px,4vw,45px);
- color:#211b13;margin-bottom:12px;
-}
-.section-desc{font-size:14px;color:var(--muted);line-height:1.8}
-.section-head{text-align:center;margin-bottom:42px}
-.section-head .section-desc{max-width:560px;margin:auto}
-.features{
- display:grid;grid-template-columns:repeat(3,1fr);
- gap:20px;margin-top:-1px;
- background:#211d17;color:white;padding:32px 7%;
-}
-.feature{text-align:center;padding:10px}
-.feature-icon{font-size:23px;color:var(--gold);margin-bottom:10px}
-.feature h3{font-size:12px;letter-spacing:1px;margin-bottom:6px}
-.feature p{font-size:11px;color:#aaa195}
-.restaurant-section{background:#f0ebe1}
-.restaurant-panel{
- max-width:900px;margin:auto;background:white;
- padding:35px;border:1px solid var(--line);
- box-shadow:0 15px 45px #3828120b;
-}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.field label{
- display:block;font-size:11px;font-weight:800;
- letter-spacing:1px;margin-bottom:9px;color:#514638;
-}
-.field input,.field select,.field textarea{
- width:100%;padding:15px 14px;
- border:1px solid #e5ded2;background:#fcfbf8;
- border-radius:2px;outline:none;color:#29231a;
-}
-.field input:focus,.field select:focus{border-color:var(--gold)}
-.full{grid-column:1/-1}
-.form-note{
- background:#f8f2e6;color:#80602e;
- padding:13px;margin-top:18px;font-size:11px;line-height:1.7;
-}
-#restaurant-message{font-size:12px;color:#32754b;margin-top:15px}
-.menu-section{background:#faf8f4}
-.menu-toolbar{
- display:flex;justify-content:space-between;
- gap:14px;flex-wrap:wrap;margin-bottom:25px;
-}
-.search-box{
- flex:1;min-width:220px;position:relative;
-}
-.search-box input{
- width:100%;padding:15px 17px;
- border:1px solid var(--line);background:white;outline:none;
-}
-.sort-select{
- border:1px solid var(--line);background:white;
- padding:14px;min-width:170px;
-}
-.categories{display:flex;gap:9px;flex-wrap:wrap;margin:25px 0 32px}
-.cat-btn{
- border:1px solid #ddd3c2;background:transparent;
- padding:10px 17px;color:#625746;
- font-size:11px;letter-spacing:.5px;
- transition:.2s;
-}
-.cat-btn.active,.cat-btn:hover{
- background:var(--black);color:var(--gold-light);
- border-color:var(--black);
-}
-.food-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:23px}
-.food-card{
- background:white;border:1px solid #eee8dd;
- transition:transform .35s,box-shadow .35s;
- overflow:hidden;
-}
-.food-card:hover{
- transform:translateY(-7px);
- box-shadow:0 18px 35px #2d211014;
-}
-.food-photo{height:225px;overflow:hidden;background:#e8dfd0;position:relative}
-.food-photo img{
- width:100%;height:100%;object-fit:cover;
- transition:transform .8s,filter .8s;
- animation:photoLight 6s ease-in-out infinite alternate;
-}
-.food-card:hover .food-photo img{transform:scale(1.09);filter:brightness(1.08)}
-@keyframes photoLight{from{filter:brightness(.96)}to{filter:brightness(1.06)}}
-.food-tag{
- position:absolute;top:14px;left:14px;
- background:#171510e8;color:var(--gold-light);
- padding:7px 10px;font-size:9px;letter-spacing:1px;
-}
-.food-details{padding:19px}
-.food-details h3{
- font-family:'Playfair Display',serif;
- font-size:21px;margin-bottom:8px;
-}
-.food-details p{font-size:12px;color:#8b8378;line-height:1.7;min-height:40px}
-.food-footer{
- border-top:1px solid #eee8dd;margin-top:17px;padding-top:15px;
- display:flex;justify-content:space-between;align-items:center;
-}
-.food-price{font-size:18px;font-weight:800;color:#9a6c24}
-.add-btn{
- background:#211d17;color:white;border:0;
- padding:11px 15px;font-size:10px;letter-spacing:1px;
- transition:.2s;
-}
-.add-btn:hover{background:var(--gold);color:#21180e}
-.empty{grid-column:1/-1;text-align:center;padding:40px;color:#81776a}
-.cart-section{background:#f0ebe1}
-.cart-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:start}
-.cart-panel,.checkout-panel{
- background:white;border:1px solid var(--line);padding:25px;
-}
-.panel-title{
- font-family:'Playfair Display',serif;font-size:24px;margin-bottom:20px;
-}
-.cart-row{
- display:flex;justify-content:space-between;align-items:center;
- gap:12px;padding:17px 0;border-bottom:1px solid #eee9e1;
-}
-.cart-row small{display:block;color:#8b8378;margin-top:5px;font-size:11px}
-.qty{display:flex;align-items:center;gap:10px}
-.qty button{
- width:27px;height:27px;border:1px solid #ddd3c2;
- background:#faf8f4;color:#4a3820;
-}
-.line-price{font-weight:700;white-space:nowrap}
-.summary-line{
- display:flex;justify-content:space-between;
- padding:12px 0;color:#766b5c;font-size:13px;
- border-bottom:1px solid #eee9e1;
-}
-.summary-total{
- display:flex;justify-content:space-between;
- font-size:21px;font-weight:800;padding:18px 0;
-}
-.checkout-form{display:grid;gap:12px}
-.checkout-form input,.checkout-form select,.checkout-form textarea{
- width:100%;padding:13px;border:1px solid #e5ded2;
- background:#fcfbf8;outline:none;border-radius:2px;
-}
-.checkout-form textarea{min-height:75px;resize:vertical}
-.small-note{font-size:10px;color:#8b8378;line-height:1.6;margin-top:13px}
-.orders-section{background:#faf8f4}
-.order-card{
- background:white;border:1px solid var(--line);
- padding:22px;margin:13px auto;max-width:850px;
-}
-.order-card h3{font-family:'Playfair Display',serif;margin-bottom:12px}
-.order-card p{font-size:12px;color:#776e61;margin:7px 0;line-height:1.6}
-.order-status{color:#36784b;font-weight:800}
-.order-card button{margin-top:12px}
-footer{background:#171510;color:#c4bbae;padding:55px 6% 25px}
-.footer-inner{
- max-width:1200px;margin:auto;display:flex;
- justify-content:space-between;gap:30px;flex-wrap:wrap;
-}
-.footer-brand{max-width:330px}
-.footer-brand p{font-size:12px;line-height:1.8;margin-top:15px;color:#9e968a}
-.footer-links h3{color:var(--gold-light);font-size:12px;letter-spacing:1px;margin-bottom:15px}
-.footer-links a{display:block;font-size:12px;margin:10px 0;color:#bdb4a7}
-.copyright{
- max-width:1200px;margin:35px auto 0;padding-top:20px;
- border-top:1px solid #ffffff20;text-align:center;font-size:10px;
-}
-.voice-button{
- position:fixed;bottom:22px;right:20px;z-index:40;
- border:1px solid var(--gold);background:#211d17;color:var(--gold-light);
- width:52px;height:52px;border-radius:50%;font-size:19px;
- box-shadow:0 5px 20px #0003;
-}
-.modal{
- display:none;position:fixed;inset:0;z-index:100;
- background:#000a;align-items:center;justify-content:center;padding:18px;
-}
-.modal-box{
- max-width:420px;width:100%;background:#fff;
- text-align:center;padding:40px 28px;border-top:4px solid var(--gold);
-}
-.modal-box .check{font-size:48px;margin-bottom:15px}
-.modal-box h2{font-family:'Playfair Display',serif;font-size:29px;margin-bottom:12px}
-.modal-box p{font-size:13px;color:#776e61;line-height:1.8}
-@media(max-width:850px){
- .nav-links{gap:13px}
- .food-grid{grid-template-columns:repeat(2,1fr)}
- .cart-grid{grid-template-columns:1fr}
-}
-@media(max-width:600px){
- .nav-wrap{justify-content:center}
- .nav-links{order:3;width:100%;justify-content:center;flex-wrap:wrap}
- .nav-links a{font-size:10px}
- .brand-name{font-size:20px}
- .hero{min-height:570px}
- .hero-inner{padding:70px 7%}
- .hero h1{font-size:52px}
- section{padding:60px 5%}
- .features{grid-template-columns:1fr;padding:22px 5%;gap:8px}
- .feature{padding:12px}
- .form-grid{grid-template-columns:1fr}
- .full{grid-column:auto}
- .restaurant-panel{padding:22px}
- .food-grid{grid-template-columns:1fr 1fr;gap:12px}
- .food-photo{height:145px}
- .food-details{padding:12px}
- .food-details h3{font-size:16px}
- .food-details p{font-size:10px;min-height:52px}
- .food-price{font-size:15px}
- .add-btn{padding:10px}
- .food-footer{gap:5px;flex-wrap:wrap}
- .menu-toolbar{flex-direction:column}
- .sort-select{width:100%}
- .cart-row{flex-wrap:wrap}
- .line-price{margin-left:auto}
-}
-@media(max-width:370px){
- .food-grid{grid-template-columns:1fr}
- .food-photo{height:190px}
-}
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{animation:none!important;scroll-behavior:auto!important}
-}
-</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="topbar">A LITTLE LUXURY IN EVERY BITE · WELCOME TO FOOD CHEF</div>
 
-<header>
- <div class="nav-wrap">
-  <a class="brand" href="#home">
-   <div class="brand-icon">♨</div>
-   <div>
-    <div class="brand-name">FOOD CHEF</div>
-    <span class="brand-sub">THE ART OF GOOD FOOD</span>
-   </div>
-  </a>
-  <nav class="nav-links">
-   <a href="#home">HOME</a>
-   <a href="#restaurant">RESTAURANTS</a>
-   <a href="#menu">OUR MENU</a>
-   <a href="#orders">MY ORDERS</a>
-  </nav>
-  <button class="nav-cart" onclick="goCart()">BAG (<span id="cart-count">0</span>)</button>
- </div>
-</header>
-
-<main>
-<section class="hero" id="home">
- <div class="hero-inner">
-  <div class="eyebrow">WELCOME TO FOOD CHEF</div>
-  <h1>Experience the<br><span>Art of Flavour.</span></h1>
-  <p class="hero-copy">Exceptional taste. Beautifully prepared. Discover delicious favorites and make every meal a memorable experience.</p>
-  <div class="hero-actions">
-   <a href="#restaurant" class="gold-btn">EXPLORE & ORDER ↗</a>
-   <button class="outline-btn" onclick="welcomeVoice()">▶ HEAR OUR WELCOME</button>
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-emblem">FC</div>
+    <div class="loader-line"></div>
+    <p>WELCOME TO FOOD CHEF</p>
   </div>
-  <div class="hero-note"><span>✦</span> FRESH INGREDIENTS &nbsp; · &nbsp; DELICIOUS MOMENTS</div>
- </div>
-</section>
 
-<div class="features">
- <div class="feature"><div class="feature-icon">✦</div><h3>QUALITY FIRST</h3><p>A menu made for food lovers</p></div>
- <div class="feature"><div class="feature-icon">♨</div><h3>MADE WITH CARE</h3><p>Every bite deserves attention</p></div>
- <div class="feature"><div class="feature-icon">♡</div><h3>MADE FOR YOU</h3><p>Your cravings, your choices</p></div>
-</div>
+  <div class="gold-grain"></div>
 
-<section class="restaurant-section" id="restaurant">
- <div class="container">
-  <div class="section-head">
-   <div class="section-label">YOUR DINING DESTINATION</div>
-   <h2 class="section-title">Where Would You Like to Order?</h2>
-   <p class="section-desc">Choose your district and enter the restaurant name to begin exploring our sample menu.</p>
-  </div>
-  <div class="restaurant-panel">
-   <form id="restaurant-form">
-    <div class="form-grid">
-     <div class="field">
-      <label>SELECT YOUR DISTRICT</label>
-      <select id="district" required>
-       <option value="">Choose district</option>
-       <option>Ariyalur</option><option>Chengalpattu</option><option>Chennai</option>
-       <option>Coimbatore</option><option>Cuddalore</option><option>Dharmapuri</option>
-       <option>Dindigul</option><option>Erode</option><option>Kallakurichi</option>
-       <option>Kancheepuram</option><option>Kanniyakumari</option><option>Karur</option>
-       <option>Krishnagiri</option><option>Madurai</option><option>Mayiladuthurai</option>
-       <option>Nagapattinam</option><option>Namakkal</option><option>Nilgiris</option>
-       <option>Perambalur</option><option>Pudukkottai</option><option>Ramanathapuram</option>
-       <option>Ranipet</option><option>Salem</option><option>Sivaganga</option>
-       <option>Tenkasi</option><option>Thanjavur</option><option>Theni</option>
-       <option>Thoothukudi</option><option>Tiruchirappalli</option><option>Tirunelveli</option>
-       <option>Tirupathur</option><option>Tiruppur</option><option>Tiruvallur</option>
-       <option>Tiruvannamalai</option><option>Tiruvarur</option><option>Vellore</option>
-       <option>Viluppuram</option><option>Virudhunagar</option>
-      </select>
-     </div>
-     <div class="field">
-      <label>RESTAURANT / HOTEL NAME</label>
-      <input id="hotel-name" placeholder="Enter restaurant name" required>
-     </div>
-     <div class="full">
-      <button type="submit" class="gold-btn" style="width:100%">DISCOVER THE MENU →</button>
-     </div>
+  <!-- Navigation -->
+  <header class="header">
+    <nav class="navbar container">
+
+      <a href="#home" class="brand">
+        <span class="brand-icon">FC</span>
+        <span class="brand-name">FOOD <b>CHEF</b>
+          <small>THE GOLDEN TASTE</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">HOME</a>
+        <a href="#menu">OUR MENU</a>
+        <a href="#about">OUR STORY</a>
+        <a href="#contact">CONTACT</a>
+        <button class="cart-button" id="cartButton">
+          CART <span id="cartCount">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-rays"></div>
+
+      <div class="hero-content reveal">
+        <span class="eyebrow">✦ EST. WITH PASSION ✦</span>
+
+        <div class="ornament">◆ ━━━━━━━━━ ◆</div>
+
+        <h1>THE ART OF<br><span>GREAT TASTE</span></h1>
+
+        <p class="hero-description">
+          An extraordinary culinary experience.
+          Crafted with passion, served with elegance.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-gold">EXPLORE MENU</a>
+          <a href="#about" class="btn btn-outline">OUR STORY</a>
+        </div>
+
+        <div class="hero-bottom">
+          <span>QUALITY</span>
+          <span class="hero-star">✦</span>
+          <span>TRADITION</span>
+          <span class="hero-star">✦</span>
+          <span>EXCELLENCE</span>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap reveal">
+        <div class="hero-frame">
+          <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85"
+            alt="Delicious gourmet food"
+            class="hero-image"
+          >
+        </div>
+        <div class="image-label">A TASTE OF ROYALTY</div>
+      </div>
+
+      <div class="hero-side-text">FOOD · ART · EXPERIENCE</div>
+      <a href="#menu" class="scroll-indicator">SCROLL TO DISCOVER ↓</a>
+    </section>
+
+    <!-- Highlights -->
+    <section class="highlights">
+      <div class="container highlight-grid">
+        <div><span>✦</span><p>FRESH INGREDIENTS</p></div>
+        <div><span>◆</span><p>MASTERFUL RECIPES</p></div>
+        <div><span>✧</span><p>ROYAL EXPERIENCE</p></div>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="menu-section section-padding" id="menu">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <span class="eyebrow">✦ DISCOVER OUR COLLECTION ✦</span>
+          <h2>THE <span>MENU</span></h2>
+          <div class="heading-ornament">━━━━ ◆ ━━━━</div>
+          <p>Every dish tells a story. Discover your next favourite.</p>
+        </div>
+
+        <div class="menu-toolbar">
+          <div class="category-list" id="categoryList">
+            <button class="category-btn active" data-category="All">ALL</button>
+            <button class="category-btn" data-category="Starters">STARTERS</button>
+            <button class="category-btn" data-category="Main Course">MAIN COURSE</button>
+            <button class="category-btn" data-category="Snacks">SNACKS</button>
+            <button class="category-btn" data-category="Desserts">DESSERTS</button>
+            <button class="category-btn" data-category="Drinks">DRINKS</button>
+          </div>
+
+          <div class="search-box">
+            <span>⌕</span>
+            <input type="search" id="foodSearch" placeholder="Search your favourite food..." aria-label="Search food">
+          </div>
+        </div>
+
+        <div class="food-grid" id="foodGrid"></div>
+
+        <p class="empty-message" id="emptyMessage" hidden>
+          No dishes found. Try another search.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about-section section-padding" id="about">
+      <div class="container about-grid">
+
+        <div class="about-image reveal">
+          <div class="about-frame">
+            <img
+              src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=85"
+              alt="Chef preparing delicious food"
+            >
+          </div>
+          <div class="about-stamp">FC<br><small>EST. 2026</small></div>
+        </div>
+
+        <div class="about-content reveal">
+          <span class="eyebrow">✦ OUR HERITAGE ✦</span>
+          <h2>PASSION IN<br><span>EVERY PLATE</span></h2>
+          <div class="heading-ornament">━━━━ ◆ ━━━━</div>
+
+          <p>
+            At Food Chef, we believe food is more than a meal.
+            It is an experience, a celebration and a beautiful
+            expression of creativity.
+          </p>
+
+          <p>
+            From carefully selected ingredients to every
+            beautifully prepared dish, we bring flavour,
+            quality and elegance to your table.
+          </p>
+
+          <a href="#menu" class="btn btn-gold">DISCOVER OUR MENU</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience-section">
+      <div class="experience-inner reveal">
+        <span class="eyebrow">✦ THE FOOD CHEF PROMISE ✦</span>
+        <h2>GOOD FOOD IS<br><span>TIMELESS ART.</span></h2>
+        <p>Made with love. Served with distinction.</p>
+        <a href="#menu" class="btn btn-outline">ORDER YOUR FAVOURITE</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section section-padding" id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">✦ WE WOULD LOVE TO HEAR FROM YOU ✦</span>
+          <h2>GET IN <span>TOUCH</span></h2>
+          <div class="heading-ornament">━━━━ ◆ ━━━━</div>
+          <p>Your next delicious experience starts here.</p>
+        </div>
+
+        <div class="contact-details">
+          <div><span>✦</span><h3>OUR SERVICE</h3><p>Fresh food, prepared with care.</p></div>
+          <div><span>✦</span><h3>ORDER ONLINE</h3><p>Choose your favourite dishes.</p></div>
+          <div><span>✦</span><h3>OUR PROMISE</h3><p>Quality in every bite.</p></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">FC</div>
+      <h2>FOOD CHEF</h2>
+      <p>THE GOLDEN TASTE · THE ROYAL EXPERIENCE</p>
+      <div class="footer-line">━━━━━━ ✦ ━━━━━━</div>
+      <div class="footer-links">
+        <a href="#home">HOME</a>
+        <a href="#menu">MENU</a>
+        <a href="#about">ABOUT</a>
+        <a href="#contact">CONTACT</a>
+      </div>
+      <p class="copyright">© 2026 FOOD CHEF. ALL RIGHTS RESERVED.</p>
     </div>
-   </form>
-   <div class="form-note">Please note: This demo displays sample dishes and prices. Entering a restaurant name does not connect to its actual menu or ordering system.</div>
-   <p id="restaurant-message"></p>
-  </div>
- </div>
-</section>
+  </footer>
 
-<section class="menu-section" id="menu">
- <div class="container">
-  <div class="section-head">
-   <div class="section-label">CURATED FOR YOUR CRAVINGS</div>
-   <h2 class="section-title">Discover Our Menu</h2>
-   <p class="section-desc" id="menu-subtitle">Explore a selection of delicious sample dishes.</p>
-  </div>
-  <div class="menu-toolbar">
-   <div class="search-box"><input id="search" placeholder="Search dishes..." oninput="renderFoods()"></div>
-   <select id="sort" class="sort-select" onchange="renderFoods()">
-    <option value="default">Featured selection</option>
-    <option value="low">Price: Low to High</option>
-    <option value="high">Price: High to Low</option>
-    <option value="az">Name: A to Z</option>
-   </select>
-  </div>
-  <div class="categories" id="categories"></div>
-  <div class="food-grid" id="food-grid"></div>
- </div>
-</section>
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cartOverlay"></div>
 
-<section class="cart-section" id="cart-section">
- <div class="container">
-  <div class="section-head">
-   <div class="section-label">YOUR SELECTION</div>
-   <h2 class="section-title">Your Food Bag</h2>
-   <p class="section-desc">Review your selection and complete your demo checkout.</p>
-  </div>
-  <div class="cart-grid">
-   <div class="cart-panel">
-    <h3 class="panel-title">Selected Items</h3>
-    <div id="cart-items"></div>
-   </div>
-   <div class="checkout-panel">
-    <h3 class="panel-title">Order Summary</h3>
-    <div class="summary-line"><span>Subtotal</span><b id="subtotal">₹0</b></div>
-    <div class="summary-line"><span>Delivery charge</span><b id="delivery">₹0</b></div>
-    <div class="summary-total"><span>Total</span><span id="total">₹0</span></div>
-    <form id="checkout-form" class="checkout-form">
-     <input id="customer-name" placeholder="Full name" required>
-     <input id="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" required>
-     <textarea id="address" placeholder="Delivery address" required></textarea>
-     <select id="payment" required>
-      <option value="">Choose payment method</option>
-      <option>Cash on Delivery (Demo)</option>
-      <option>UPI (Demo only)</option>
-     </select>
-     <button class="gold-btn" type="submit" style="width:100%">PLACE MY ORDER →</button>
-    </form>
-    <p class="small-note">Demo checkout only. No actual payment or restaurant order is submitted.</p>
-   </div>
-  </div>
- </div>
-</section>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-header">
+      <div>
+        <span class="eyebrow">✦ YOUR SELECTION ✦</span>
+        <h2>YOUR CART</h2>
+      </div>
+      <button class="close-cart" id="closeCart" aria-label="Close cart">×</button>
+    </div>
 
-<section class="orders-section" id="orders">
- <div class="container">
-  <div class="section-head">
-   <div class="section-label">YOUR ORDER JOURNEY</div>
-   <h2 class="section-title">Order History</h2>
-   <p class="section-desc">Keep track of your demo orders.</p>
-  </div>
-  <div id="order-history"></div>
- </div>
-</section>
-</main>
+    <div class="cart-items" id="cartItems"></div>
 
-<footer>
- <div class="footer-inner">
-  <div class="footer-brand">
-   <div class="brand">
-    <div class="brand-icon">♨</div>
-    <div><div class="brand-name">FOOD CHEF</div><span class="brand-sub">THE ART OF GOOD FOOD</span></div>
-   </div>
-   <p>Bringing beautiful food experiences and delicious moments together. Made for people who love great food.</p>
-  </div>
-  <div class="footer-links">
-   <h3>EXPLORE</h3>
-   <a href="#home">Home</a><a href="#restaurant">Restaurants</a><a href="#menu">Our Menu</a><a href="#orders">My Orders</a>
-  </div>
-  <div class="footer-links">
-   <h3>FOOD CHEF</h3>
-   <a href="#menu">Discover dishes</a><a href="#cart-section">Your food bag</a><a href="#restaurant">Choose district</a>
-  </div>
- </div>
- <div class="copyright">© 2026 FOOD CHEF · THE ART OF GOOD FOOD · DEMO WEBSITE</div>
-</footer>
+    <div class="cart-footer">
+      <div class="total-row"><span>Subtotal</span><strong id="subtotal">₹0</strong></div>
+      <div class="total-row"><span>Delivery</span><strong id="delivery">₹0</strong></div>
+      <div class="total-row grand-total"><span>TOTAL</span><strong id="grandTotal">₹0</strong></div>
+      <button class="btn btn-gold checkout-btn" id="checkoutButton">PROCEED TO CHECKOUT</button>
+    </div>
+  </aside>
 
-<button class="voice-button" onclick="welcomeVoice()" title="Hear welcome message">♫</button>
+  <!-- Checkout Modal -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="checkout-modal">
+      <button class="modal-close" id="closeCheckout" aria-label="Close checkout">×</button>
 
-<div class="modal" id="success-modal">
- <div class="modal-box">
-  <div class="check">✦</div>
-  <h2>Thank You!</h2>
-  <p id="success-text
+      <span class="eyebrow">✦ FINAL STEP ✦</span>
+      <h2>DELIVERY DETAILS</h2>
+      <div class="heading-ornament">━━━━ ◆ ━━━━</div>
+
+      <form id="checkoutForm">
+        <label for="customerName">YOUR NAME</label>
+        <input id="customerName" name="name" type="text" required placeholder="Enter your full name">
+
+        <label for="customerPhone">PHONE NUMBER</label>
+        <input id="customerPhone" name="phone" type="tel" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number">
+
+        <label for="customerAddress">DELIVERY ADDRESS</label>
+        <textarea id="customerAddress" name="address" rows="3" required placeholder="Enter your complete delivery address"></textarea>
+
+        <label for="paymentMethod">PAYMENT METHOD</label>
+        <select id="paymentMethod" name="payment" required>
+          <option value="Cash on Delivery">Cash on Delivery</option>
+          <option value="UPI on Delivery">UPI on Delivery</option>
+        </select>
+
+        <div class="checkout-total">
+          <span>PAYABLE AMOUNT</span>
+          <strong id="checkoutTotal">₹0</strong>
+        </div>
+
+        <button type="submit" class="btn btn-gold checkout-submit">PLACE ORDER</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
