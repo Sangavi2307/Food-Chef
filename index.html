@@ -1,195 +1,117 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#17140d">
-  <title>FOOD CHEF | Taste the Experience</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FOOD CHEF – Delicious Snacks, Delivered Fresh!</title>
+<meta name="description" content="Order South Indian, Chinese, fast food, bakery and special snacks across Tamil Nadu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- CINEMATIC HERO BACKGROUND -->
-  <video class="hero-video" id="heroVideo" muted playsinline preload="auto"
-    poster="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85">
-    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260826_041744_63efcd78-bf7d-4039-99e2-2461e8a61903.mp4" type="video/mp4">
-  </video>
-  <div class="video-overlay"></div>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe27a"/><stop offset=".55" stop-color="#f5b301"/><stop offset="1" stop-color="#c78400"/>
+    </linearGradient>
+    <symbol id="logo" viewBox="0 0 64 64">
+      <path d="M18 34c-6-1-10-6-8-12s8-8 13-6c3-6 15-6 18 0 5-2 11 1 12 6s-2 11-8 12v8H18z" fill="url(#gold)"/>
+      <rect x="18" y="42" width="30" height="6" rx="2" fill="#0d0b08"/>
+      <path d="M26 24v10M33 22v12M40 24v10" stroke="#fff6dc" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+      <path d="M14 54h36M22 58h20" stroke="url(#gold)" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="54" cy="12" r="3" fill="#fff6dc"/><circle cx="10" cy="10" r="2" fill="#ffe27a"/>
+    </symbol>
+  </defs>
+</svg>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <a href="#home" class="logo">
-      <span class="logo-text">FOOD CHEF<span class="registered">®</span></span>
-      <span class="logo-star">✳︎</span>
-    </a>
+<div id="loader"><svg class="spin" width="84" height="84"><use href="#logo"/></svg><p>FOOD CHEF</p><div class="bar"><i></i></div></div>
 
-    <nav class="desktop-nav">
-      <a href="#menu">Menu</a><span>,</span>
-      <a href="#about">About</a><span>,</span>
-      <a href="#order">Order</a><span>,</span>
-      <a href="#orders">My Orders</a>
-    </nav>
+<header id="nav">
+  <a href="#home" class="brand"><svg width="38" height="38"><use href="#logo"/></svg><span>FOOD <b>CHEF</b></span></a>
+  <nav id="links">
+    <a href="#home">Home</a><a href="#menu">Snacks Menu</a><a href="#order">Order Food</a><a href="#track">Track Order</a><a href="#about">About Us</a>
+  </nav>
+  <a href="#cart" class="cart-btn" id="cartIcon" aria-label="Cart">🛒<span id="cartCount">0</span></a>
+  <button id="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+</header>
 
-    <a href="#order" class="nav-contact">Let's Order</a>
-
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
-
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#menu">Menu</a>
-    <a href="#about">About</a>
-    <a href="#order">Order</a>
-    <a href="#orders">My Orders</a>
-    <a href="mailto:hello@foodchef.com">Contact us</a>
+<main>
+<section id="home" class="hero">
+  <img class="hero-bg" src="https://loremflickr.com/1600/900/food,snacks" alt="" onerror="this.remove()">
+  <div class="shade"></div><div id="particles"></div>
+  <span class="float f1">🍟</span><span class="float f2">🍔</span><span class="float f3">🥟</span><span class="float f4">🍩</span>
+  <div class="hero-in">
+    <svg class="hero-logo" width="110" height="110"><use href="#logo"/></svg>
+    <h1>Delicious Snacks,<br><em>Delivered Fresh!</em></h1>
+    <p>Your favorite snacks, just one order away.</p>
+    <div class="cta"><a href="#menu" class="btn glow">Explore Menu</a><a href="#order" class="btn ghost">Order Now</a></div>
   </div>
+</section>
 
-  <!-- HERO -->
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <div class="intro-blur">
-          Hey there, welcome to FOOD CHEF,<br>
-          where every flavour tells a story.
-        </div>
+<section id="menu" class="sec">
+  <h2 class="reveal">Snacks Menu</h2>
+  <div class="tools reveal">
+    <input id="search" type="search" placeholder="Search snacks…">
+    <select id="sort"><option value="">Sort by price</option><option value="asc">Low to high</option><option value="desc">High to low</option></select>
+  </div>
+  <div id="filters" class="chips reveal"></div>
+  <div id="grid" class="grid"></div>
+  <p id="empty" class="muted" hidden>No snacks match your search. Try another word or category.</p>
+</section>
 
-        <p class="typewriter-text">
-          <span id="typewriter"></span><span class="typing-cursor" id="typingCursor"></span>
-        </p>
+<section id="order" class="sec dark">
+  <h2 class="reveal">Order Food</h2>
+  <form id="orderForm" class="form reveal" novalidate>
+    <div class="f"><input id="fName" placeholder=" " required><label for="fName">Customer name</label><small></small></div>
+    <div class="f"><input id="fPhone" placeholder=" " inputmode="numeric" maxlength="10" required><label for="fPhone">Mobile number (10 digits)</label><small></small></div>
+    <div class="f"><select id="fDistrict" required></select><label for="fDistrict" class="up">Tamil Nadu district</label><small></small></div>
+    <div class="f"><input id="fHotel" placeholder=" " required><label for="fHotel">Hotel / Restaurant name</label><small></small></div>
+    <div class="f"><select id="fItem"></select><label for="fItem" class="up">Food item (used if cart is empty)</label><small></small></div>
+    <div class="f"><input id="fQty" type="number" min="1" max="50" value="1" placeholder=" "><label for="fQty" class="up">Quantity</label><small></small></div>
+    <div class="f wide"><textarea id="fAddr" rows="2" placeholder=" " required></textarea><label for="fAddr">Delivery address</label><small></small></div>
+    <div class="f wide"><textarea id="fNote" rows="2" placeholder=" "></textarea><label for="fNote">Special instructions (optional)</label></div>
+    <button class="btn glow wide" type="submit">Place Order</button>
+  </form>
+  <div id="confirm" class="confirm" hidden></div>
+</section>
 
-        <div class="hero-actions" id="heroActions">
-          <a href="#menu" class="pill-button">Explore our menu</a>
-          <a href="#order" class="pill-button">Order your favourites</a>
-          <a href="#about" class="pill-button">Discover our kitchen</a>
-          <a href="#orders" class="pill-button">Your food journey</a>
-          <button class="pill-button outline-button" id="copyEmail">
-            <span>Reach us: <u>hello@foodchef.com</u></span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <rect x="8" y="8" width="13" height="13" rx="2"></rect>
-              <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path>
-            </svg>
-          </button>
-        </div>
+<section id="cart" class="sec">
+  <h2 class="reveal">Your Cart</h2>
+  <div class="cart-box reveal">
+    <div id="cartItems"></div>
+    <div id="cartSum"></div>
+    <button id="checkout" class="btn glow">Checkout</button>
+  </div>
+</section>
 
-        <div class="hero-bottom-note">
-          <span class="gold-dot"></span> FRESHLY PREPARED · SERVED WITH LOVE
-        </div>
-      </div>
+<section id="track" class="sec dark">
+  <h2 class="reveal">Track Order</h2>
+  <p class="demo">Demo tracking: no real restaurant or delivery service is connected. Statuses advance automatically for demonstration.</p>
+  <div id="tracker"></div>
+  <h3>Order history</h3>
+  <div id="history" class="history"></div>
+</section>
 
-      <a href="#menu" class="hero-scroll">SCROLL TO TASTE <span>↓</span></a>
-      <div class="hero-side-label">THE ART OF GOOD FOOD</div>
-    </section>
+<section id="about" class="sec">
+  <h2 class="reveal">About Us</h2>
+  <p class="about reveal">FOOD CHEF brings crisp vadas, hot momos, buttery puffs and cheesy bites to your door across all 38 districts of Tamil Nadu. Pick a snack, name your favorite restaurant, and we handle the rest.</p>
+</section>
+</main>
 
-    <!-- ABOUT STRIP -->
-    <section class="about-strip" id="about">
-      <span>✳ FRESH INGREDIENTS</span>
-      <span>✳ BOLD FLAVOURS</span>
-      <span>✳ COOKED WITH LOVE</span>
-      <span>✳ HAPPY FOOD MOMENTS</span>
-    </section>
-
-    <!-- MENU -->
-    <section class="menu-section" id="menu">
-      <div class="section-heading">
-        <p class="eyebrow">THE FOOD CHEF COLLECTION</p>
-        <h2>Good food. <span>Great mood.</span></h2>
-        <p>Discover your next favourite bite, freshly made for you.</p>
-      </div>
-
-      <div class="menu-tools">
-        <input id="searchInput" type="search" placeholder="Search food..." aria-label="Search food">
-        <select id="sortSelect" aria-label="Sort food">
-          <option value="default">Recommended</option>
-          <option value="low">Price: Low to High</option>
-          <option value="high">Price: High to Low</option>
-          <option value="az">Name: A to Z</option>
-        </select>
-      </div>
-
-      <div class="category-list" id="categoryList"></div>
-      <div class="food-grid" id="foodGrid"></div>
-      <p class="empty-message" id="emptyMessage" hidden>No food found. Try another search.</p>
-    </section>
-
-    <!-- ORDER DETAILS -->
-    <section class="order-section" id="order">
-      <div class="order-intro">
-        <p class="eyebrow">LET'S MAKE YOU HAPPY</p>
-        <h2>Your cravings.<br><span>Our kitchen.</span></h2>
-        <p>Choose your district, enter your preferred hotel or restaurant, and save your delivery details.</p>
-        <div class="order-benefits">
-          <span>✳ Choose your district</span>
-          <span>✳ Enter your restaurant</span>
-          <span>✳ Select your favourite food</span>
-        </div>
-      </div>
-
-      <form class="order-form" id="customerForm">
-        <h3>Delivery details</h3>
-
-        <label for="customerName">Your name</label>
-        <input id="customerName" type="text" placeholder="Enter your name" required>
-
-        <label for="phone">Mobile number</label>
-        <input id="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" required>
-
-        <label for="district">District</label>
-        <select id="district" required>
-          <option value="">Select your district</option>
-        </select>
-
-        <label for="hotel">Hotel / Restaurant name</label>
-        <input id="hotel" type="text" placeholder="Enter hotel or restaurant name" required>
-
-        <label for="address">Delivery address</label>
-        <textarea id="address" rows="3" placeholder="Enter your address" required></textarea>
-
-        <button class="gold-button full-button" type="submit">Save My Details →</button>
-        <p id="formMessage" class="form-message"></p>
-      </form>
-    </section>
-
-    <!-- CART -->
-    <section class="cart-section" id="cart">
-      <div class="section-heading left-heading">
-        <p class="eyebrow">YOUR FOOD SELECTION</p>
-        <h2>Your <span>basket.</span></h2>
-      </div>
-      <div id="cartItems" class="cart-items"></div>
-      <div class="cart-total">
-        <strong>Total: <span id="cartTotal">₹0</span></strong>
-        <button class="gold-button" id="checkoutBtn" type="button">Place Demo Order →</button>
-      </div>
-      <p class="small-note">Demo only. No real payment or restaurant order is processed.</p>
-      <p id="checkoutMessage" class="form-message"></p>
-    </section>
-
-    <!-- ORDER HISTORY -->
-    <section class="history-section" id="orders">
-      <div class="section-heading left-heading">
-        <p class="eyebrow">YOUR FOOD JOURNEY</p>
-        <h2>Order <span>history.</span></h2>
-      </div>
-      <div id="orderHistory" class="order-history"></div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <a href="#home" class="logo">
-      <span class="logo-text">FOOD CHEF<span class="registered">®</span></span>
-      <span class="logo-star">✳︎</span>
-    </a>
-    <p>Made with ♥ for food lovers.</p>
-    <p>© <span id="year"></span> FOOD CHEF</p>
-  </footer>
-
-  <div class="toast" id="toast" role="status"></div>
-  <script src="script.js"></script>
+<footer>
+  <div class="fgrid">
+    <div><a href="#home" class="brand"><svg width="38" height="38"><use href="#logo"/></svg><span>FOOD <b>CHEF</b></span></a><p>Premium snacks, delivered fresh across Tamil Nadu.</p></div>
+    <div><h4>Quick links</h4><a href="#menu">Snacks Menu</a><a href="#order">Order Food</a><a href="#track">Track Order</a><a href="#about">About Us</a></div>
+    <div><h4>Categories</h4><span>South Indian</span><span>Chinese</span><span>Fast Food</span><span>Bakery &amp; Sweet</span><span>Special</span></div>
+    <div><h4>Contact</h4><span>📍 Your address here</span><span>📞 +91 00000 00000</span><span>✉️ hello@foodchef.example</span>
+      <div class="social"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">◎</a><a href="#" aria-label="X">𝕏</a><a href="#" aria-label="YouTube">▶</a></div></div>
+  </div>
+  <p class="copy">© 2026 FOOD CHEF. All rights reserved.</p>
+</footer>
+<div id="toast"></div>
+<script src="script.js"></script>
 </body>
 </html>
