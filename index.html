@@ -81,6 +81,7 @@
     <button class="category" data-category="Desserts">🍰 Desserts</button>
     <button class="category" data-category="Drinks">🥤 Drinks</button>
     <button class="category" data-category="Snacks">🥡 Other Snacks</button>
+    <button class="category" data-category="Liked">♥ Liked</button>
   </div>
   <div class="food-grid" id="food-items"><p class="empty-message">Loading delicious food...</p></div>
 </section>
@@ -172,6 +173,28 @@
     <button class="primary-btn" id="drawer-checkout">Checkout →</button>
   </div>
 </aside>
+
+<div class="modal" id="detail-modal" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-img">
+      <img id="detail-img" alt="">
+      <button class="modal-close" id="detail-close" aria-label="Close">✕</button>
+      <button class="like-btn" id="detail-like" aria-label="Like">♡</button>
+    </div>
+    <div class="modal-body">
+      <span class="food-category" id="detail-cat"></span>
+      <h3 id="detail-name"></h3>
+      <p class="food-description" id="detail-desc"></p>
+      <div id="detail-options"></div>
+      <div class="detail-total">
+        <div><small>Total</small><strong id="detail-price">₹0</strong></div>
+        <button class="primary-btn" id="detail-add">Add to Cart</button>
+      </div>
+      <h4>More like this</h4>
+      <div class="similar" id="detail-similar"></div>
+    </div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
