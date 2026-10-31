@@ -1,655 +1,326 @@
 
-/* =========================================
-   FOOD CHEF — ART DECO JAVASCRIPT
-   ========================================= */
-
-// FOOD DATABASE
-// Add or edit your food items in this array.
-
 const foods = [
-  {
-    id: 1,
-    name: "Royal Veg Pizza",
-    category: "Main Course",
-    price: 199,
-    desc: "Delicious pizza topped with fresh vegetables and cheese.",
-    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 2,
-    name: "Classic Burger",
-    category: "Main Course",
-    price: 149,
-    desc: "Juicy vegetable patty with fresh lettuce and cheese.",
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 3,
-    name: "Creamy Pasta",
-    category: "Main Course",
-    price: 179,
-    desc: "Rich and creamy pasta with delicious herbs.",
-    image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 4,
-    name: "Spring Rolls",
-    category: "Snacks",
-    price: 89,
-    desc: "Crispy vegetable spring rolls with a tasty filling.",
-    image: "https://images.unsplash.com/photo-1548507200-9a4d6f5a3b31?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 5,
-    name: "French Fries",
-    category: "Snacks",
-    price: 79,
-    desc: "Golden crispy fries seasoned to perfection.",
-    image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 6,
-    name: "Paneer Tikka",
-    category: "Starters",
-    price: 169,
-    desc: "Soft paneer cubes marinated with aromatic spices.",
-    image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 7,
-    name: "Veg Manchurian",
-    category: "Starters",
-    price: 139,
-    desc: "Crispy vegetable balls in a delicious Indo-Chinese sauce.",
-    image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 8,
-    name: "Chocolate Cake",
-    category: "Desserts",
-    price: 119,
-    desc: "Rich chocolate cake with a soft and moist texture.",
-    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 9,
-    name: "Ice Cream",
-    category: "Desserts",
-    price: 79,
-    desc: "Smooth and creamy ice cream for a sweet finish.",
-    image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 10,
-    name: "Fresh Fruit Juice",
-    category: "Drinks",
-    price: 69,
-    desc: "Refreshing seasonal fruit juice.",
-    image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 11,
-    name: "Cold Coffee",
-    category: "Drinks",
-    price: 99,
-    desc: "Chilled creamy coffee with a rich flavour.",
-    image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 12,
-    name: "Veg Fried Rice",
-    category: "Main Course",
-    price: 129,
-    desc: "Flavourful fried rice with fresh vegetables.",
-    image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 13,
-    name: "Samosa",
-    category: "Snacks",
-    price: 35,
-    desc: "Golden pastry filled with spiced potatoes.",
-    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 14,
-    name: "Masala Dosa",
-    category: "Main Course",
-    price: 90,
-    desc: "Crispy dosa served with potato masala and chutneys.",
-    image: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 15,
-    name: "Gulab Jamun",
-    category: "Desserts",
-    price: 60,
-    desc: "Soft sweet dumplings soaked in aromatic syrup.",
-    image: "https://images.unsplash.com/photo-1666190092159-4c3c6b2f4e7c?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 16,
-    name: "Veg Sandwich",
-    category: "Snacks",
-    price: 99,
-    desc: "Freshly prepared sandwich with vegetables and cheese.",
-    image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 17,
-    name: "Tomato Soup",
-    category: "Starters",
-    price: 89,
-    desc: "Warm and comforting tomato soup with herbs.",
-    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=700&q=85"
-  },
-  {
-    id: 18,
-    name: "Lemon Mint Cooler",
-    category: "Drinks",
-    price: 59,
-    desc: "Refreshing lemon and mint drink.",
-    image: "https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?auto=format&fit=crop&w=700&q=85"
-  }
+  {id:1,name:"Veg Pizza",category:"Pizza",price:199,desc:"Cheesy pizza loaded with fresh vegetables.",image:"https://images.unsplash.com/photo-1513104890138-7c749659a591?w=700"},
+  {id:2,name:"Chicken Pizza",category:"Pizza",price:249,desc:"Delicious chicken pizza with melted cheese.",image:"https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=700"},
+  {id:3,name:"Classic Burger",category:"Burgers",price:129,desc:"Juicy burger with fresh lettuce and sauce.",image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700"},
+  {id:4,name:"Cheese Burger",category:"Burgers",price:159,desc:"A tasty burger filled with melted cheese.",image:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=700"},
+  {id:5,name:"French Fries",category:"Snacks",price:89,desc:"Golden, crispy and perfectly seasoned fries.",image:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=700"},
+  {id:6,name:"Spring Rolls",category:"Snacks",price:89,desc:"Crispy vegetable spring rolls.",image:"https://images.unsplash.com/photo-1548507200-9a4d6f5a3b31?w=700"},
+  {id:7,name:"Samosa",category:"Snacks",price:30,desc:"Crispy pastry with a spicy potato filling.",image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?w=700"},
+  {id:8,name:"Chicken Wings",category:"Snacks",price:189,desc:"Spicy and flavourful chicken wings.",image:"https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=700"},
+  {id:9,name:"Veg Fried Rice",category:"Rice",price:120,desc:"Stir-fried rice with fresh vegetables.",image:"https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=700"},
+  {id:10,name:"Chicken Fried Rice",category:"Rice",price:160,desc:"Classic fried rice with tender chicken.",image:"https://images.unsplash.com/photo-1512058564366-18510be2db19?w=700"},
+  {id:11,name:"Paneer Biryani",category:"Rice",price:170,desc:"Aromatic rice cooked with paneer and spices.",image:"https://images.unsplash.com/photo-1563379091339-03246963d96c?w=700"},
+  {id:12,name:"Chicken Biryani",category:"Rice",price:190,desc:"Fragrant biryani with delicious chicken.",image:"https://images.unsplash.com/photo-1563379091339-03246963d96c?w=700"},
+  {id:13,name:"Masala Dosa",category:"South Indian",price:80,desc:"Crispy dosa with a spiced potato filling.",image:"https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=700"},
+  {id:14,name:"Idli",category:"South Indian",price:40,desc:"Soft steamed idlis served with chutney.",image:"https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=700"},
+  {id:15,name:"Medu Vada",category:"South Indian",price:50,desc:"Crispy golden lentil fritters.",image:"https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=700"},
+  {id:16,name:"Pongal",category:"South Indian",price:65,desc:"Comforting rice and lentil pongal.",image:"https://images.unsplash.com/photo-1630383249896-424e482df921?w=700"},
+  {id:17,name:"Chocolate Cake",category:"Desserts",price:110,desc:"Rich chocolate cake for sweet moments.",image:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700"},
+  {id:18,name:"Brownie",category:"Desserts",price:90,desc:"Soft chocolate brownie with a rich centre.",image:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=700"},
+  {id:19,name:"Ice Cream",category:"Desserts",price:70,desc:"Cool and creamy dessert.",image:"https://images.unsplash.com/photo-1501446529957-6226bd447c46?w=700"},
+  {id:20,name:"Gulab Jamun",category:"Desserts",price:60,desc:"Soft sweet dumplings in sugar syrup.",image:"https://images.unsplash.com/photo-1666190092159-5b8e3a4f3e0b?w=700"},
+  {id:21,name:"Fresh Lime Juice",category:"Drinks",price:45,desc:"Refreshing fresh lime drink.",image:"https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?w=700"},
+  {id:22,name:"Mango Juice",category:"Drinks",price:60,desc:"Sweet mango juice served chilled.",image:"https://images.unsplash.com/photo-1546173159-315724a31696?w=700"},
+  {id:23,name:"Cold Coffee",category:"Drinks",price:90,desc:"Creamy chilled coffee.",image:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=700"},
+  {id:24,name:"Milkshake",category:"Drinks",price:100,desc:"Thick and creamy milkshake.",image:"https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=700"},
+  {id:25,name:"Paneer Tikka",category:"Snacks",price:160,desc:"Grilled paneer with aromatic spices.",image:"https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=700"},
+  {id:26,name:"Chicken Noodles",category:"Noodles",price:150,desc:"Stir-fried noodles with chicken.",image:"https://images.unsplash.com/photo-1585032226651-759b368d7246?w=700"},
+  {id:27,name:"Veg Noodles",category:"Noodles",price:120,desc:"Hot noodles tossed with vegetables.",image:"https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=700"},
+  {id:28,name:"Pasta",category:"Pasta",price:160,desc:"Creamy pasta with herbs and sauce.",image:"https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=700"},
+  {id:29,name:"White Sauce Pasta",category:"Pasta",price:180,desc:"Creamy white sauce pasta.",image:"https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=700"},
+  {id:30,name:"Fish Fry",category:"Snacks",price:180,desc:"Crispy fish with traditional spices.",image:"https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=700"}
 ];
 
-// STORAGE HELPERS
+const districts = [
+  "Ariyalur","Chengalpattu","Chennai","Coimbatore","Cuddalore",
+  "Dharmapuri","Dindigul","Erode","Kallakurichi","Kancheepuram",
+  "Kanniyakumari","Karur","Krishnagiri","Madurai","Mayiladuthurai",
+  "Nagapattinam","Namakkal","Nilgiris","Perambalur","Pudukkottai",
+  "Ramanathapuram","Ranipet","Salem","Sivaganga","Tenkasi",
+  "Thanjavur","Theni","Thoothukudi","Tiruchirappalli","Tirunelveli",
+  "Tirupathur","Tiruppur","Tiruvallur","Tiruvannamalai",
+  "Tiruvarur","Vellore","Viluppuram","Virudhunagar"
+];
 
-function loadStorage(key, fallback) {
-  try {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : fallback;
-  } catch (error) {
-    console.warn("Storage unavailable:", error);
-    return fallback;
-  }
-}
-
-function saveStorage(key, value) {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch (error) {
-    console.warn("Could not save data:", error);
-    showToast("Storage unavailable. Please try again.");
-  }
-}
-
-// APP STATE
-
-let cart = loadStorage("foodChefCart", []);
-let orders = loadStorage("foodChefOrders", []);
+let cart = JSON.parse(localStorage.getItem("foodChefCart") || "[]");
+let orders = JSON.parse(localStorage.getItem("foodChefOrders") || "[]");
 let activeCategory = "All";
-let searchTerm = "";
-let toastTimer;
-
-// ELEMENTS
+let customerDetails = null;
 
 const foodGrid = document.getElementById("foodGrid");
 const categoryList = document.getElementById("categoryList");
-const foodSearch = document.getElementById("foodSearch");
-const emptyMessage = document.getElementById("emptyMessage");
-
-const cartDrawer = document.getElementById("cartDrawer");
-const cartOverlay = document.getElementById("cartOverlay");
-const cartItems = document.getElementById("cartItems");
 const cartCount = document.getElementById("cartCount");
-
-const checkoutModal = document.getElementById("checkoutModal");
-const checkoutForm = document.getElementById("checkoutForm");
-
+const cartItems = document.getElementById("cartItems");
+const cartTotal = document.getElementById("cartTotal");
+const searchInput = document.getElementById("searchInput");
+const sortSelect = document.getElementById("sortSelect");
 const toast = document.getElementById("toast");
 
-// FORMAT CURRENCY
-
-function money(amount) {
-  return "₹" + Number(amount).toLocaleString("en-IN");
+function saveCart() {
+  localStorage.setItem("foodChefCart", JSON.stringify(cart));
 }
-
-// TOAST MESSAGE
 
 function showToast(message) {
   toast.textContent = message;
   toast.classList.add("show");
-
-  clearTimeout(toastTimer);
-
-  toastTimer = setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2600);
+  setTimeout(() => toast.classList.remove("show"), 2300);
 }
 
-// FOOD MENU
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;",
+    '"':"&quot;", "'":"&#039;"
+  })[character]);
+}
+
+function loadDistricts() {
+  const districtSelect = document.getElementById("district");
+  districts.forEach(district => {
+    const option = document.createElement("option");
+    option.value = district;
+    option.textContent = district;
+    districtSelect.appendChild(option);
+  });
+}
+
+function loadCategories() {
+  const categories = ["All", ...new Set(foods.map(food => food.category))];
+  categoryList.innerHTML = categories.map(category => `
+    <button class="category-btn ${category === activeCategory ? "active" : ""}"
+      data-category="${escapeHTML(category)}" type="button">
+      ${escapeHTML(category)}
+    </button>
+  `).join("");
+
+  categoryList.querySelectorAll("button").forEach(button => {
+    button.addEventListener("click", () => {
+      activeCategory = button.dataset.category;
+      loadCategories();
+      renderFoods();
+    });
+  });
+}
 
 function renderFoods() {
-  const filteredFoods = foods.filter(food => {
-    const matchesCategory =
-      activeCategory === "All" ||
-      food.category === activeCategory;
+  const searchTerm = searchInput.value.trim().toLowerCase();
 
-    const matchesSearch =
-      food.name.toLowerCase().includes(searchTerm) ||
+  let filtered = foods.filter(food => {
+    const matchesCategory = activeCategory === "All" || food.category === activeCategory;
+    const matchesSearch = food.name.toLowerCase().includes(searchTerm) ||
       food.desc.toLowerCase().includes(searchTerm) ||
       food.category.toLowerCase().includes(searchTerm);
-
     return matchesCategory && matchesSearch;
   });
 
-  foodGrid.innerHTML = "";
+  if (sortSelect.value === "low") filtered.sort((a,b) => a.price - b.price);
+  if (sortSelect.value === "high") filtered.sort((a,b) => b.price - a.price);
+  if (sortSelect.value === "az") filtered.sort((a,b) => a.name.localeCompare(b.name));
 
-  emptyMessage.hidden = filteredFoods.length !== 0;
+  document.getElementById("emptyMessage").hidden = filtered.length !== 0;
 
-  filteredFoods.forEach((food, index) => {
-    const card = document.createElement("article");
-
-    card.className = "food-card";
-    card.style.animationDelay = `${index * 70}ms`;
-
-    card.innerHTML = `
-      <div class="food-image-wrap">
-        <span class="food-category">${food.category}</span>
-        <img
-          class="food-image"
-          src="${food.image}"
-          alt="${food.name}"
-          loading="lazy"
-        >
+  foodGrid.innerHTML = filtered.map(food => `
+    <article class="food-card">
+      <div class="food-visual">
+        <img src="${food.image}" alt="${escapeHTML(food.name)}" loading="lazy">
+        <span class="food-steam"></span>
+        <span class="food-steam s2"></span>
+        <span class="food-steam s3"></span>
+        <span class="food-heat"></span>
+        <span class="sizzle a"></span>
+        <span class="sizzle b"></span>
+        <span class="sizzle c"></span>
+        <span class="food-tag">✦ ${escapeHTML(food.category.toUpperCase())}</span>
       </div>
-
-      <div class="food-details">
-        <h3>${food.name}</h3>
-        <p>${food.desc}</p>
-
+      <div class="food-info">
+        <h3>${escapeHTML(food.name)}</h3>
+        <p>${escapeHTML(food.desc)}</p>
         <div class="food-bottom">
-          <span class="food-price">${money(food.price)}</span>
-
-          <button
-            class="add-cart"
-            data-add="${food.id}"
-            aria-label="Add ${food.name} to cart"
-          >
-            + ADD TO CART
-          </button>
+          <span class="food-price">₹${food.price}</span>
+          <button class="add-btn" type="button" data-add="${food.id}">+ ADD TO CART</button>
         </div>
       </div>
-    `;
+    </article>
+  `).join("");
 
-    const image = card.querySelector("img");
-
-    image.addEventListener("error", () => {
-      image.src = "https://placehold.co/600x400/141414/d4af37?text=Food+Chef";
+  // If an image is unavailable, show a clean fallback instead of a broken icon.
+  foodGrid.querySelectorAll("img").forEach(img => {
+    img.addEventListener("error", () => {
+      img.style.display = "none";
+      img.parentElement.style.background =
+        "radial-gradient(circle at center, #d9ad54, #49351b)";
+      const fallback = document.createElement("span");
+      fallback.textContent = "🍽️";
+      fallback.style.cssText = "font-size:64px;position:absolute;inset:0;display:grid;place-items:center";
+      img.parentElement.appendChild(fallback);
     }, { once: true });
+  });
 
-    foodGrid.appendChild(card);
+  foodGrid.querySelectorAll("[data-add]").forEach(button => {
+    button.addEventListener("click", () => addToCart(Number(button.dataset.add)));
   });
 }
 
-// CATEGORY FILTER
-
-categoryList.addEventListener("click", event => {
-  const button = event.target.closest(".category-btn");
-
-  if (!button) return;
-
-  document.querySelectorAll(".category-btn").forEach(btn => {
-    btn.classList.remove("active");
-  });
-
-  button.classList.add("active");
-  activeCategory = button.dataset.category;
-
-  renderFoods();
-});
-
-// SEARCH
-
-foodSearch.addEventListener("input", event => {
-  searchTerm = event.target.value.trim().toLowerCase();
-  renderFoods();
-});
-
-// ADD TO CART
-
 function addToCart(id) {
-  const food = foods.find(item => item.id === Number(id));
-
-  if (!food) return;
-
-  const existing = cart.find(item => item.id === food.id);
-
+  const existing = cart.find(item => item.id === id);
   if (existing) {
     existing.quantity++;
   } else {
-    cart.push({
-      id: food.id,
-      quantity: 1
-    });
+    cart.push({ id, quantity: 1 });
   }
-
-  updateCart();
-  showToast(food.name + " added to your cart!");
+  saveCart();
+  renderCart();
+  showToast("Added to your food basket!");
 }
 
-foodGrid.addEventListener("click", event => {
-  const button = event.target.closest("[data-add]");
-
-  if (!button) return;
-
-  addToCart(button.dataset.add);
-});
-
-// CART CALCULATIONS
-
-function getCartCount() {
-  return cart.reduce((sum, item) => sum + item.quantity, 0);
+function changeQuantity(id, amount) {
+  const item = cart.find(entry => entry.id === id);
+  if (!item) return;
+  item.quantity += amount;
+  if (item.quantity <= 0) {
+    cart = cart.filter(entry => entry.id !== id);
+  }
+  saveCart();
+  renderCart();
 }
 
-function getSubtotal() {
-  return cart.reduce((sum, item) => {
-    const food = foods.find(food => food.id === item.id);
+function renderCart() {
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCount.textContent = count;
 
-    return sum + (food ? food.price * item.quantity : 0);
-  }, 0);
-}
-
-function getDelivery() {
-  return cart.length ? 30 : 0;
-}
-
-function getGrandTotal() {
-  return getSubtotal() + getDelivery();
-}
-
-// UPDATE CART
-
-function updateCart() {
-  cart = cart.filter(item => {
-    return foods.some(food => food.id === item.id) &&
-      Number.isInteger(item.quantity) &&
-      item.quantity > 0;
-  });
-
-  saveStorage("foodChefCart", cart);
-
-  cartCount.textContent = getCartCount();
-
-  const subtotal = getSubtotal();
-  const delivery = getDelivery();
-
-  document.getElementById("subtotal").textContent = money(subtotal);
-  document.getElementById("delivery").textContent = money(delivery);
-  document.getElementById("grandTotal").textContent =
-    money(subtotal + delivery);
-
-  document.getElementById("checkoutTotal").textContent =
-    money(subtotal + delivery);
-
-  document.getElementById("checkoutButton").disabled =
-    cart.length === 0;
-
-  renderCartItems();
-}
-
-// CART DISPLAY
-
-function renderCartItems() {
-  if (!cart.length) {
-    cartItems.innerHTML = `
-      <div class="cart-empty">
-        <div style="font-size:40px;color:#d4af37">◇</div>
-        <h3>Your cart is empty</h3>
-        <p>Discover something delicious from our menu.</p>
-      </div>
-    `;
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<p class="empty-history">Your basket is empty. Add something delicious from the menu!</p>';
+    cartTotal.textContent = "₹0";
     return;
   }
 
-  cartItems.innerHTML = "";
-
-  cart.forEach(item => {
-    const food = foods.find(f => f.id === item.id);
-
-    if (!food) return;
-
-    const row = document.createElement("div");
-
-    row.className = "cart-item";
-
-    row.innerHTML = `
-      <img src="${food.image}" alt="${food.name}">
-
-      <div>
-        <h4>${food.name}</h4>
-        <p>${money(food.price * item.quantity)}</p>
-
+  let total = 0;
+  cartItems.innerHTML = cart.map(item => {
+    const food = foods.find(entry => entry.id === item.id);
+    if (!food) return "";
+    total += food.price * item.quantity;
+    return `
+      <div class="cart-row">
+        <div>
+          <h4>${escapeHTML(food.name)}</h4>
+          <small>₹${food.price} each · ₹${food.price * item.quantity} total</small>
+        </div>
         <div class="quantity-controls">
-          <button data-decrease="${food.id}" aria-label="Decrease quantity">−</button>
-          <span>${item.quantity}</span>
-          <button data-increase="${food.id}" aria-label="Increase quantity">+</button>
+          <button type="button" aria-label="Decrease quantity" data-minus="${food.id}">−</button>
+          <strong>${item.quantity}</strong>
+          <button type="button" aria-label="Increase quantity" data-plus="${food.id}">+</button>
         </div>
       </div>
-
-      <button class="quantity-controls remove-item"
-        data-remove="${food.id}" aria-label="Remove ${food.name}">
-        ×
-      </button>
     `;
+  }).join("");
 
-    const image = row.querySelector("img");
+  cartTotal.textContent = `₹${total}`;
 
-    image.addEventListener("error", () => {
-      image.src = "https://placehold.co/150x150/141414/d4af37?text=Food";
-    }, { once: true });
-
-    cartItems.appendChild(row);
-  });
+  cartItems.querySelectorAll("[data-minus]").forEach(button =>
+    button.addEventListener("click", () => changeQuantity(Number(button.dataset.minus), -1))
+  );
+  cartItems.querySelectorAll("[data-plus]").forEach(button =>
+    button.addEventListener("click", () => changeQuantity(Number(button.dataset.plus), 1))
+  );
 }
 
-// CART QUANTITY CONTROLS
-
-cartItems.addEventListener("click", event => {
-  const increase = event.target.closest("[data-increase]");
-  const decrease = event.target.closest("[data-decrease]");
-  const remove = event.target.closest("[data-remove]");
-
-  if (increase) {
-    const item = cart.find(i => i.id === Number(increase.dataset.increase));
-
-    if (item) item.quantity++;
-  }
-
-  if (decrease) {
-    const item = cart.find(i => i.id === Number(decrease.dataset.decrease));
-
-    if (item) {
-      item.quantity--;
-
-      if (item.quantity <= 0) {
-        cart = cart.filter(i => i.id !== item.id);
-      }
-    }
-  }
-
-  if (remove) {
-    cart = cart.filter(i => i.id !== Number(remove.dataset.remove));
-    showToast("Item removed from cart.");
-  }
-
-  updateCart();
-});
-
-// OPEN AND CLOSE CART
-
-function openCart() {
-  cartDrawer.classList.add("open");
-  cartOverlay.classList.add("show");
-  cartDrawer.setAttribute("aria-hidden", "false");
-  document.body.classList.add("no-scroll");
-  document.getElementById("closeCart").focus();
-}
-
-function closeCart() {
-  cartDrawer.classList.remove("open");
-  cartOverlay.classList.remove("show");
-  cartDrawer.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("no-scroll");
-}
-
-document.getElementById("cartButton").addEventListener("click", openCart);
-document.getElementById("closeCart").addEventListener("click", closeCart);
-cartOverlay.addEventListener("click", closeCart);
-
-// CHECKOUT
-
-function openCheckout() {
-  if (!cart.length) {
-    showToast("Please add food items first.");
-    return;
-  }
-
-  closeCart();
-  checkoutModal.classList.add("show");
-  document.body.classList.add("no-scroll");
-
-  document.getElementById("customerName").focus();
-}
-
-function closeCheckout() {
-  checkoutModal.classList.remove("show");
-  document.body.classList.remove("no-scroll");
-}
-
-document.getElementById("checkoutButton")
-  .addEventListener("click", openCheckout);
-
-document.getElementById("closeCheckout")
-  .addEventListener("click", closeCheckout);
-
-checkoutModal.addEventListener("click", event => {
-  if (event.target === checkoutModal) closeCheckout();
-});
-
-// PLACE ORDER
-
-checkoutForm.addEventListener("submit", event => {
+document.getElementById("customerForm").addEventListener("submit", event => {
   event.preventDefault();
 
-  if (!cart.length) {
-    showToast("Your cart is empty.");
-    closeCheckout();
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const district = document.getElementById("district").value;
+  const hotel = document.getElementById("hotel").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const message = document.getElementById("formMessage");
+
+  if (!/^[6-9]\d{9}$/.test(phone)) {
+    message.style.color = "#b33b2e";
+    message.textContent = "Please enter a valid 10-digit Indian mobile number.";
     return;
   }
 
-  if (!checkoutForm.reportValidity()) return;
+  customerDetails = { name, phone, district, hotel, address };
+  message.style.color = "#39804a";
+  message.textContent = "Delivery details saved. Add food and place your demo order!";
+  showToast("Delivery details saved.");
+});
 
-  const formData = new FormData(checkoutForm);
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+  const message = document.getElementById("checkoutMessage");
+  message.style.color = "#b33b2e";
+
+  if (cart.length === 0) {
+    message.textContent = "Your cart is empty. Please add food first.";
+    return;
+  }
+
+  if (!customerDetails) {
+    message.textContent = "Please complete and save your delivery details first.";
+    document.getElementById("order").scrollIntoView({ behavior: "smooth" });
+    return;
+  }
+
+  const items = cart.map(item => {
+    const food = foods.find(entry => entry.id === item.id);
+    return { name: food.name, price: food.price, quantity: item.quantity };
+  });
+
+  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const order = {
-    orderId: "FC" + Date.now().toString().slice(-9),
+    orderId: "FC" + Date.now().toString().slice(-7),
     date: new Date().toLocaleString("en-IN"),
-    customer: {
-      name: formData.get("name").trim(),
-      phone: formData.get("phone").trim(),
-      address: formData.get("address").trim()
-    },
-    payment: formData.get("payment"),
-    items: cart.map(item => {
-      const food = foods.find(f => f.id === item.id);
-
-      return {
-        id: food.id,
-        name: food.name,
-        price: food.price,
-        quantity: item.quantity
-      };
-    }),
-    subtotal: getSubtotal(),
-    delivery: getDelivery(),
-    total: getGrandTotal(),
-    status: "Order placed"
+    customer: { ...customerDetails },
+    items,
+    total
   };
 
   orders.unshift(order);
-  saveStorage("foodChefOrders", orders);
+  localStorage.setItem("foodChefOrders", JSON.stringify(orders));
 
   cart = [];
-  updateCart();
+  saveCart();
+  renderCart();
+  renderOrders();
 
-  checkoutForm.reset();
-  closeCheckout();
+  message.style.color = "#39804a";
+  message.textContent = `Demo order ${order.orderId} has been saved in your order history!`;
+  showToast("Your demo order is placed!");
 
-  showToast("Order placed successfully! ID: " + order.orderId);
-
-  console.log("New Food Chef order:", order);
+  document.getElementById("orders").scrollIntoView({ behavior: "smooth" });
 });
 
-// KEYBOARD CONTROLS
+function renderOrders() {
+  const history = document.getElementById("orderHistory");
 
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape") {
-    closeCart();
-    closeCheckout();
-    closeMobileMenu();
+  if (orders.length === 0) {
+    history.innerHTML = '<p class="empty-history">No orders yet. Your placed orders will appear here.</p>';
+    return;
   }
-});
 
-// MOBILE NAVIGATION
-
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-function closeMobileMenu() {
-  navLinks.classList.remove("open");
-  menuToggle.setAttribute("aria-expanded", "false");
+  history.innerHTML = orders.map(order => `
+    <article class="history-card">
+      <strong>Order ${escapeHTML(order.orderId)}</strong><br>
+      <span>${escapeHTML(order.date)}</span><br>
+      Customer: ${escapeHTML(order.customer.name)}<br>
+      District: ${escapeHTML(order.customer.district)}<br>
+      Hotel / Restaurant: ${escapeHTML(order.customer.hotel)}<br>
+      Items: ${order.items.map(item =>
+        `${escapeHTML(item.name)} × ${item.quantity}`
+      ).join(", ")}<br>
+      <strong>Total: ₹${order.total}</strong>
+    </article>
+  `).join("");
 }
 
-menuToggle.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("open");
+searchInput.addEventListener("input", renderFoods);
+sortSelect.addEventListener("change", renderFoods);
 
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-});
+document.getElementById("year").textContent = new Date().getFullYear();
 
-navLinks.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", closeMobileMenu);
-});
-
-document.getElementById("cartButton")
-  .addEventListener("click", closeMobileMenu);
-
-// CINEMATIC SCROLL ANIMATIONS
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.12
-});
-
-function observeRevealElements() {
-  document.querySelectorAll(".reveal:not(.visible)").forEach(element => {
-    observer.observe(element);
-  });
-}
-
-observeRevealElements();
-
-// PAGE INITIALIZATION
-
-function initializeFoodChef() {
-  renderFoods();
-  updateCart();
-
-  const loader = document.getElementById("pageLoader");
-
-  window.addEventListener("load", () => {
-    setTimeout(() => loader.classList.add("hide"), 500);
-  });
-
-  // Fallback in case the page load event already fired.
-  setTimeout(() => loader.classList.add("hide"), 1800);
-}
-
-initializeFoodChef();
+loadDistricts();
+loadCategories();
+renderFoods();
+renderCart();
+renderOrders();
