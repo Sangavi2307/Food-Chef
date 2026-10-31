@@ -4,289 +4,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0a0a0a">
-  <meta name="description" content="Food Chef – A royal dining experience. Discover delicious food and order online.">
-  <title>Food Chef | The Golden Taste</title>
-
+  <meta name="theme-color" content="#17140e">
+  <title>FOOD CHEF | Freshly Made with Love</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <div class="page-loader" id="pageLoader">
-    <div class="loader-emblem">FC</div>
-    <div class="loader-line"></div>
-    <p>WELCOME TO FOOD CHEF</p>
-  </div>
+<header class="site-header">
+  <a class="brand" href="#home">
+    <span class="brand-mark">♨</span>
+    <span>FOOD <b>CHEF</b><small>FRESH · HOT · DELICIOUS</small></span>
+  </a>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#order">Order</a>
+    <a href="#orders">My Orders</a>
+  </nav>
+  <a class="cart-link" href="#cart">Cart <span id="cartCount">0</span></a>
+</header>
 
-  <div class="gold-grain"></div>
-
-  <!-- Navigation -->
-  <header class="header">
-    <nav class="navbar container">
-
-      <a href="#home" class="brand">
-        <span class="brand-icon">FC</span>
-        <span class="brand-name">FOOD <b>CHEF</b>
-          <small>THE GOLDEN TASTE</small>
-        </span>
-      </a>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#home">HOME</a>
-        <a href="#menu">OUR MENU</a>
-        <a href="#about">OUR STORY</a>
-        <a href="#contact">CONTACT</a>
-        <button class="cart-button" id="cartButton">
-          CART <span id="cartCount">0</span>
-        </button>
+<main>
+  <section class="hero" id="home">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <p class="eyebrow">WELCOME TO FOOD CHEF</p>
+      <h1>Freshly cooked.<br><span>Lovingly served.</span></h1>
+      <p class="hero-description">Discover delicious food, made with passion and served fresh to your doorstep.</p>
+      <div class="hero-actions">
+        <a class="primary-btn" href="#menu">Explore Menu <span>→</span></a>
+        <a class="text-btn" href="#order">Order Now</a>
       </div>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- Hero -->
-    <section class="hero" id="home">
-      <div class="hero-rays"></div>
-
-      <div class="hero-content reveal">
-        <span class="eyebrow">✦ EST. WITH PASSION ✦</span>
-
-        <div class="ornament">◆ ━━━━━━━━━ ◆</div>
-
-        <h1>THE ART OF<br><span>GREAT TASTE</span></h1>
-
-        <p class="hero-description">
-          An extraordinary culinary experience.
-          Crafted with passion, served with elegance.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="#menu" class="btn btn-gold">EXPLORE MENU</a>
-          <a href="#about" class="btn btn-outline">OUR STORY</a>
-        </div>
-
-        <div class="hero-bottom">
-          <span>QUALITY</span>
-          <span class="hero-star">✦</span>
-          <span>TRADITION</span>
-          <span class="hero-star">✦</span>
-          <span>EXCELLENCE</span>
-        </div>
-      </div>
-
-      <div class="hero-image-wrap reveal">
-        <div class="hero-frame">
-          <img
-            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85"
-            alt="Delicious gourmet food"
-            class="hero-image"
-          >
-        </div>
-        <div class="image-label">A TASTE OF ROYALTY</div>
-      </div>
-
-      <div class="hero-side-text">FOOD · ART · EXPERIENCE</div>
-      <a href="#menu" class="scroll-indicator">SCROLL TO DISCOVER ↓</a>
-    </section>
-
-    <!-- Highlights -->
-    <section class="highlights">
-      <div class="container highlight-grid">
-        <div><span>✦</span><p>FRESH INGREDIENTS</p></div>
-        <div><span>◆</span><p>MASTERFUL RECIPES</p></div>
-        <div><span>✧</span><p>ROYAL EXPERIENCE</p></div>
-      </div>
-    </section>
-
-    <!-- Menu -->
-    <section class="menu-section section-padding" id="menu">
-      <div class="container">
-
-        <div class="section-heading reveal">
-          <span class="eyebrow">✦ DISCOVER OUR COLLECTION ✦</span>
-          <h2>THE <span>MENU</span></h2>
-          <div class="heading-ornament">━━━━ ◆ ━━━━</div>
-          <p>Every dish tells a story. Discover your next favourite.</p>
-        </div>
-
-        <div class="menu-toolbar">
-          <div class="category-list" id="categoryList">
-            <button class="category-btn active" data-category="All">ALL</button>
-            <button class="category-btn" data-category="Starters">STARTERS</button>
-            <button class="category-btn" data-category="Main Course">MAIN COURSE</button>
-            <button class="category-btn" data-category="Snacks">SNACKS</button>
-            <button class="category-btn" data-category="Desserts">DESSERTS</button>
-            <button class="category-btn" data-category="Drinks">DRINKS</button>
-          </div>
-
-          <div class="search-box">
-            <span>⌕</span>
-            <input type="search" id="foodSearch" placeholder="Search your favourite food..." aria-label="Search food">
-          </div>
-        </div>
-
-        <div class="food-grid" id="foodGrid"></div>
-
-        <p class="empty-message" id="emptyMessage" hidden>
-          No dishes found. Try another search.
-        </p>
-
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="about-section section-padding" id="about">
-      <div class="container about-grid">
-
-        <div class="about-image reveal">
-          <div class="about-frame">
-            <img
-              src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=85"
-              alt="Chef preparing delicious food"
-            >
-          </div>
-          <div class="about-stamp">FC<br><small>EST. 2026</small></div>
-        </div>
-
-        <div class="about-content reveal">
-          <span class="eyebrow">✦ OUR HERITAGE ✦</span>
-          <h2>PASSION IN<br><span>EVERY PLATE</span></h2>
-          <div class="heading-ornament">━━━━ ◆ ━━━━</div>
-
-          <p>
-            At Food Chef, we believe food is more than a meal.
-            It is an experience, a celebration and a beautiful
-            expression of creativity.
-          </p>
-
-          <p>
-            From carefully selected ingredients to every
-            beautifully prepared dish, we bring flavour,
-            quality and elegance to your table.
-          </p>
-
-          <a href="#menu" class="btn btn-gold">DISCOVER OUR MENU</a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section class="experience-section">
-      <div class="experience-inner reveal">
-        <span class="eyebrow">✦ THE FOOD CHEF PROMISE ✦</span>
-        <h2>GOOD FOOD IS<br><span>TIMELESS ART.</span></h2>
-        <p>Made with love. Served with distinction.</p>
-        <a href="#menu" class="btn btn-outline">ORDER YOUR FAVOURITE</a>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact-section section-padding" id="contact">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">✦ WE WOULD LOVE TO HEAR FROM YOU ✦</span>
-          <h2>GET IN <span>TOUCH</span></h2>
-          <div class="heading-ornament">━━━━ ◆ ━━━━</div>
-          <p>Your next delicious experience starts here.</p>
-        </div>
-
-        <div class="contact-details">
-          <div><span>✦</span><h3>OUR SERVICE</h3><p>Fresh food, prepared with care.</p></div>
-          <div><span>✦</span><h3>ORDER ONLINE</h3><p>Choose your favourite dishes.</p></div>
-          <div><span>✦</span><h3>OUR PROMISE</h3><p>Quality in every bite.</p></div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-logo">FC</div>
-      <h2>FOOD CHEF</h2>
-      <p>THE GOLDEN TASTE · THE ROYAL EXPERIENCE</p>
-      <div class="footer-line">━━━━━━ ✦ ━━━━━━</div>
-      <div class="footer-links">
-        <a href="#home">HOME</a>
-        <a href="#menu">MENU</a>
-        <a href="#about">ABOUT</a>
-        <a href="#contact">CONTACT</a>
-      </div>
-      <p class="copyright">© 2026 FOOD CHEF. ALL RIGHTS RESERVED.</p>
+      <div class="hero-note"><span class="live-dot"></span> HOT FOOD · HAPPY MOMENTS</div>
     </div>
-  </footer>
-
-  <!-- Cart Drawer -->
-  <div class="cart-overlay" id="cartOverlay"></div>
-
-  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
-    <div class="cart-header">
-      <div>
-        <span class="eyebrow">✦ YOUR SELECTION ✦</span>
-        <h2>YOUR CART</h2>
+    <div class="hero-food" aria-label="Delicious food illustration">
+      <div class="hero-orbit orbit-one"></div>
+      <div class="hero-orbit orbit-two"></div>
+      <div class="hero-steam steam-one"></div>
+      <div class="hero-steam steam-two"></div>
+      <div class="hero-steam steam-three"></div>
+      <div class="hero-plate">
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85" alt="Freshly prepared food">
       </div>
-      <button class="close-cart" id="closeCart" aria-label="Close cart">×</button>
+      <span class="hero-sticker">MADE<br>WITH LOVE</span>
+    </div>
+    <a class="scroll-cue" href="#menu">SCROLL TO EXPLORE ↓</a>
+  </section>
+
+  <section class="intro-strip">
+    <span>✦ FRESH INGREDIENTS</span>
+    <span>✦ DELICIOUS FLAVOURS</span>
+    <span>✦ MADE WITH LOVE</span>
+    <span>✦ FOOD THAT MAKES YOU SMILE</span>
+  </section>
+
+  <section class="menu-section section-pad" id="menu">
+    <div class="section-heading">
+      <p class="eyebrow">OUR SPECIAL MENU</p>
+      <h2>Made to make you <span>crave.</span></h2>
+      <p>Explore our delicious collection of freshly prepared favourites.</p>
     </div>
 
-    <div class="cart-items" id="cartItems"></div>
-
-    <div class="cart-footer">
-      <div class="total-row"><span>Subtotal</span><strong id="subtotal">₹0</strong></div>
-      <div class="total-row"><span>Delivery</span><strong id="delivery">₹0</strong></div>
-      <div class="total-row grand-total"><span>TOTAL</span><strong id="grandTotal">₹0</strong></div>
-      <button class="btn btn-gold checkout-btn" id="checkoutButton">PROCEED TO CHECKOUT</button>
+    <div class="menu-tools">
+      <input id="searchInput" type="search" placeholder="Search your favourite food..." aria-label="Search food">
+      <select id="sortSelect" aria-label="Sort food">
+        <option value="default">Sort: Recommended</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+        <option value="az">Name: A to Z</option>
+      </select>
     </div>
-  </aside>
+    <div class="category-list" id="categoryList"></div>
+    <div class="food-grid" id="foodGrid"></div>
+    <p class="empty-message" id="emptyMessage" hidden>No food items found. Try another search.</p>
+  </section>
 
-  <!-- Checkout Modal -->
-  <div class="modal-overlay" id="checkoutModal">
-    <div class="checkout-modal">
-      <button class="modal-close" id="closeCheckout" aria-label="Close checkout">×</button>
-
-      <span class="eyebrow">✦ FINAL STEP ✦</span>
-      <h2>DELIVERY DETAILS</h2>
-      <div class="heading-ornament">━━━━ ◆ ━━━━</div>
-
-      <form id="checkoutForm">
-        <label for="customerName">YOUR NAME</label>
-        <input id="customerName" name="name" type="text" required placeholder="Enter your full name">
-
-        <label for="customerPhone">PHONE NUMBER</label>
-        <input id="customerPhone" name="phone" type="tel" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number">
-
-        <label for="customerAddress">DELIVERY ADDRESS</label>
-        <textarea id="customerAddress" name="address" rows="3" required placeholder="Enter your complete delivery address"></textarea>
-
-        <label for="paymentMethod">PAYMENT METHOD</label>
-        <select id="paymentMethod" name="payment" required>
-          <option value="Cash on Delivery">Cash on Delivery</option>
-          <option value="UPI on Delivery">UPI on Delivery</option>
-        </select>
-
-        <div class="checkout-total">
-          <span>PAYABLE AMOUNT</span>
-          <strong id="checkoutTotal">₹0</strong>
-        </div>
-
-        <button type="submit" class="btn btn-gold checkout-submit">PLACE ORDER</button>
-      </form>
+  <section class="order-section section-pad" id="order">
+    <div class="order-copy">
+      <p class="eyebrow">YOUR FOOD, YOUR WAY</p>
+      <h2>Where should we<br><span>send the deliciousness?</span></h2>
+      <p>Enter your district and your preferred hotel or restaurant name to place a demo order.</p>
+      <div class="order-points">
+        <span>✦ Choose your district</span>
+        <span>✦ Enter your hotel name</span>
+        <span>✦ Add food to your cart</span>
+      </div>
     </div>
-  </div>
+    <form class="order-form" id="customerForm">
+      <h3>Delivery details</h3>
+      <label for="customerName">Your name</label>
+      <input id="customerName" type="text" placeholder="Enter your name" required>
 
-  <!-- Toast -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <label for="phone">Mobile number</label>
+      <input id="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" required>
 
-  <script src="script.js"></script>
+      <label for="district">Select district</label>
+      <select id="district" required>
+        <option value="">Choose your district</option>
+      </select>
+
+      <label for="hotel">Hotel / Restaurant name</label>
+      <input id="hotel" type="text" placeholder="Enter hotel or restaurant name" required>
+
+      <label for="address">Delivery address</label>
+      <textarea id="address" rows="3" placeholder="Enter your complete address" required></textarea>
+
+      <button class="primary-btn full-btn" type="submit">Save Delivery Details →</button>
+      <p class="form-message" id="formMessage"></p>
+    </form>
+  </section>
+
+  <section class="cart-section section-pad" id="cart">
+    <div class="section-heading left-heading">
+      <p class="eyebrow">YOUR SELECTION</p>
+      <h2>Your food <span>basket.</span></h2>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-bottom">
+      <strong>Total: <span id="cartTotal">₹0</span></strong>
+      <button class="primary-btn" id="checkoutBtn" type="button">Place Demo Order →</button>
+    </div>
+    <p class="small-note">Demo checkout only. No real payment or restaurant order is processed.</p>
+    <p class="form-message" id="checkoutMessage"></p>
+  </section>
+
+  <section class="orders-section section-pad" id="orders">
+    <div class="section-heading left-heading">
+      <p class="eyebrow">ORDER HISTORY</p>
+      <h2>Your past <span>orders.</span></h2>
+    </div>
+    <div id="orderHistory" class="order-history"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <a class="brand footer-brand" href="#home">
+    <span class="brand-mark">♨</span>
+    <span>FOOD <b>CHEF</b><small>FRESH · HOT · DELICIOUS</small></span>
+  </a>
+  <p>Made with ♥ for food lovers.</p>
+  <span>© <span id="year"></span> FOOD CHEF</span>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
 </body>
 </html>
