@@ -1,257 +1,404 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food Chef | Fresh, Tasty & Made with Love</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FOOD CHEF | Taste the Happiness</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#f5b800;--dark:#171717;--cream:#fff9e9;--white:#fff;--muted:#777}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:var(--cream);color:var(--dark)}
+button,input,select{font:inherit}
+button{cursor:pointer;border:0}
+a{text-decoration:none;color:inherit}
+header{height:76px;background:#171717;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 7%;position:sticky;top:0;z-index:20;box-shadow:0 3px 15px #0002}
+.logo{font-size:24px;font-weight:800;color:var(--gold)}
+.logo span{color:white}
+nav{display:flex;align-items:center;gap:25px}
+nav a{font-size:13px;font-weight:600}
+nav a:hover{color:var(--gold)}
+.cart-button,.primary{background:var(--gold);color:#171717;padding:11px 18px;border-radius:25px;font-weight:700}
+#menu-toggle{display:none;background:none;color:white;font-size:25px}
+.hero{min-height:550px;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;padding:65px 8%;color:white;background:#191919}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.38}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#111e 10%,#1119 60%,#1114);z-index:-1}
+.hero-content{max-width:650px}
+.tag{color:var(--gold);font-weight:700;letter-spacing:3px;font-size:13px}
+.hero h1{font-size:clamp(40px,7vw,70px);line-height:1.12;margin:18px 0}
+.hero h1 span{color:var(--gold)}
+.hero p{color:#eee;line-height:1.8;max-width:530px;margin-bottom:25px}
+section{padding:70px 8%}
+.section-title{text-align:center;margin-bottom:35px}
+.section-title small{color:#b18400;font-weight:700;letter-spacing:2px}
+.section-title h2{font-size:32px;margin-top:8px}
+.categories{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:25px}
+.category{background:white;border:1px solid #eee;padding:9px 18px;border-radius:25px;font-weight:600}
+.category.active,.category:hover{background:var(--gold);border-color:var(--gold)}
+.search-row{display:flex;gap:12px;max-width:650px;margin:0 auto 30px}
+.search-row input,.search-row select,.hotel-form input,.hotel-form select{min-width:0;padding:12px;border:1px solid #ddd;border-radius:10px;background:white;flex:1}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.food-card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px #0000000c;transition:.3s}
+.food-card:hover{transform:translateY(-8px);box-shadow:0 12px 25px #0002}
+.food-card img{width:100%;height:175px;object-fit:cover;transition:.4s}
+.food-card:hover img{transform:scale(1.06)}
+.food-image{overflow:hidden;position:relative}
+.food-info{padding:17px}
+.food-info h3{font-size:17px}
+.food-info p{font-size:12px;color:var(--muted);margin:7px 0}
+.food-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.price{font-weight:800;color:#a87900}
+.add-button{background:var(--dark);color:white;padding:9px 13px;border-radius:20px;font-size:12px}
+.add-button:hover{background:var(--gold);color:#111}
+.hotel-section{background:#fff}
+.hotel-box{max-width:850px;margin:auto;background:var(--cream);padding:28px;border-radius:18px}
+.hotel-form{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.hotel-form label{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
+.hotel-form button{grid-column:1/-1}
+.hotel-note{text-align:center;color:#777;font-size:12px;margin-top:15px}
+.hotel-result{margin-top:20px;text-align:center}
+.hotel-result a{display:inline-block;background:#171717;color:white;padding:12px 20px;border-radius:25px;margin-top:10px}
+.about{background:#171717;color:white;text-align:center}
+.about p{max-width:700px;margin:15px auto;line-height:1.8;color:#ddd}
+.orders-list{max-width:750px;margin:auto}
+.order-card{background:white;border-radius:12px;padding:18px;margin-bottom:15px;box-shadow:0 3px 12px #0001}
+.order-card p{font-size:13px;color:#666;margin-top:5px}
+.order-card button{background:var(--gold);padding:8px 12px;border-radius:20px;margin-top:10px;font-size:12px;font-weight:700}
+footer{background:#111;color:white;text-align:center;padding:25px;font-size:13px}
+.overlay{position:fixed;inset:0;background:#0009;z-index:30;display:none}
+.overlay.show{display:block}
+.drawer{position:fixed;right:-430px;top:0;width:min(400px,90vw);height:100vh;background:white;z-index:31;padding:22px;transition:.3s;overflow-y:auto}
+.drawer.open{right:0}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.close{background:#eee;border-radius:50%;width:32px;height:32px;font-size:20px}
+.cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #eee}
+.cart-item img{width:75px;height:70px;object-fit:cover;border-radius:9px}
+.cart-item h4{font-size:13px}
+.cart-item p{font-size:12px;color:#777;margin:4px 0}
+.qty{display:flex;gap:9px;align-items:center;margin-top:5px}
+.qty button{background:var(--gold);width:23px;height:23px;border-radius:50%}
+.cart-total{display:flex;justify-content:space-between;font-weight:800;margin:22px 0}
+.full{width:100%;padding:13px;border-radius:25px;background:var(--gold);font-weight:800}
+.modal{display:none;position:fixed;inset:0;background:#0009;z-index:40;align-items:center;justify-content:center;padding:15px}
+.modal.show{display:flex}
+.modal-box{background:white;border-radius:17px;padding:25px;width:min(450px,100%);max-height:90vh;overflow:auto}
+.modal-box h2{margin-bottom:15px}
+.modal-box input,.modal-box select,.modal-box textarea{width:100%;padding:11px;margin:7px 0 13px;border:1px solid #ddd;border-radius:8px}
+.modal-box label{font-size:13px;font-weight:600}
+.modal-actions{display:flex;gap:10px;margin-top:12px}
+.modal-actions button{flex:1;padding:12px;border-radius:20px;font-weight:700}
+.secondary{background:#eee}
+.empty{text-align:center;padding:25px;color:#777}
+@media(max-width:700px){
+ header{padding:0 5%;height:65px}
+ #menu-toggle{display:block}
+ nav{display:none;position:absolute;top:65px;left:0;width:100%;background:#171717;padding:20px;flex-direction:column;align-items:flex-start}
+ nav.show{display:flex}
+ .hero{min-height:490px;padding:55px 7%}
+ section{padding:55px 5%}
+ .section-title h2{font-size:27px}
+ .hotel-form{grid-template-columns:1fr}
+ .hotel-form button{grid-column:auto}
+ .search-row{flex-wrap:wrap}
+ .search-row input{flex-basis:100%}
+}
+</style>
 </head>
 <body>
 
-<div id="scroll-progress"></div>
-
-<header class="site-header">
-  <a class="brand" href="#home">
-    <span class="brand-mark">🍴</span>
-    <span>FOOD<span class="brand-accent">CHEF</span>
-      <small>FRESH • TASTY • HAPPY</small>
-    </span>
-  </a>
-
-  <button class="menu-toggle" id="menu-toggle">☰</button>
-
-  <nav id="main-nav">
-    <a href="#home">Home</a>
-    <a href="#menu">Menu</a>
-    <a href="#about">About</a>
-    <a href="#orders">My Orders</a>
-  </nav>
-
-  <button class="cart-open" id="open-cart">
-    🛒 Cart <span id="cart-count">0</span>
-  </button>
+<header>
+ <a class="logo" href="#home">👨‍🍳 FOOD <span>CHEF</span></a>
+ <button id="menu-toggle" aria-label="Open menu">☰</button>
+ <nav id="main-nav">
+  <a href="#home">Home</a>
+  <a href="#menu">Menu</a>
+  <a href="#hotels">Find Hotels</a>
+  <a href="#about">About</a>
+  <a href="#orders">My Orders</a>
+  <button class="cart-button" onclick="openCart()">🛒 Cart <span id="cart-count">0</span></button>
+ </nav>
 </header>
 
 <main>
-
 <section class="hero" id="home">
-  <div class="hero-copy">
-    <span class="eyebrow">MADE FRESH, SERVED WITH LOVE</span>
-    <h1>Good food.<br><span>Good mood.</span></h1>
-    <p>Discover delicious bites, crispy snacks and feel-good favourites made just for you.</p>
-
-    <div class="hero-actions">
-      <a class="primary-btn" href="#menu">Explore Menu →</a>
-      <a class="text-btn" href="#about">Our story</a>
-    </div>
-
-    <div class="hero-rating">
-      <span>★★★★★</span>
-      <b>Fresh flavours, happy moments</b>
-    </div>
-  </div>
-
-  <div class="hero-art">
-    <div class="hero-glow"></div>
-    <div class="hero-orbit orbit-one"></div>
-    <div class="hero-orbit orbit-two"></div>
-
-    <img class="hero-image"
-      src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85"
-      alt="Juicy burger">
-
-    <span class="floating-tag tag-one">🍔 Fresh & tasty</span>
-    <span class="floating-tag tag-two">✨ Made with love</span>
-  </div>
+ <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200">
+  <source src="food-chef-ad.mp4" type="video/mp4">
+ </video>
+ <div class="hero-content">
+  <div class="tag">WELCOME TO FOOD CHEF</div>
+  <h1>Fresh Food.<br><span>Happy Moments.</span></h1>
+  <p>Enjoy delicious burgers, pizza, snacks and desserts. Discover your favorite food and make every meal special.</p>
+  <a class="primary" href="#menu">Explore Our Menu →</a>
+ </div>
 </section>
 
-<section class="trust-strip">
-  <div>🥬 <span><b>Fresh ingredients</b><small>Quality in every bite</small></span></div>
-  <div>⚡ <span><b>Quick service</b><small>Fast and convenient</small></span></div>
-  <div>❤️ <span><b>Made with care</b><small>Food that feels good</small></span></div>
+<section id="menu">
+ <div class="section-title"><small>OUR SPECIAL MENU</small><h2>Discover Our Delicious Food</h2></div>
+ <div class="categories" id="categories"></div>
+ <div class="search-row">
+  <input id="food-search" placeholder="🔍 Search your favorite food..." oninput="renderFoods()">
+  <select id="food-sort" onchange="renderFoods()">
+   <option value="default">Sort by</option>
+   <option value="low">Price: Low to High</option>
+   <option value="high">Price: High to Low</option>
+   <option value="name">Name: A to Z</option>
+  </select>
+ </div>
+ <div class="food-grid" id="food-grid"></div>
+ <p id="no-food" class="empty" style="display:none">No food items found.</p>
 </section>
 
-<section class="menu-section section-wrap" id="menu">
-  <div class="section-heading">
-    <div>
-      <span class="eyebrow">FIND YOUR FAVOURITE</span>
-      <h2>Explore our <span>menu</span></h2>
-    </div>
-    <p>From crunchy snacks to sweet treats, there's something for every craving.</p>
+<section class="hotel-section" id="hotels">
+ <div class="section-title"><small>EXPLORE TAMIL NADU</small><h2>Find Hotels & Restaurants</h2></div>
+ <div class="hotel-box">
+  <div class="hotel-form">
+   <div><label for="hotel-city">Select City / District</label>
+    <select id="hotel-city">
+     <option value="Salem">Salem</option><option value="Erode">Erode</option>
+     <option value="Chennai">Chennai</option><option value="Coimbatore">Coimbatore</option>
+     <option value="Madurai">Madurai</option><option value="Tiruchirappalli">Tiruchirappalli</option>
+     <option value="Tiruvannamalai">Tiruvannamalai</option><option value="Vellore">Vellore</option>
+     <option value="Tiruppur">Tiruppur</option><option value="Thanjavur">Thanjavur</option>
+     <option value="Tirunelveli">Tirunelveli</option><option value="Kanyakumari">Kanyakumari</option>
+     <option value="Ooty">Ooty</option><option value="Kodaikanal">Kodaikanal</option>
+     <option value="Yercaud">Yercaud</option><option value="Theni">Theni</option>
+     <option value="Dindigul">Dindigul</option><option value="Karur">Karur</option>
+     <option value="Namakkal">Namakkal</option><option value="Krishnagiri">Krishnagiri</option>
+     <option value="Dharmapuri">Dharmapuri</option><option value="Cuddalore">Cuddalore</option>
+     <option value="Villupuram">Villupuram</option><option value="Nagapattinam">Nagapattinam</option>
+     <option value="Ramanathapuram">Ramanathapuram</option><option value="Sivaganga">Sivaganga</option>
+     <option value="Virudhunagar">Virudhunagar</option><option value="Thoothukudi">Thoothukudi</option>
+     <option value="Ariyalur">Ariyalur</option><option value="Perambalur">Perambalur</option>
+     <option value="Tenkasi">Tenkasi</option><option value="Ranipet">Ranipet</option>
+     <option value="Tirupathur">Tirupathur</option><option value="Kallakurichi">Kallakurichi</option>
+     <option value="Mayiladuthurai">Mayiladuthurai</option><option value="Chengalpattu">Chengalpattu</option>
+     <option value="Tiruvallur">Tiruvallur</option>
+    </select>
+   </div>
+   <div><label for="place-type">Choose Place Type</label>
+    <select id="place-type">
+     <option value="restaurants">Restaurants</option>
+     <option value="hotels">Hotels</option>
+     <option value="luxury hotels">Luxury Hotels</option>
+     <option value="budget hotels">Budget Hotels</option>
+     <option value="resorts">Resorts</option>
+     <option value="family restaurants">Family Restaurants</option>
+    </select>
+   </div>
+   <div style="grid-column:1/-1"><label for="place-name">Hotel / Restaurant Name (Optional)</label>
+    <input id="place-name" placeholder="Enter a name, or leave blank">
+   </div>
+   <button class="full" onclick="findPlaces()">Find Places on Google Maps →</button>
   </div>
-
-  <div class="menu-tools">
-    <div class="category-list" id="category-list">
-      <button class="category active" data-category="All">All items</button>
-      <button class="category" data-category="Burgers">🍔 Burgers</button>
-      <button class="category" data-category="Pizza">🍕 Pizza</button>
-      <button class="category" data-category="Snacks">🥟 Snacks</button>
-      <button class="category" data-category="Fries">🍟 Fries</button>
-      <button class="category" data-category="Desserts">🍰 Desserts</button>
-      <button class="category" data-category="Drinks">🥤 Drinks</button>
-    </div>
-
-    <div class="search-sort">
-      <input id="food-search" type="search" placeholder="Search delicious food...">
-      <select id="food-sort">
-        <option value="featured">Sort: Featured</option>
-        <option value="low">Price: Low to high</option>
-        <option value="high">Price: High to low</option>
-        <option value="name">Name: A to Z</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="food-grid" id="food-items"></div>
-  <p class="empty-message" id="empty-message" hidden>No dishes found.</p>
+  <div class="hotel-result" id="hotel-result"></div>
+  <p class="hotel-note">Search real-world places and directions using Google Maps. Availability and prices are confirmed by the individual business.</p>
+ </div>
 </section>
 
-<section class="promo-banner section-wrap">
-  <div>
-    <span class="eyebrow">A LITTLE TREAT FOR YOU</span>
-    <h2>Cravings are better<br>when shared.</h2>
-    <p>Pick your favourites and make today delicious.</p>
-    <a href="#menu" class="primary-btn">Order your favourites →</a>
-  </div>
-  <div class="promo-food">🍔<span>🍟</span><i>🥤</i></div>
+<section class="about" id="about">
+ <div class="section-title"><small>OUR STORY</small><h2>About Food Chef</h2></div>
+ <p>Welcome to Food Chef! We bring delicious food, fresh flavors and a joyful experience together. Explore our menu, add your favorites to the cart and enjoy your food journey.</p>
 </section>
 
-<section class="about-section section-wrap" id="about">
-  <div class="about-photo">
-    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=85" alt="Fresh food">
-  </div>
-
-  <div>
-    <span class="eyebrow">THE FOOD CHEF PROMISE</span>
-    <h2>Simple ingredients.<br><span>Big happiness.</span></h2>
-    <p>At Food Chef, we believe good food brings people together. Explore our menu of comforting classics, crispy snacks and sweet favourites.</p>
-    <div class="about-points">
-      <span>✓ Freshly prepared favourites</span>
-      <span>✓ Easy ordering experience</span>
-      <span>✓ A little joy in every order</span>
-    </div>
-  </div>
+<section id="orders">
+ <div class="section-title"><small>YOUR FOOD JOURNEY</small><h2>My Orders & Tracking</h2></div>
+ <div class="orders-list" id="orders-list"></div>
 </section>
-
-<section class="orders-section section-wrap" id="orders">
-  <div class="section-heading">
-    <div>
-      <span class="eyebrow">YOUR FOOD JOURNEY</span>
-      <h2>Order <span>history</span></h2>
-    </div>
-    <p>Keep track of your recent Food Chef orders.</p>
-  </div>
-  <div id="order-history" class="order-history"></div>
-</section>
-
 </main>
 
-<footer>
-  <a class="brand footer-brand" href="#home">
-    <span class="brand-mark">🍴</span>
-    <span>FOOD<span class="brand-accent">CHEF</span><small>FRESH • TASTY • HAPPY</small></span>
-  </a>
-  <p>Good food makes every moment better.</p>
-  <small>© <span id="year"></span> Food Chef. Made with ❤️</small>
-</footer>
+<footer>© 2026 FOOD CHEF | Made with ❤️ for Food Lovers</footer>
 
-<div class="drawer-overlay" id="drawer-overlay"></div>
-
-<aside class="cart-drawer" id="cart-drawer">
-  <div class="drawer-head">
-    <div>
-      <span class="eyebrow">YOUR SELECTION</span>
-      <h2>Your cart</h2>
-    </div>
-    <button class="icon-btn" id="close-cart">✕</button>
-  </div>
-
-  <div id="cart-items" class="cart-items"></div>
-
-  <div class="cart-bottom">
-    <div class="total-line">
-      <span>Subtotal</span>
-      <b id="cart-total">₹0</b>
-    </div>
-    <p class="cart-note">Delivery charges, if any, are confirmed at checkout.</p>
-    <button class="primary-btn checkout-open" id="checkout-open">Continue to checkout →</button>
-  </div>
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="cart-drawer">
+ <div class="drawer-head"><h2>🛒 Your Cart</h2><button class="close" onclick="closeCart()">×</button></div>
+ <div id="cart-items"></div>
+ <div class="cart-total"><span>Total</span><span id="cart-total">₹0</span></div>
+ <button class="full" onclick="checkout()">Proceed to Checkout</button>
 </aside>
 
-<div class="modal-backdrop" id="product-modal">
-  <div class="product-modal modal-panel">
-    <button class="icon-btn modal-close" data-close-modal>✕</button>
-    <img id="modal-image" src="" alt="">
-    <div class="modal-copy">
-      <span class="eyebrow" id="modal-category"></span>
-      <h2 id="modal-name"></h2>
-      <p id="modal-description"></p>
-      <div class="modal-bottom">
-        <b id="modal-price"></b>
-        <button class="primary-btn" id="modal-add">Add to cart +</button>
-      </div>
-    </div>
-  </div>
+<div class="modal" id="checkout-modal">
+ <div class="modal-box">
+  <h2>Complete Your Order</h2>
+  <form id="checkout-form">
+   <label>Your Name</label><input id="customer-name" required placeholder="Enter your name">
+   <label>Phone Number</label><input id="customer-phone" required type="tel" pattern="[0-9]{10}" placeholder="10-digit mobile number">
+   <label>Delivery Address</label><textarea id="customer-address" required rows="3" placeholder="Enter your full address"></textarea>
+   <label>Payment Method</label>
+   <select id="payment-method"><option>Cash on Delivery</option><option>UPI (Demo Only)</option></select>
+   <div class="cart-total"><span>Order Total</span><span id="checkout-total">₹0</span></div>
+   <div class="modal-actions"><button type="button" class="secondary" onclick="closeModal('checkout-modal')">Cancel</button><button type="submit" class="primary">Place Order</button></div>
+  </form>
+ </div>
 </div>
 
-<div class="modal-backdrop" id="checkout-modal">
-  <div class="checkout-panel modal-panel">
-    <button class="icon-btn modal-close" data-close-modal>✕</button>
-    <span class="eyebrow">ALMOST THERE</span>
-    <h2>Delivery <span>details</span></h2>
-    <p class="checkout-intro">Enter your details to place your demo order.</p>
-
-    <form id="checkout-form">
-      <label>Full name
-        <input name="customer" required placeholder="Your name">
-      </label>
-
-      <label>Mobile number
-        <input name="phone" required inputmode="tel" pattern="[0-9 +()-]{8,16}" placeholder="Your phone number">
-      </label>
-
-      <label>Delivery address
-        <textarea name="address" required rows="3" placeholder="House number, street, area, city"></textarea>
-      </label>
-
-      <label>Payment method
-        <select name="payment" required>
-          <option value="Cash on Delivery">Cash on Delivery</option>
-          <option value="UPI on delivery">UPI on delivery</option>
-        </select>
-      </label>
-
-      <div class="total-line checkout-total">
-        <span>Order total</span>
-        <b id="checkout-total">₹0</b>
-      </div>
-
-      <button class="primary-btn" type="submit">Place my order →</button>
-    </form>
-  </div>
+<div class="modal" id="success-modal">
+ <div class="modal-box" style="text-align:center">
+  <h2>🎉 Order Placed!</h2><p id="success-message">Thank you for ordering with Food Chef.</p>
+  <button class="full" style="margin-top:20px" onclick="closeModal('success-modal');document.getElementById('orders').scrollIntoView()">View My Orders</button>
+ </div>
 </div>
 
-<div class="modal-backdrop" id="success-modal">
-  <div class="success-panel modal-panel">
-    <div class="success-icon">✓</div>
-    <span class="eyebrow">ORDER RECEIVED</span>
-    <h2>Thank you!</h2>
-    <p id="success-message"></p>
+<script>
+const foods=[
+{id:1,name:"Classic Burger",cat:"Burgers",price:129,desc:"Juicy burger with fresh vegetables.",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600"},
+{id:2,name:"Cheese Burger",cat:"Burgers",price:159,desc:"Delicious burger with melted cheese.",img:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600"},
+{id:3,name:"Chicken Burger",cat:"Burgers",price:179,desc:"Crispy chicken burger.",img:"https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600"},
+{id:4,name:"Double Burger",cat:"Burgers",price:219,desc:"Double layers of burger goodness.",img:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600"},
+{id:5,name:"Margherita Pizza",cat:"Pizza",price:199,desc:"Classic cheese pizza.",img:"https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600"},
+{id:6,name:"Pepperoni Pizza",cat:"Pizza",price:249,desc:"Pizza topped with pepperoni.",img:"https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600"},
+{id:7,name:"Veggie Pizza",cat:"Pizza",price:219,desc:"Fresh vegetable pizza.",img:"https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600"},
+{id:8,name:"French Fries",cat:"Snacks",price:89,desc:"Golden crispy fries.",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600"},
+{id:9,name:"Peri Peri Fries",cat:"Snacks",price:119,desc:"Spicy peri peri fries.",img:"https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=600"},
+{id:10,name:"Potato Wedges",cat:"Snacks",price:109,desc:"Crispy potato wedges.",img:"https://images.unsplash.com/photo-1518013431117-eb1465fa5752?w=600"},
+{id:11,name:"Spring Rolls",cat:"Snacks",price:89,desc:"Crispy vegetable spring rolls.",img:"https://images.unsplash.com/photo-1548507200-9a4d6f5a3b31?w=600"},
+{id:12,name:"Samosa",cat:"Snacks",price:40,desc:"Traditional crispy samosa.",img:"https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600"},
+{id:13,name:"Veg Momos",cat:"Snacks",price:99,desc:"Steamed vegetable momos.",img:"https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600"},
+{id:14,name:"Chicken Nuggets",cat:"Snacks",price:139,desc:"Crunchy chicken nuggets.",img:"https://images.unsplash.com/photo-1562967914-608f82629710?w=600"},
+{id:15,name:"Onion Rings",cat:"Snacks",price:99,desc:"Crispy onion rings.",img:"https://images.unsplash.com/photo-1639024471283-03518883512d?w=600"},
+{id:16,name:"Paneer Tikka",cat:"Snacks",price:149,desc:"Spiced grilled paneer.",img:"https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600"},
+{id:17,name:"Veg Sandwich",cat:"Snacks",price:89,desc:"Fresh vegetable sandwich.",img:"https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600"},
+{id:18,name:"Garlic Bread",cat:"Snacks",price:119,desc:"Toasted garlic bread.",img:"https://images.unsplash.com/photo-1619531040576-f9416740661f?w=600"},
+{id:19,name:"Chocolate Cake",cat:"Desserts",price:129,desc:"Rich chocolate cake.",img:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600"},
+{id:20,name:"Ice Cream",cat:"Desserts",price:79,desc:"Creamy ice cream.",img:"https://images.unsplash.com/photo-1501446529957-6226bd447c46?w=600"},
+{id:21,name:"Chocolate Donut",cat:"Desserts",price:89,desc:"Soft chocolate donut.",img:"https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600"},
+{id:22,name:"Waffles",cat:"Desserts",price:139,desc:"Golden waffles with toppings.",img:"https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=600"},
+{id:23,name:"Cold Coffee",cat:"Drinks",price:99,desc:"Chilled creamy coffee.",img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600"},
+{id:24,name:"Fresh Lime Juice",cat:"Drinks",price:59,desc:"Refreshing lime juice.",img:"https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?w=600"},
+{id:25,name:"Strawberry Milkshake",cat:"Drinks",price:119,desc:"Sweet strawberry shake.",img:"https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600"},
+{id:26,name:"Oreo Milkshake",cat:"Drinks",price:129,desc:"Chocolate cookie milkshake.",img:"https://images.unsplash.com/photo-1577805947697-89e18249d767?w=600"},
+{id:27,name:"BBQ Burger",cat:"Burgers",price:199,desc:"Smoky barbecue burger.",img:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600"},
+{id:28,name:"Paneer Burger",cat:"Burgers",price:149,desc:"Spicy paneer burger.",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600"},
+{id:29,name:"Cheese Burst Pizza",cat:"Pizza",price:279,desc:"Extra cheese pizza.",img:"https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600"},
+{id:30,name:"Paneer Pizza",cat:"Pizza",price:239,desc:"Paneer and vegetable pizza.",img:"https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600"},
+{id:31,name:"Chocolate Brownie",cat:"Desserts",price:99,desc:"Soft chocolate brownie.",img:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600"},
+{id:32,name:"Mango Smoothie",cat:"Drinks",price:109,desc:"Fresh mango smoothie.",img:"https://images.unsplash.com/photo-1502741224143-90386d7f8c82?w=600"}
+];
 
-    <div class="tracking-steps">
-      <span class="step-done">✓<small>Placed</small></span>
-      <i></i>
-      <span>2<small>Preparing</small></span>
-      <i></i>
-      <span>3<small>On the way</small></span>
-    </div>
+let activeCategory="All";
+let cart=JSON.parse(localStorage.getItem("foodChefCart")||"[]");
+let orders=JSON.parse(localStorage.getItem("foodChefOrders")||"[]");
 
-    <button class="primary-btn" data-close-modal>Continue browsing</button>
+function saveCart(){localStorage.setItem("foodChefCart",JSON.stringify(cart));}
+function saveOrders(){localStorage.setItem("foodChefOrders",JSON.stringify(orders));}
+
+function renderCategories(){
+ const cats=["All",...new Set(foods.map(f=>f.cat))];
+ document.getElementById("categories").innerHTML=cats.map(c=>
+ `<button class="category ${activeCategory===c?"active":""}" onclick="setCategory('${c}')">${c}</button>`).join("");
+}
+function setCategory(c){activeCategory=c;renderCategories();renderFoods();}
+
+function renderFoods(){
+ let list=foods.filter(f=>(activeCategory==="All"||f.cat===activeCategory)&&
+ f.name.toLowerCase().includes(document.getElementById("food-search").value.toLowerCase()));
+ const sort=document.getElementById("food-sort").value;
+ if(sort==="low")list.sort((a,b)=>a.price-b.price);
+ if(sort==="high")list.sort((a,b)=>b.price-a.price);
+ if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
+ document.getElementById("no-food").style.display=list.length?"none":"block";
+ document.getElementById("food-grid").innerHTML=list.map(f=>`
+ <article class="food-card">
+  <div class="food-image"><img src="${f.img}" alt="${f.name}" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=Food+Chef'"></div>
+  <div class="food-info"><h3>${f.name}</h3><p>${f.desc}</p>
+   <div class="food-bottom"><span class="price">₹${f.price}</span>
+   <button class="add-button" onclick="addToCart(${f.id})">+ Add</button></div>
   </div>
-</div>
+ </article>`).join("");
+}
 
-<script src="./script.js"></script>
+function addToCart(id){
+ const food=foods.find(f=>f.id===id);
+ const found=cart.find(i=>i.id===id);
+ if(found)found.qty++;else cart.push({...food,qty:1});
+ saveCart();updateCart();openCart();
+}
+function updateCart(){
+ document.getElementById("cart-count").textContent=cart.reduce((s,i)=>s+i.qty,0);
+ document.getElementById("cart-items").innerHTML=cart.length?cart.map(i=>`
+ <div class="cart-item"><img src="${i.img}" alt="${i.name}">
+ <div style="flex:1"><h4>${i.name}</h4><p>₹${i.price} each</p>
+ <div class="qty"><button onclick="changeQty(${i.id},-1)">−</button>${i.qty}<button onclick="changeQty(${i.id},1)">+</button></div></div>
+ <b>₹${i.price*i.qty}</b></div>`).join(""):'<p class="empty">Your cart is empty.</p>';
+ const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+ document.getElementById("cart-total").textContent="₹"+total;
+ document.getElementById("checkout-total").textContent="₹"+total;
+}
+function changeQty(id,n){
+ const item=cart.find(i=>i.id===id);
+ if(item){item.qty+=n;if(item.qty<=0)cart=cart.filter(i=>i.id!==id);}
+ saveCart();updateCart();
+}
+function openCart(){document.getElementById("cart-drawer").classList.add("open");document.getElementById("overlay").classList.add("show");}
+function closeCart(){document.getElementById("cart-drawer").classList.remove("open");document.getElementById("overlay").classList.remove("show");}
+function checkout(){
+ if(!cart.length){alert("Please add food to your cart first.");return;}
+ closeCart();document.getElementById("checkout-modal").classList.add("show");
+}
+function closeModal(id){document.getElementById(id).classList.remove("show");}
+
+document.getElementById("checkout-form").addEventListener("submit",function(e){
+ e.preventDefault();
+ if(!cart.length)return;
+ const order={
+  id:"FC"+Date.now().toString().slice(-7),
+  customer:document.getElementById("customer-name").value,
+  phone:document.getElementById("customer-phone").value,
+  address:document.getElementById("customer-address").value,
+  payment:document.getElementById("payment-method").value,
+  total:cart.reduce((s,i)=>s+i.price*i.qty,0),
+  items:cart.map(i=>({name:i.name,qty:i.qty,price:i.price})),
+  stage:0,date:new Date().toLocaleString()
+ };
+ orders.unshift(order);saveOrders();
+ cart=[];saveCart();updateCart();renderOrders();
+ closeModal("checkout-modal");
+ document.getElementById("success-message").textContent="Your order "+order.id+" has been saved!";
+ document.getElementById("success-modal").classList.add("show");
+ this.reset();
+});
+
+function advanceOrder(id){
+ const order=orders.find(o=>o.id===id);
+ if(order&&order.stage<3){order.stage++;saveOrders();renderOrders();}
+}
+function renderOrders(){
+ const box=document.getElementById("orders-list");
+ if(!orders.length){box.innerHTML='<p class="empty">You have not placed any orders yet.</p>';return;}
+ const stages=["Order Placed","Preparing Food","Out for Delivery","Delivered"];
+ box.innerHTML=orders.map(o=>`
+ <div class="order-card">
+ <h3>Order #${o.id}</h3><p>Customer: ${o.customer}</p>
+ <p>Address: ${o.address}</p><p>Payment: ${o.payment}</p>
+ <p>Items: ${o.items.map(i=>i.name+" × "+i.qty).join(", ")}</p>
+ <p><b>Total: ₹${o.total}</b></p><p>Order date: ${o.date}</p>
+ <p><b>Tracking: ${stages[o.stage]||stages[0]}</b></p>
+ ${o.stage<3?`<button onclick="advanceOrder('${o.id}')">Demo: Next Tracking Stage</button>`:"<p>✅ Order completed</p>"}
+ </div>`).join("");
+}
+
+function findPlaces(){
+ const city=document.getElementById("hotel-city").value;
+ const type=document.getElementById("place-type").value;
+ const name=document.getElementById("place-name").value.trim();
+ const query=(name?name+" ":"")+type+" in "+city+", Tamil Nadu";
+ const url="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(query);
+ document.getElementById("hotel-result").innerHTML=
+ `<p>Search results for <b>${query}</b></p><a href="${url}" target="_blank" rel="noopener">Open Google Maps →</a>`;
+}
+
+document.getElementById("menu-toggle").addEventListener("click",()=>{
+ document.getElementById("main-nav").classList.toggle("show");
+});
+document.querySelectorAll("#main-nav a").forEach(a=>a.addEventListener("click",()=>{
+ document.getElementById("main-nav").classList.remove("show");
+}));
+
+renderCategories();
+renderFoods();
+updateCart();
+renderOrders();
+</script>
 </body>
 </html>
