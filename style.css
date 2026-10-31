@@ -70,23 +70,34 @@ section.content{padding:65px 7%}
 
 /* food cards */
 .food-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
-.food-card{position:relative;background:#fff;border-radius:18px;overflow:hidden;border:1px solid #f0e8d9;box-shadow:0 7px 18px #0000000d;transition:transform .15s ease-out,box-shadow .3s}
+.food-card{position:relative;cursor:pointer;background:#fff;border-radius:18px;overflow:hidden;border:1px solid #f0e8d9;box-shadow:0 7px 18px #0000000d;transition:transform .15s ease-out,box-shadow .3s}
 .food-card:hover{box-shadow:0 18px 28px #0002}
 .food-card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),#ffffff55,transparent 55%)}
 .food-card:hover::after{opacity:1}
+.food-img{position:relative;overflow:hidden}
 .food-card img{width:100%;height:170px;object-fit:cover;display:block;background:linear-gradient(110deg,#f3e9d4 30%,#fff7e0 50%,#f3e9d4 70%) 0 0/200% 100%;animation:shimmer 1.4s infinite;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
 .food-card:hover img{transform:scale(1.12)}
 .food-info{padding:15px}
 .food-category{font-size:10px;letter-spacing:1px;color:#a77900;font-weight:800;text-transform:uppercase}
 .food-info h3{font-size:16px;margin:7px 0}
 .food-description{font-size:12px;color:var(--muted);min-height:34px;line-height:1.5}
+.variety-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.variety-chips span{font-size:10px;font-weight:700;background:#fff3cf;color:#8b6500;padding:3px 8px;border-radius:20px}
 .food-rating{color:#d49a00;font-size:12px;margin:10px 0}
 .food-rating span{color:#8b8479}
 .food-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.food-bottom .btns{display:flex;gap:6px}
 .food-price{font-size:19px}
 .add-btn{position:relative;overflow:hidden;background:var(--dark);color:#fff;border:0;border-radius:9px;padding:10px 12px;font-size:12px;font-weight:800;transition:background .2s}
 .add-btn:hover{background:#b17d00}
+.opt-btn{background:#fff3cf;color:#6b4f00;border:0;border-radius:9px;padding:10px 12px;font-size:12px;font-weight:800}
+.opt-btn:hover{background:#ffe9a3}
 .empty-message{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted)}
+
+/* likes */
+.like-btn{position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;border:0;border-radius:50%;background:#fffe;color:#c0392b;font-size:19px;line-height:1;box-shadow:0 4px 12px #0003;transition:transform .2s,background .2s}
+.like-btn:hover{transform:scale(1.15)}
+.like-btn.on{background:#ff4d6d;color:#fff;animation:heart .45s cubic-bezier(.3,1.8,.5,1)}
 
 /* about */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
@@ -142,12 +153,40 @@ section.content{padding:65px 7%}
 .drawer-item img{width:75px;height:75px;object-fit:cover;border-radius:10px}
 .drawer-item b,.drawer-item small{display:block}
 .drawer-item small{color:var(--muted);margin-top:5px}
+.drawer-item small+small{margin-top:2px}
 .qty-controls{display:flex;align-items:center;gap:10px;margin-top:8px}
 .qty-controls button{border:0;background:#f5e7c4;border-radius:6px;padding:4px 9px;font-weight:800}
 .qty-controls button:last-child{margin-left:auto;background:#f8ded8}
 .drawer-foot{border-top:1px solid #eee;padding-top:15px}
 .drawer-foot .primary-btn{width:100%;margin-top:15px}
 .empty-cart{text-align:center;color:var(--muted);padding:35px 10px}
+
+/* detail popup */
+.modal{position:fixed;inset:0;z-index:40;background:#000a;display:grid;place-items:center;padding:16px;opacity:0;visibility:hidden;transition:.25s}
+.modal.show{opacity:1;visibility:visible}
+.modal-card{width:min(560px,100%);max-height:92vh;overflow-y:auto;background:#fffdf8;border-radius:22px;box-shadow:0 30px 80px #0006;transform:translateY(30px) scale(.95);transition:transform .35s cubic-bezier(.2,.9,.3,1.2)}
+.modal.show .modal-card{transform:none}
+.modal-img{position:relative}
+.modal-img img{width:100%;height:230px;object-fit:cover;display:block}
+.modal-close{position:absolute;top:12px;left:12px;z-index:3;width:34px;height:34px;border:0;border-radius:50%;background:#fffe;box-shadow:0 4px 12px #0003}
+.modal-body{padding:22px}
+.modal-body h3{font-family:"Playfair Display",serif;font-size:26px;margin:6px 0}
+.opt-group{margin-top:16px}
+.opt-group>b{font-size:13px}
+.opt-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.opt-chip{border:1.5px solid #eadfca;background:#fff;border-radius:25px;padding:9px 14px;font-size:13px;font-weight:700;transition:.2s}
+.opt-chip small{color:#a77900}
+.opt-chip.active{background:var(--yellow);border-color:var(--yellow);transform:scale(1.04)}
+.detail-total{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:22px 0;padding-top:16px;border-top:1px solid #eee}
+.detail-total small{display:block;color:var(--muted)}
+.detail-total strong{font-size:26px}
+.modal-body h4{margin-bottom:10px}
+.similar{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
+.similar-item{flex:0 0 110px;border:1px solid #eee5d5;background:#fff;border-radius:12px;padding:8px;text-align:left;transition:transform .2s}
+.similar-item:hover{transform:translateY(-4px)}
+.similar-item img{width:100%;height:70px;object-fit:cover;border-radius:8px}
+.similar-item span{display:block;font-size:12px;font-weight:700;margin-top:6px}
+.similar-item small{color:var(--muted)}
 
 footer{background:#211d17;color:#fff;text-align:center;padding:35px 15px}
 footer .brand{justify-content:center;margin-bottom:12px}
@@ -177,6 +216,7 @@ footer small{color:#b8ad9d}
 @keyframes slideIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
 @keyframes stepIn{from{opacity:0;transform:scale(.4) translateY(20px)}to{opacity:1;transform:none}}
 @keyframes pulse{0%{box-shadow:0 0 0 0 #ffc92899}70%,100%{box-shadow:0 0 0 14px #ffc92800}}
+@keyframes heart{50%{transform:scale(1.5)}}
 
 /* responsive */
 @media(max-width:1050px){nav{gap:12px}.food-grid{grid-template-columns:repeat(3,1fr)}}
@@ -199,6 +239,8 @@ footer small{color:#b8ad9d}
   .food-info{padding:11px}
   .food-info h3{font-size:14px}
   .food-bottom{align-items:flex-start;flex-direction:column}
+  .food-bottom .btns{width:100%}
+  .food-bottom .btns>*{flex:1}
   .add-btn{width:100%}
   .about,.checkout-layout{grid-template-columns:1fr;gap:25px}
   .summary-box{position:static}
@@ -215,4 +257,4 @@ footer small{color:#b8ad9d}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .w,.reveal,.hero>div:first-child>*{opacity:1!important;transform:none!important;filter:none!important}
-}
+               }
