@@ -1,201 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Food Chef | Fresh Food, Happy Moments</title>
-<meta name="description" content="Food Chef - Delicious snacks, fresh food and happy moments.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Chef | Fresh, Tasty & Made with Love</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<header>
+
+<div id="scroll-progress"></div>
+
+<header class="site-header">
   <a class="brand" href="#home">
-    <svg class="chef-logo" viewBox="0 0 100 100" role="img" aria-label="Food Chef">
-      <path d="M20 48 C7 44 10 25 25 23 C29 5 54 4 62 21 C78 12 96 27 88 44 C97 53 90 65 78 65 H22 C10 65 8 53 20 48Z" fill="#ffc928" stroke="#211d17" stroke-width="5" stroke-linejoin="round"/>
-      <path d="M23 63 H77 L73 83 H27Z" fill="#ffc928" stroke="#211d17" stroke-width="5"/>
-      <path d="M32 72 H68" stroke="#211d17" stroke-width="4" stroke-linecap="round"/>
-      <path d="M42 33 L42 51 M50 33 L50 51 M58 33 L58 51" stroke="#211d17" stroke-width="4" stroke-linecap="round"/>
-    </svg>
-    <span class="brand-name"><b>FOOD</b><strong>Chef</strong></span>
+    <span class="brand-mark">🍴</span>
+    <span>FOOD<span class="brand-accent">CHEF</span>
+      <small>FRESH • TASTY • HAPPY</small>
+    </span>
   </a>
-  <button class="menu-toggle" id="mobile-menu" aria-label="Menu">☰</button>
-  <nav id="navigation">
-    <a href="#home">Home</a><a href="#menu">Menu</a><a href="#about">About</a>
-    <a href="#checkout">Order</a><a href="#tracking">Track Order</a><a href="#contact">Contact</a>
+
+  <button class="menu-toggle" id="menu-toggle">☰</button>
+
+  <nav id="main-nav">
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#orders">My Orders</a>
   </nav>
-  <div class="header-actions">
-    <input id="top-search" placeholder="Search food..." aria-label="Search food">
-    <button class="cart-button" id="open-cart">🛒 Cart <span id="cart-count">0</span></button>
-  </div>
+
+  <button class="cart-open" id="open-cart">
+    🛒 Cart <span id="cart-count">0</span>
+  </button>
 </header>
 
 <main>
+
 <section class="hero" id="home">
-  <div>
-    <span class="eyebrow">✦ FRESH FOOD • HAPPY MOMENTS</span>
-    <h1>Delicious Food,<br><span>Just a Click</span><br>Away!</h1>
-    <p>Discover your favourite snacks, freshly prepared and ready to make your day delicious.</p>
-    <a class="primary-btn" href="#menu">Explore Our Menu →</a>
-    <p class="hero-points">✦ Fresh choices &nbsp; ✦ Easy ordering &nbsp; ✦ Happy moments</p>
+  <div class="hero-copy">
+    <span class="eyebrow">MADE FRESH, SERVED WITH LOVE</span>
+    <h1>Good food.<br><span>Good mood.</span></h1>
+    <p>Discover delicious bites, crispy snacks and feel-good favourites made just for you.</p>
+
+    <div class="hero-actions">
+      <a class="primary-btn" href="#menu">Explore Menu →</a>
+      <a class="text-btn" href="#about">Our story</a>
+    </div>
+
+    <div class="hero-rating">
+      <span>★★★★★</span>
+      <b>Fresh flavours, happy moments</b>
+    </div>
   </div>
-  <div class="hero-image">
-    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=85" alt="Delicious pizza">
-    <div class="hero-note"><b>💛 Made with love</b><small>Fresh • Tasty • Happy</small></div>
+
+  <div class="hero-art">
+    <div class="hero-glow"></div>
+    <div class="hero-orbit orbit-one"></div>
+    <div class="hero-orbit orbit-two"></div>
+
+    <img class="hero-image"
+      src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85"
+      alt="Juicy burger">
+
+    <span class="floating-tag tag-one">🍔 Fresh & tasty</span>
+    <span class="floating-tag tag-two">✨ Made with love</span>
   </div>
 </section>
 
-<div class="benefits">
-  <div class="benefit"><span>🥗</span><div><b>Fresh Ingredients</b><small>Quality in every bite</small></div></div>
-  <div class="benefit"><span>🍕</span><div><b>Lots of Choices</b><small>Something for everyone</small></div></div>
-  <div class="benefit"><span>🛍️</span><div><b>Easy Ordering</b><small>Simple shopping cart</small></div></div>
-  <div class="benefit"><span>💛</span><div><b>Made with Care</b><small>Food for happy moments</small></div></div>
-</div>
+<section class="trust-strip">
+  <div>🥬 <span><b>Fresh ingredients</b><small>Quality in every bite</small></span></div>
+  <div>⚡ <span><b>Quick service</b><small>Fast and convenient</small></span></div>
+  <div>❤️ <span><b>Made with care</b><small>Food that feels good</small></span></div>
+</section>
 
-<section class="content menu-section" id="menu">
+<section class="menu-section section-wrap" id="menu">
   <div class="section-heading">
     <div>
-      <span class="eyebrow">OUR FOOD COLLECTION</span>
-      <h2 class="section-title">Explore Our <span>Menu</span></h2>
-      <p>Find something delicious for every craving.</p>
+      <span class="eyebrow">FIND YOUR FAVOURITE</span>
+      <h2>Explore our <span>menu</span></h2>
     </div>
+    <p>From crunchy snacks to sweet treats, there's something for every craving.</p>
+  </div>
+
+  <div class="menu-tools">
+    <div class="category-list" id="category-list">
+      <button class="category active" data-category="All">All items</button>
+      <button class="category" data-category="Burgers">🍔 Burgers</button>
+      <button class="category" data-category="Pizza">🍕 Pizza</button>
+      <button class="category" data-category="Snacks">🥟 Snacks</button>
+      <button class="category" data-category="Fries">🍟 Fries</button>
+      <button class="category" data-category="Desserts">🍰 Desserts</button>
+      <button class="category" data-category="Drinks">🥤 Drinks</button>
+    </div>
+
     <div class="search-sort">
-      <input id="food-search" placeholder="Search food..." aria-label="Search menu">
-      <select id="sort-food" aria-label="Sort food">
-        <option value="featured">Featured</option>
-        <option value="low">Price: Low to High</option>
-        <option value="high">Price: High to Low</option>
+      <input id="food-search" type="search" placeholder="Search delicious food...">
+      <select id="food-sort">
+        <option value="featured">Sort: Featured</option>
+        <option value="low">Price: Low to high</option>
+        <option value="high">Price: High to low</option>
         <option value="name">Name: A to Z</option>
       </select>
     </div>
   </div>
-  <div class="categories" id="categories">
-    <button class="category active" data-category="All">All Items</button>
-    <button class="category" data-category="Pizza">🍕 Pizza</button>
-    <button class="category" data-category="Burgers">🍔 Burgers</button>
-    <button class="category" data-category="Indian Snacks">🥟 Indian Snacks</button>
-    <button class="category" data-category="Fries">🍟 Fries</button>
-    <button class="category" data-category="Bakery">🥪 Bakery</button>
-    <button class="category" data-category="Desserts">🍰 Desserts</button>
-    <button class="category" data-category="Drinks">🥤 Drinks</button>
-    <button class="category" data-category="Snacks">🥡 Other Snacks</button>
-    <button class="category" data-category="Liked">♥ Liked</button>
-  </div>
-  <div class="food-grid" id="food-items"><p class="empty-message">Loading delicious food...</p></div>
+
+  <div class="food-grid" id="food-items"></div>
+  <p class="empty-message" id="empty-message" hidden>No dishes found.</p>
 </section>
 
-<section class="content about" id="about">
-  <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=85" alt="Fresh food collection">
+<section class="promo-banner section-wrap">
   <div>
-    <span class="eyebrow">A LITTLE ABOUT US</span>
-    <h2>Good Food.<br><span>Great Moments.</span></h2>
-    <p>Food Chef brings together delicious snacks, tasty treats and refreshing drinks in one easy-to-use food ordering experience.</p>
-    <a href="#menu" class="primary-btn">Discover Food →</a>
+    <span class="eyebrow">A LITTLE TREAT FOR YOU</span>
+    <h2>Cravings are better<br>when shared.</h2>
+    <p>Pick your favourites and make today delicious.</p>
+    <a href="#menu" class="primary-btn">Order your favourites →</a>
+  </div>
+  <div class="promo-food">🍔<span>🍟</span><i>🥤</i></div>
+</section>
+
+<section class="about-section section-wrap" id="about">
+  <div class="about-photo">
+    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=85" alt="Fresh food">
+  </div>
+
+  <div>
+    <span class="eyebrow">THE FOOD CHEF PROMISE</span>
+    <h2>Simple ingredients.<br><span>Big happiness.</span></h2>
+    <p>At Food Chef, we believe good food brings people together. Explore our menu of comforting classics, crispy snacks and sweet favourites.</p>
+    <div class="about-points">
+      <span>✓ Freshly prepared favourites</span>
+      <span>✓ Easy ordering experience</span>
+      <span>✓ A little joy in every order</span>
+    </div>
   </div>
 </section>
 
-<section class="content checkout-section" id="checkout">
+<section class="orders-section section-wrap" id="orders">
   <div class="section-heading">
     <div>
-      <span class="eyebrow">READY WHEN YOU ARE</span>
-      <h2 class="section-title">Complete Your <span>Order</span></h2>
-      <p>Enter your delivery details to create a demo order.</p>
+      <span class="eyebrow">YOUR FOOD JOURNEY</span>
+      <h2>Order <span>history</span></h2>
     </div>
+    <p>Keep track of your recent Food Chef orders.</p>
   </div>
-  <div class="checkout-layout">
-    <form class="checkout-form" id="checkout-form">
-      <h3>Delivery Information</h3>
-      <div class="form-grid">
-        <label>Full Name<input name="name" required maxlength="70" placeholder="Your name"></label>
-        <label>Mobile Number<input name="phone" required inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" placeholder="10-digit number"></label>
-        <label>Hotel / Building<input name="hotel" maxlength="100" placeholder="Hotel or building name"></label>
-        <label>District<select name="district" required>
-          <option value="">Select district</option>
-          <option>Chennai</option><option>Coimbatore</option><option>Madurai</option>
-          <option>Salem</option><option>Tiruchirappalli</option><option>Tiruppur</option>
-          <option>Thiruvannamalai</option><option>Vellore</option><option>Erode</option>
-          <option>Thanjavur</option><option>Villupuram</option><option>Kanchipuram</option>
-          <option>Other Tamil Nadu district</option>
-        </select></label>
-        <label>City / Town<input name="city" required maxlength="70" placeholder="City or town"></label>
-        <label>PIN Code<input name="pincode" required inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="6-digit PIN code"></label>
-        <label class="full">Full Delivery Address<textarea name="address" required maxlength="300" rows="3" placeholder="Door number, street, area and landmark"></textarea></label>
-      </div>
-      <button class="primary-btn submit-btn" type="submit">Place Demo Order →</button>
-      <p class="note">Demo website only. No real payment or restaurant delivery is processed.</p>
-    </form>
-    <aside class="summary-box">
-      <h3>Your Order Summary</h3>
-      <div id="checkout-summary">Your cart is empty.</div>
-      <div class="total-line"><b>Total</b><strong id="checkout-total">₹0</strong></div>
-    </aside>
-  </div>
+  <div id="order-history" class="order-history"></div>
 </section>
 
-<section class="content" id="tracking">
-  <div class="section-heading">
-    <div>
-      <span class="eyebrow">ORDER UPDATES</span>
-      <h2 class="section-title">Track Your <span>Order</span></h2>
-      <p>Enter the order ID received after placing your demo order.</p>
-    </div>
-  </div>
-  <div class="track-search">
-    <input id="tracking-id" placeholder="Example: FC12345678" aria-label="Order ID">
-    <button class="primary-btn" id="track-button">Track Order</button>
-  </div>
-  <div class="track-result" id="tracking-result"><p class="tracking-placeholder">Your tracking details will appear here.</p></div>
-  <div class="history-box">
-    <h3>My Previous Orders</h3>
-    <div id="order-history-list">No orders yet.</div>
-  </div>
-</section>
 </main>
 
-<footer id="contact">
-  <a class="brand" href="#home"><span class="brand-name"><b>FOOD</b><strong>Chef</strong></span></a>
-  <p>Fresh Food. Happy Moments. 💛</p>
-  <small>Food Chef Website Demonstration • Tamil Nadu</small><br>
-  <a class="to-top" href="#home">Back to top ↑</a>
+<footer>
+  <a class="brand footer-brand" href="#home">
+    <span class="brand-mark">🍴</span>
+    <span>FOOD<span class="brand-accent">CHEF</span><small>FRESH • TASTY • HAPPY</small></span>
+  </a>
+  <p>Good food makes every moment better.</p>
+  <small>© <span id="year"></span> Food Chef. Made with ❤️</small>
 </footer>
 
-<div class="overlay" id="cart-overlay"></div>
-<aside class="drawer" id="cart-drawer" aria-label="Shopping cart">
+<div class="drawer-overlay" id="drawer-overlay"></div>
+
+<aside class="cart-drawer" id="cart-drawer">
   <div class="drawer-head">
-    <h2>Your Cart</h2>
-    <button id="close-cart" aria-label="Close cart">✕</button>
+    <div>
+      <span class="eyebrow">YOUR SELECTION</span>
+      <h2>Your cart</h2>
+    </div>
+    <button class="icon-btn" id="close-cart">✕</button>
   </div>
-  <div class="drawer-items" id="drawer-items"></div>
-  <div class="drawer-foot">
-    <div class="total-line"><b>Total</b><strong id="drawer-total">₹0</strong></div>
-    <button class="primary-btn" id="drawer-checkout">Checkout →</button>
+
+  <div id="cart-items" class="cart-items"></div>
+
+  <div class="cart-bottom">
+    <div class="total-line">
+      <span>Subtotal</span>
+      <b id="cart-total">₹0</b>
+    </div>
+    <p class="cart-note">Delivery charges, if any, are confirmed at checkout.</p>
+    <button class="primary-btn checkout-open" id="checkout-open">Continue to checkout →</button>
   </div>
 </aside>
 
-<div class="modal" id="detail-modal" aria-hidden="true">
-  <div class="modal-card">
-    <div class="modal-img">
-      <img id="detail-img" alt="">
-      <button class="modal-close" id="detail-close" aria-label="Close">✕</button>
-      <button class="like-btn" id="detail-like" aria-label="Like">♡</button>
-    </div>
-    <div class="modal-body">
-      <span class="food-category" id="detail-cat"></span>
-      <h3 id="detail-name"></h3>
-      <p class="food-description" id="detail-desc"></p>
-      <div id="detail-options"></div>
-      <div class="detail-total">
-        <div><small>Total</small><strong id="detail-price">₹0</strong></div>
-        <button class="primary-btn" id="detail-add">Add to Cart</button>
+<div class="modal-backdrop" id="product-modal">
+  <div class="product-modal modal-panel">
+    <button class="icon-btn modal-close" data-close-modal>✕</button>
+    <img id="modal-image" src="" alt="">
+    <div class="modal-copy">
+      <span class="eyebrow" id="modal-category"></span>
+      <h2 id="modal-name"></h2>
+      <p id="modal-description"></p>
+      <div class="modal-bottom">
+        <b id="modal-price"></b>
+        <button class="primary-btn" id="modal-add">Add to cart +</button>
       </div>
-      <h4>More like this</h4>
-      <div class="similar" id="detail-similar"></div>
     </div>
   </div>
 </div>
 
-<script src="script.js"></script>
+<div class="modal-backdrop" id="checkout-modal">
+  <div class="checkout-panel modal-panel">
+    <button class="icon-btn modal-close" data-close-modal>✕</button>
+    <span class="eyebrow">ALMOST THERE</span>
+    <h2>Delivery <span>details</span></h2>
+    <p class="checkout-intro">Enter your details to place your demo order.</p>
+
+    <form id="checkout-form">
+      <label>Full name
+        <input name="customer" required placeholder="Your name">
+      </label>
+
+      <label>Mobile number
+        <input name="phone" required inputmode="tel" pattern="[0-9 +()-]{8,16}" placeholder="Your phone number">
+      </label>
+
+      <label>Delivery address
+        <textarea name="address" required rows="3" placeholder="House number, street, area, city"></textarea>
+      </label>
+
+      <label>Payment method
+        <select name="payment" required>
+          <option value="Cash on Delivery">Cash on Delivery</option>
+          <option value="UPI on delivery">UPI on delivery</option>
+        </select>
+      </label>
+
+      <div class="total-line checkout-total">
+        <span>Order total</span>
+        <b id="checkout-total">₹0</b>
+      </div>
+
+      <button class="primary-btn" type="submit">Place my order →</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="success-modal">
+  <div class="success-panel modal-panel">
+    <div class="success-icon">✓</div>
+    <span class="eyebrow">ORDER RECEIVED</span>
+    <h2>Thank you!</h2>
+    <p id="success-message"></p>
+
+    <div class="tracking-steps">
+      <span class="step-done">✓<small>Placed</small></span>
+      <i></i>
+      <span>2<small>Preparing</small></span>
+      <i></i>
+      <span>3<small>On the way</small></span>
+    </div>
+
+    <button class="primary-btn" data-close-modal>Continue browsing</button>
+  </div>
+</div>
+
+<script src="./script.js"></script>
 </body>
 </html>
