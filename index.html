@@ -4,250 +4,359 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FOOD CHEF | Taste the Happiness</title>
+<title>FOOD CHEF | Online Food Ordering</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-:root{--gold:#f5b800;--dark:#171717;--cream:#fff9e9;--white:#fff;--muted:#777}
-*{margin:0;padding:0;box-sizing:border-box}
+:root {
+  --gold:#f5b800;
+  --dark:#171717;
+  --cream:#fff9e9;
+  --white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Poppins,sans-serif;background:var(--cream);color:var(--dark)}
-button,input,select{font:inherit}
+button,input,select,textarea{font:inherit}
 button{cursor:pointer;border:0}
 a{text-decoration:none;color:inherit}
-header{height:76px;background:#171717;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 7%;position:sticky;top:0;z-index:20;box-shadow:0 3px 15px #0002}
+
+header{
+  background:var(--dark);color:white;padding:16px 7%;
+  display:flex;justify-content:space-between;align-items:center;
+  position:sticky;top:0;z-index:20
+}
 .logo{font-size:24px;font-weight:800;color:var(--gold)}
 .logo span{color:white}
-nav{display:flex;align-items:center;gap:25px}
+nav{display:flex;gap:22px;align-items:center}
 nav a{font-size:13px;font-weight:600}
 nav a:hover{color:var(--gold)}
-.cart-button,.primary{background:var(--gold);color:#171717;padding:11px 18px;border-radius:25px;font-weight:700}
 #menu-toggle{display:none;background:none;color:white;font-size:25px}
-.hero{min-height:550px;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;padding:65px 8%;color:white;background:#191919}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.38}
-.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#111e 10%,#1119 60%,#1114);z-index:-1}
+.cart-btn,.primary-btn{
+  background:var(--gold);color:#171717;padding:11px 18px;
+  border-radius:25px;font-weight:700
+}
+
+.hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  min-height:540px;display:flex;align-items:center;
+  padding:65px 8%;background:#171717;color:white
+}
+.hero video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;opacity:.4;z-index:-2
+}
+.hero:before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,#111e,#1119,#1113)
+}
 .hero-content{max-width:650px}
-.tag{color:var(--gold);font-weight:700;letter-spacing:3px;font-size:13px}
+.hero small{color:var(--gold);letter-spacing:3px;font-weight:700}
 .hero h1{font-size:clamp(40px,7vw,70px);line-height:1.12;margin:18px 0}
 .hero h1 span{color:var(--gold)}
-.hero p{color:#eee;line-height:1.8;max-width:530px;margin-bottom:25px}
-section{padding:70px 8%}
-.section-title{text-align:center;margin-bottom:35px}
-.section-title small{color:#b18400;font-weight:700;letter-spacing:2px}
-.section-title h2{font-size:32px;margin-top:8px}
-.categories{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:25px}
-.category{background:white;border:1px solid #eee;padding:9px 18px;border-radius:25px;font-weight:600}
-.category.active,.category:hover{background:var(--gold);border-color:var(--gold)}
-.search-row{display:flex;gap:12px;max-width:650px;margin:0 auto 30px}
-.search-row input,.search-row select,.hotel-form input,.hotel-form select{min-width:0;padding:12px;border:1px solid #ddd;border-radius:10px;background:white;flex:1}
-.food-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
-.food-card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px #0000000c;transition:.3s}
-.food-card:hover{transform:translateY(-8px);box-shadow:0 12px 25px #0002}
+.hero p{color:#eee;line-height:1.8;margin-bottom:25px}
+
+section{padding:65px 8%}
+.heading{text-align:center;margin-bottom:30px}
+.heading small{color:#a87900;font-weight:700;letter-spacing:2px}
+.heading h2{font-size:30px;margin-top:8px}
+
+.order-section{background:white}
+.order-box{
+  max-width:750px;margin:auto;background:var(--cream);
+  padding:25px;border-radius:18px
+}
+label{font-size:13px;font-weight:700;display:block;margin-bottom:7px}
+input,select,textarea{
+  width:100%;padding:12px;border:1px solid #ddd;
+  border-radius:9px;background:white
+}
+.form-group{margin-bottom:15px}
+.full-btn{
+  width:100%;padding:13px;background:var(--gold);
+  border-radius:25px;font-weight:800
+}
+.note{font-size:12px;color:#777;margin-top:12px;line-height:1.6}
+.restaurant-status{text-align:center;margin-top:15px;font-size:13px}
+
+.menu-section{background:var(--cream)}
+.categories{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:22px
+}
+.category{
+  padding:9px 17px;background:white;border:1px solid #eee;
+  border-radius:25px;font-weight:600
+}
+.category.active,.category:hover{background:var(--gold)}
+.search-row{
+  max-width:650px;margin:0 auto 25px;
+  display:flex;gap:10px
+}
+.search-row input{flex:1}
+.search-row select{width:180px}
+.food-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px
+}
+.food-card{
+  background:white;border-radius:17px;overflow:hidden;
+  box-shadow:0 5px 18px #00000010;transition:.3s
+}
+.food-card:hover{transform:translateY(-7px);box-shadow:0 12px 25px #0002}
 .food-card img{width:100%;height:175px;object-fit:cover;transition:.4s}
-.food-card:hover img{transform:scale(1.06)}
-.food-image{overflow:hidden;position:relative}
-.food-info{padding:17px}
+.food-card:hover img{transform:scale(1.05)}
+.food-image{overflow:hidden}
+.food-info{padding:16px}
 .food-info h3{font-size:17px}
-.food-info p{font-size:12px;color:var(--muted);margin:7px 0}
+.food-info p{font-size:12px;color:#777;margin:7px 0}
 .food-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
 .price{font-weight:800;color:#a87900}
-.add-button{background:var(--dark);color:white;padding:9px 13px;border-radius:20px;font-size:12px}
-.add-button:hover{background:var(--gold);color:#111}
-.hotel-section{background:#fff}
-.hotel-box{max-width:850px;margin:auto;background:var(--cream);padding:28px;border-radius:18px}
-.hotel-form{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.hotel-form label{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
-.hotel-form button{grid-column:1/-1}
-.hotel-note{text-align:center;color:#777;font-size:12px;margin-top:15px}
-.hotel-result{margin-top:20px;text-align:center}
-.hotel-result a{display:inline-block;background:#171717;color:white;padding:12px 20px;border-radius:25px;margin-top:10px}
-.about{background:#171717;color:white;text-align:center}
+.add-btn{background:var(--dark);color:white;padding:9px 13px;border-radius:20px;font-size:12px}
+.add-btn:hover{background:var(--gold);color:black}
+.empty{text-align:center;padding:25px;color:#777}
+
+.about{background:var(--dark);color:white;text-align:center}
 .about p{max-width:700px;margin:15px auto;line-height:1.8;color:#ddd}
+
 .orders-list{max-width:750px;margin:auto}
-.order-card{background:white;border-radius:12px;padding:18px;margin-bottom:15px;box-shadow:0 3px 12px #0001}
-.order-card p{font-size:13px;color:#666;margin-top:5px}
-.order-card button{background:var(--gold);padding:8px 12px;border-radius:20px;margin-top:10px;font-size:12px;font-weight:700}
+.order-card{
+  background:white;padding:18px;border-radius:13px;
+  margin-bottom:15px;box-shadow:0 3px 12px #0001
+}
+.order-card p{font-size:13px;color:#666;margin-top:6px}
+.order-card button{
+  background:var(--gold);padding:9px 14px;
+  border-radius:20px;margin-top:12px;font-weight:700
+}
 footer{background:#111;color:white;text-align:center;padding:25px;font-size:13px}
-.overlay{position:fixed;inset:0;background:#0009;z-index:30;display:none}
+
+.overlay{
+  position:fixed;inset:0;background:#0009;z-index:30;display:none
+}
 .overlay.show{display:block}
-.drawer{position:fixed;right:-430px;top:0;width:min(400px,90vw);height:100vh;background:white;z-index:31;padding:22px;transition:.3s;overflow-y:auto}
+.drawer{
+  position:fixed;right:-430px;top:0;width:min(410px,92vw);
+  height:100vh;background:white;z-index:31;padding:22px;
+  transition:.3s;overflow-y:auto
+}
 .drawer.open{right:0}
 .drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-.close{background:#eee;border-radius:50%;width:32px;height:32px;font-size:20px}
+.close-btn{background:#eee;border-radius:50%;width:32px;height:32px;font-size:20px}
 .cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #eee}
-.cart-item img{width:75px;height:70px;object-fit:cover;border-radius:9px}
+.cart-item img{width:70px;height:70px;object-fit:cover;border-radius:9px}
 .cart-item h4{font-size:13px}
 .cart-item p{font-size:12px;color:#777;margin:4px 0}
-.qty{display:flex;gap:9px;align-items:center;margin-top:5px}
+.qty{display:flex;gap:9px;align-items:center;margin-top:6px}
 .qty button{background:var(--gold);width:23px;height:23px;border-radius:50%}
-.cart-total{display:flex;justify-content:space-between;font-weight:800;margin:22px 0}
-.full{width:100%;padding:13px;border-radius:25px;background:var(--gold);font-weight:800}
-.modal{display:none;position:fixed;inset:0;background:#0009;z-index:40;align-items:center;justify-content:center;padding:15px}
+.total{display:flex;justify-content:space-between;font-weight:800;margin:20px 0}
+
+.modal{
+  position:fixed;inset:0;background:#0009;z-index:40;
+  display:none;align-items:center;justify-content:center;padding:15px
+}
 .modal.show{display:flex}
-.modal-box{background:white;border-radius:17px;padding:25px;width:min(450px,100%);max-height:90vh;overflow:auto}
+.modal-box{
+  background:white;padding:25px;border-radius:17px;
+  width:min(450px,100%);max-height:90vh;overflow:auto
+}
 .modal-box h2{margin-bottom:15px}
-.modal-box input,.modal-box select,.modal-box textarea{width:100%;padding:11px;margin:7px 0 13px;border:1px solid #ddd;border-radius:8px}
-.modal-box label{font-size:13px;font-weight:600}
+.modal-box input,.modal-box select,.modal-box textarea{margin-bottom:13px}
 .modal-actions{display:flex;gap:10px;margin-top:12px}
 .modal-actions button{flex:1;padding:12px;border-radius:20px;font-weight:700}
 .secondary{background:#eee}
-.empty{text-align:center;padding:25px;color:#777}
+
 @media(max-width:700px){
- header{padding:0 5%;height:65px}
- #menu-toggle{display:block}
- nav{display:none;position:absolute;top:65px;left:0;width:100%;background:#171717;padding:20px;flex-direction:column;align-items:flex-start}
- nav.show{display:flex}
- .hero{min-height:490px;padding:55px 7%}
- section{padding:55px 5%}
- .section-title h2{font-size:27px}
- .hotel-form{grid-template-columns:1fr}
- .hotel-form button{grid-column:auto}
- .search-row{flex-wrap:wrap}
- .search-row input{flex-basis:100%}
+  header{padding:14px 5%}
+  #menu-toggle{display:block}
+  nav{
+    display:none;position:absolute;top:60px;left:0;width:100%;
+    background:#171717;padding:20px;flex-direction:column;align-items:flex-start
+  }
+  nav.show{display:flex}
+  .hero{min-height:470px;padding:50px 7%}
+  section{padding:50px 5%}
+  .search-row{flex-wrap:wrap}
+  .search-row input{flex-basis:100%}
+  .search-row select{width:100%}
+  .heading h2{font-size:26px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
- <a class="logo" href="#home">👨‍🍳 FOOD <span>CHEF</span></a>
- <button id="menu-toggle" aria-label="Open menu">☰</button>
- <nav id="main-nav">
-  <a href="#home">Home</a>
-  <a href="#menu">Menu</a>
-  <a href="#hotels">Find Hotels</a>
-  <a href="#about">About</a>
-  <a href="#orders">My Orders</a>
-  <button class="cart-button" onclick="openCart()">🛒 Cart <span id="cart-count">0</span></button>
- </nav>
+  <a href="#home" class="logo">👨‍🍳 FOOD <span>CHEF</span></a>
+  <button id="menu-toggle">☰</button>
+  <nav id="main-nav">
+    <a href="#home">Home</a>
+    <a href="#restaurant-order">Choose Restaurant</a>
+    <a href="#menu">Menu</a>
+    <a href="#orders">My Orders</a>
+    <button class="cart-btn" onclick="openCart()">🛒 Cart <span id="cart-count">0</span></button>
+  </nav>
 </header>
 
-<main>
+<!-- HOME AND VIDEO -->
 <section class="hero" id="home">
- <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200">
-  <source src="food-chef-ad.mp4" type="video/mp4">
- </video>
- <div class="hero-content">
-  <div class="tag">WELCOME TO FOOD CHEF</div>
-  <h1>Fresh Food.<br><span>Happy Moments.</span></h1>
-  <p>Enjoy delicious burgers, pizza, snacks and desserts. Discover your favorite food and make every meal special.</p>
-  <a class="primary" href="#menu">Explore Our Menu →</a>
- </div>
-</section>
-
-<section id="menu">
- <div class="section-title"><small>OUR SPECIAL MENU</small><h2>Discover Our Delicious Food</h2></div>
- <div class="categories" id="categories"></div>
- <div class="search-row">
-  <input id="food-search" placeholder="🔍 Search your favorite food..." oninput="renderFoods()">
-  <select id="food-sort" onchange="renderFoods()">
-   <option value="default">Sort by</option>
-   <option value="low">Price: Low to High</option>
-   <option value="high">Price: High to Low</option>
-   <option value="name">Name: A to Z</option>
-  </select>
- </div>
- <div class="food-grid" id="food-grid"></div>
- <p id="no-food" class="empty" style="display:none">No food items found.</p>
-</section>
-
-<section class="hotel-section" id="hotels">
- <div class="section-title"><small>EXPLORE TAMIL NADU</small><h2>Find Hotels & Restaurants</h2></div>
- <div class="hotel-box">
-  <div class="hotel-form">
-   <div><label for="hotel-city">Select City / District</label>
-    <select id="hotel-city">
-     <option value="Salem">Salem</option><option value="Erode">Erode</option>
-     <option value="Chennai">Chennai</option><option value="Coimbatore">Coimbatore</option>
-     <option value="Madurai">Madurai</option><option value="Tiruchirappalli">Tiruchirappalli</option>
-     <option value="Tiruvannamalai">Tiruvannamalai</option><option value="Vellore">Vellore</option>
-     <option value="Tiruppur">Tiruppur</option><option value="Thanjavur">Thanjavur</option>
-     <option value="Tirunelveli">Tirunelveli</option><option value="Kanyakumari">Kanyakumari</option>
-     <option value="Ooty">Ooty</option><option value="Kodaikanal">Kodaikanal</option>
-     <option value="Yercaud">Yercaud</option><option value="Theni">Theni</option>
-     <option value="Dindigul">Dindigul</option><option value="Karur">Karur</option>
-     <option value="Namakkal">Namakkal</option><option value="Krishnagiri">Krishnagiri</option>
-     <option value="Dharmapuri">Dharmapuri</option><option value="Cuddalore">Cuddalore</option>
-     <option value="Villupuram">Villupuram</option><option value="Nagapattinam">Nagapattinam</option>
-     <option value="Ramanathapuram">Ramanathapuram</option><option value="Sivaganga">Sivaganga</option>
-     <option value="Virudhunagar">Virudhunagar</option><option value="Thoothukudi">Thoothukudi</option>
-     <option value="Ariyalur">Ariyalur</option><option value="Perambalur">Perambalur</option>
-     <option value="Tenkasi">Tenkasi</option><option value="Ranipet">Ranipet</option>
-     <option value="Tirupathur">Tirupathur</option><option value="Kallakurichi">Kallakurichi</option>
-     <option value="Mayiladuthurai">Mayiladuthurai</option><option value="Chengalpattu">Chengalpattu</option>
-     <option value="Tiruvallur">Tiruvallur</option>
-    </select>
-   </div>
-   <div><label for="place-type">Choose Place Type</label>
-    <select id="place-type">
-     <option value="restaurants">Restaurants</option>
-     <option value="hotels">Hotels</option>
-     <option value="luxury hotels">Luxury Hotels</option>
-     <option value="budget hotels">Budget Hotels</option>
-     <option value="resorts">Resorts</option>
-     <option value="family restaurants">Family Restaurants</option>
-    </select>
-   </div>
-   <div style="grid-column:1/-1"><label for="place-name">Hotel / Restaurant Name (Optional)</label>
-    <input id="place-name" placeholder="Enter a name, or leave blank">
-   </div>
-   <button class="full" onclick="findPlaces()">Find Places on Google Maps →</button>
+  <video autoplay muted loop playsinline controls poster="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200">
+    <source src="food-chef-ad.mp4" type="video/mp4">
+    Your browser does not support video.
+  </video>
+  <div class="hero-content">
+    <small>WELCOME TO FOOD CHEF</small>
+    <h1>Fresh Food.<br><span>Happy Moments.</span></h1>
+    <p>Choose your favorite restaurant, explore its menu and order delicious snacks and meals.</p>
+    <a href="#restaurant-order" class="primary-btn">Order Now →</a>
   </div>
-  <div class="hotel-result" id="hotel-result"></div>
-  <p class="hotel-note">Search real-world places and directions using Google Maps. Availability and prices are confirmed by the individual business.</p>
- </div>
 </section>
 
-<section class="about" id="about">
- <div class="section-title"><small>OUR STORY</small><h2>About Food Chef</h2></div>
- <p>Welcome to Food Chef! We bring delicious food, fresh flavors and a joyful experience together. Explore our menu, add your favorites to the cart and enjoy your food journey.</p>
+<!-- RESTAURANT SELECTION -->
+<section class="order-section" id="restaurant-order">
+  <div class="heading">
+    <small>ORDER FROM YOUR FAVORITE HOTEL</small>
+    <h2>Choose Your Restaurant</h2>
+  </div>
+
+  <div class="order-box">
+    <div class="form-group">
+      <label for="order-city">Select City</label>
+      <select id="order-city" onchange="updateRestaurants()">
+        <option value="Erode">Erode</option>
+        <option value="Salem">Salem</option>
+        <option value="Coimbatore">Coimbatore</option>
+        <option value="Chennai">Chennai</option>
+        <option value="Madurai">Madurai</option>
+        <option value="Tiruchirappalli">Tiruchirappalli</option>
+        <option value="Tiruvannamalai">Tiruvannamalai</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="order-restaurant">Select Restaurant</label>
+      <select id="order-restaurant" onchange="selectRestaurant()">
+        <option value="Hotel Saravana Bhavan">Hotel Saravana Bhavan (Demo selection)</option>
+        <option value="Other Restaurant">Other Restaurant</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="other-restaurant-group" style="display:none">
+      <label for="other-restaurant">Enter Restaurant Name</label>
+      <input id="other-restaurant" placeholder="Enter restaurant name">
+    </div>
+
+    <button class="full-btn" onclick="loadRestaurantMenu()">View Restaurant Menu →</button>
+    <p class="restaurant-status" id="restaurant-status">Choose a restaurant to view its food menu.</p>
+    <p class="note">Restaurant availability and menu prices must be confirmed by the restaurant. This demo does not connect to restaurant systems.</p>
+  </div>
 </section>
 
+<!-- FOOD MENU -->
+<section class="menu-section" id="menu">
+  <div class="heading">
+    <small>OUR DELICIOUS FOOD</small>
+    <h2 id="menu-heading">Choose a Restaurant First</h2>
+  </div>
+
+  <div class="categories" id="categories"></div>
+
+  <div class="search-row">
+    <input id="food-search" placeholder="🔍 Search food..." oninput="renderFoods()">
+    <select id="food-sort" onchange="renderFoods()">
+      <option value="default">Sort by</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+      <option value="name">Name: A to Z</option>
+    </select>
+  </div>
+
+  <div class="food-grid" id="food-grid"></div>
+  <p class="empty" id="no-food" style="display:none">No food items available.</p>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="heading">
+    <small>OUR STORY</small>
+    <h2>About Food Chef</h2>
+  </div>
+  <p>Food Chef helps customers discover restaurant menus and select their favorite food. Choose a restaurant, add food to your cart and place your order.</p>
+</section>
+
+<!-- ORDER HISTORY -->
 <section id="orders">
- <div class="section-title"><small>YOUR FOOD JOURNEY</small><h2>My Orders & Tracking</h2></div>
- <div class="orders-list" id="orders-list"></div>
+  <div class="heading">
+    <small>YOUR FOOD JOURNEY</small>
+    <h2>My Orders & Tracking</h2>
+  </div>
+  <div class="orders-list" id="orders-list"></div>
 </section>
-</main>
 
 <footer>© 2026 FOOD CHEF | Made with ❤️ for Food Lovers</footer>
 
+<!-- CART -->
 <div class="overlay" id="overlay" onclick="closeCart()"></div>
+
 <aside class="drawer" id="cart-drawer">
- <div class="drawer-head"><h2>🛒 Your Cart</h2><button class="close" onclick="closeCart()">×</button></div>
- <div id="cart-items"></div>
- <div class="cart-total"><span>Total</span><span id="cart-total">₹0</span></div>
- <button class="full" onclick="checkout()">Proceed to Checkout</button>
+  <div class="drawer-head">
+    <h2>🛒 Your Cart</h2>
+    <button class="close-btn" onclick="closeCart()">×</button>
+  </div>
+  <div id="cart-items"></div>
+  <div class="total"><span>Total</span><span id="cart-total">₹0</span></div>
+  <button class="full-btn" onclick="checkout()">Proceed to Checkout</button>
 </aside>
 
+<!-- CHECKOUT -->
 <div class="modal" id="checkout-modal">
- <div class="modal-box">
-  <h2>Complete Your Order</h2>
-  <form id="checkout-form">
-   <label>Your Name</label><input id="customer-name" required placeholder="Enter your name">
-   <label>Phone Number</label><input id="customer-phone" required type="tel" pattern="[0-9]{10}" placeholder="10-digit mobile number">
-   <label>Delivery Address</label><textarea id="customer-address" required rows="3" placeholder="Enter your full address"></textarea>
-   <label>Payment Method</label>
-   <select id="payment-method"><option>Cash on Delivery</option><option>UPI (Demo Only)</option></select>
-   <div class="cart-total"><span>Order Total</span><span id="checkout-total">₹0</span></div>
-   <div class="modal-actions"><button type="button" class="secondary" onclick="closeModal('checkout-modal')">Cancel</button><button type="submit" class="primary">Place Order</button></div>
-  </form>
- </div>
+  <div class="modal-box">
+    <h2>Complete Your Order</h2>
+    <form id="checkout-form">
+      <label>Your Name</label>
+      <input id="customer-name" required placeholder="Enter your name">
+
+      <label>Phone Number</label>
+      <input id="customer-phone" type="tel" pattern="[0-9]{10}" required placeholder="10-digit mobile number">
+
+      <label>Delivery Address</label>
+      <textarea id="customer-address" rows="3" required placeholder="Enter delivery address"></textarea>
+
+      <label>Payment Method</label>
+      <select id="payment-method">
+        <option>Cash on Delivery</option>
+        <option>UPI (Demo Only)</option>
+      </select>
+
+      <div class="total">
+        <span>Order Total</span>
+        <span id="checkout-total">₹0</span>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="secondary" onclick="closeModal('checkout-modal')">Cancel</button>
+        <button type="submit" class="primary-btn">Place Order</button>
+      </div>
+    </form>
+  </div>
 </div>
 
+<!-- ORDER SUCCESS -->
 <div class="modal" id="success-modal">
- <div class="modal-box" style="text-align:center">
-  <h2>🎉 Order Placed!</h2><p id="success-message">Thank you for ordering with Food Chef.</p>
-  <button class="full" style="margin-top:20px" onclick="closeModal('success-modal');document.getElementById('orders').scrollIntoView()">View My Orders</button>
- </div>
+  <div class="modal-box" style="text-align:center">
+    <h2>🎉 Order Placed!</h2>
+    <p id="success-message">Thank you for ordering.</p>
+    <button class="full-btn" style="margin-top:20px" onclick="closeModal('success-modal');document.getElementById('orders').scrollIntoView()">View My Orders</button>
+  </div>
 </div>
 
 <script>
-const foods=[
+// FOOD MENU DATA
+const foods = [
 {id:1,name:"Classic Burger",cat:"Burgers",price:129,desc:"Juicy burger with fresh vegetables.",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600"},
-{id:2,name:"Cheese Burger",cat:"Burgers",price:159,desc:"Delicious burger with melted cheese.",img:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600"},
+{id:2,name:"Cheese Burger",cat:"Burgers",price:159,desc:"Burger with melted cheese.",img:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600"},
 {id:3,name:"Chicken Burger",cat:"Burgers",price:179,desc:"Crispy chicken burger.",img:"https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600"},
-{id:4,name:"Double Burger",cat:"Burgers",price:219,desc:"Double layers of burger goodness.",img:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600"},
+{id:4,name:"Double Burger",cat:"Burgers",price:219,desc:"Double layer burger.",img:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600"},
 {id:5,name:"Margherita Pizza",cat:"Pizza",price:199,desc:"Classic cheese pizza.",img:"https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600"},
-{id:6,name:"Pepperoni Pizza",cat:"Pizza",price:249,desc:"Pizza topped with pepperoni.",img:"https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600"},
+{id:6,name:"Pepperoni Pizza",cat:"Pizza",price:249,desc:"Pepperoni pizza.",img:"https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600"},
 {id:7,name:"Veggie Pizza",cat:"Pizza",price:219,desc:"Fresh vegetable pizza.",img:"https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600"},
 {id:8,name:"French Fries",cat:"Snacks",price:89,desc:"Golden crispy fries.",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600"},
 {id:9,name:"Peri Peri Fries",cat:"Snacks",price:119,desc:"Spicy peri peri fries.",img:"https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=600"},
@@ -263,7 +372,7 @@ const foods=[
 {id:19,name:"Chocolate Cake",cat:"Desserts",price:129,desc:"Rich chocolate cake.",img:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600"},
 {id:20,name:"Ice Cream",cat:"Desserts",price:79,desc:"Creamy ice cream.",img:"https://images.unsplash.com/photo-1501446529957-6226bd447c46?w=600"},
 {id:21,name:"Chocolate Donut",cat:"Desserts",price:89,desc:"Soft chocolate donut.",img:"https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600"},
-{id:22,name:"Waffles",cat:"Desserts",price:139,desc:"Golden waffles with toppings.",img:"https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=600"},
+{id:22,name:"Waffles",cat:"Desserts",price:139,desc:"Golden waffles.",img:"https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=600"},
 {id:23,name:"Cold Coffee",cat:"Drinks",price:99,desc:"Chilled creamy coffee.",img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600"},
 {id:24,name:"Fresh Lime Juice",cat:"Drinks",price:59,desc:"Refreshing lime juice.",img:"https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?w=600"},
 {id:25,name:"Strawberry Milkshake",cat:"Drinks",price:119,desc:"Sweet strawberry shake.",img:"https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600"},
@@ -276,129 +385,370 @@ const foods=[
 {id:32,name:"Mango Smoothie",cat:"Drinks",price:109,desc:"Fresh mango smoothie.",img:"https://images.unsplash.com/photo-1502741224143-90386d7f8c82?w=600"}
 ];
 
+// DEMO RESTAURANT MENUS
+// Replace these sample menu IDs and prices with restaurant-confirmed data.
+const restaurantMenus = {
+  "Hotel Saravana Bhavan": {
+    city:"Erode",
+    menu:[
+      {id:11,price:89},
+      {id:12,price:40},
+      {id:17,price:89}
+    ]
+  },
+  "Other Restaurant": {
+    city:"Erode",
+    menu:foods.map(f=>({id:f.id,price:f.price}))
+  }
+};
+
+let selectedCity="Erode";
+let selectedRestaurant="";
+let restaurantMenuIds=[];
 let activeCategory="All";
+
 let cart=JSON.parse(localStorage.getItem("foodChefCart")||"[]");
 let orders=JSON.parse(localStorage.getItem("foodChefOrders")||"[]");
 
-function saveCart(){localStorage.setItem("foodChefCart",JSON.stringify(cart));}
-function saveOrders(){localStorage.setItem("foodChefOrders",JSON.stringify(orders));}
+function saveCart(){
+  localStorage.setItem("foodChefCart",JSON.stringify(cart));
+}
+function saveOrders(){
+  localStorage.setItem("foodChefOrders",JSON.stringify(orders));
+}
+
+function updateRestaurants(){
+  const city=document.getElementById("order-city").value;
+  const select=document.getElementById("order-restaurant");
+  const otherGroup=document.getElementById("other-restaurant-group");
+
+  if(city==="Erode"){
+    select.innerHTML=`
+      <option value="Hotel Saravana Bhavan">Hotel Saravana Bhavan (Demo selection)</option>
+      <option value="Other Restaurant">Other Restaurant</option>`;
+  }else{
+    select.innerHTML=`<option value="Other Restaurant">Enter a restaurant name</option>`;
+  }
+
+  otherGroup.style.display="none";
+  selectedRestaurant="";
+  restaurantMenuIds=[];
+  document.getElementById("restaurant-status").textContent=
+    "Select a restaurant and view its menu.";
+  renderFoods();
+}
+
+function selectRestaurant(){
+  const value=document.getElementById("order-restaurant").value;
+  document.getElementById("other-restaurant-group").style.display=
+    value==="Other Restaurant"?"block":"none";
+}
+
+function loadRestaurantMenu(){
+  selectedCity=document.getElementById("order-city").value;
+  const choice=document.getElementById("order-restaurant").value;
+
+  selectedRestaurant=choice==="Other Restaurant"
+    ?document.getElementById("other-restaurant").value.trim()
+    :choice;
+
+  if(!selectedRestaurant){
+    alert("Please enter a restaurant name.");
+    return;
+  }
+
+  if(cart.length && cart[0].restaurant!==selectedRestaurant){
+    alert("Please complete or clear your existing cart before switching restaurants.");
+    return;
+  }
+
+  let restaurant=restaurantMenus[selectedRestaurant];
+
+  if(!restaurant){
+    alert("This restaurant does not have a menu configured yet. Please add its confirmed menu first.");
+    return;
+  }
+
+  if(restaurant.city!==selectedCity){
+    alert("This demo restaurant is configured for Erode only.");
+    return;
+  }
+
+  restaurantMenuIds=restaurant.menu.map(x=>x.id);
+  activeCategory="All";
+
+  document.getElementById("menu-heading").textContent=
+    selectedRestaurant+" Menu";
+
+  document.getElementById("restaurant-status").textContent=
+    "Menu loaded: "+selectedRestaurant+" — "+selectedCity;
+
+  renderCategories();
+  renderFoods();
+
+  document.getElementById("menu").scrollIntoView({behavior:"smooth"});
+}
 
 function renderCategories(){
- const cats=["All",...new Set(foods.map(f=>f.cat))];
- document.getElementById("categories").innerHTML=cats.map(c=>
- `<button class="category ${activeCategory===c?"active":""}" onclick="setCategory('${c}')">${c}</button>`).join("");
+  const available=foods.filter(f=>restaurantMenuIds.includes(f.id));
+  const categories=["All",...new Set(available.map(f=>f.cat))];
+
+  document.getElementById("categories").innerHTML=categories.map(c=>`
+    <button class="category ${activeCategory===c?"active":""}"
+    onclick="setCategory('${c}')">${c}</button>
+  `).join("");
 }
-function setCategory(c){activeCategory=c;renderCategories();renderFoods();}
+
+function setCategory(category){
+  activeCategory=category;
+  renderCategories();
+  renderFoods();
+}
 
 function renderFoods(){
- let list=foods.filter(f=>(activeCategory==="All"||f.cat===activeCategory)&&
- f.name.toLowerCase().includes(document.getElementById("food-search").value.toLowerCase()));
- const sort=document.getElementById("food-sort").value;
- if(sort==="low")list.sort((a,b)=>a.price-b.price);
- if(sort==="high")list.sort((a,b)=>b.price-a.price);
- if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
- document.getElementById("no-food").style.display=list.length?"none":"block";
- document.getElementById("food-grid").innerHTML=list.map(f=>`
- <article class="food-card">
-  <div class="food-image"><img src="${f.img}" alt="${f.name}" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=Food+Chef'"></div>
-  <div class="food-info"><h3>${f.name}</h3><p>${f.desc}</p>
-   <div class="food-bottom"><span class="price">₹${f.price}</span>
-   <button class="add-button" onclick="addToCart(${f.id})">+ Add</button></div>
-  </div>
- </article>`).join("");
+  const search=document.getElementById("food-search").value.toLowerCase();
+
+  let list=foods.filter(f=>
+    restaurantMenuIds.includes(f.id) &&
+    (activeCategory==="All"||f.cat===activeCategory) &&
+    f.name.toLowerCase().includes(search)
+  );
+
+  const sort=document.getElementById("food-sort").value;
+  if(sort==="low")list.sort((a,b)=>a.price-b.price);
+  if(sort==="high")list.sort((a,b)=>b.price-a.price);
+  if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
+
+  document.getElementById("no-food").style.display=list.length?"none":"block";
+
+  document.getElementById("food-grid").innerHTML=list.map(f=>`
+    <article class="food-card">
+      <div class="food-image">
+        <img src="${f.img}" alt="${f.name}" loading="lazy"
+        onerror="this.src='https://placehold.co/600x400?text=Food+Chef'">
+      </div>
+      <div class="food-info">
+        <h3>${f.name}</h3>
+        <p>${f.desc}</p>
+        <div class="food-bottom">
+          <span class="price">₹${getRestaurantPrice(f.id)}</span>
+          <button class="add-btn" onclick="addToCart(${f.id})">+ Add</button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function getRestaurantPrice(id){
+  const menu=restaurantMenus[selectedRestaurant];
+  const item=menu?.menu.find(x=>x.id===id);
+  return item?item.price:foods.find(f=>f.id===id).price;
 }
 
 function addToCart(id){
- const food=foods.find(f=>f.id===id);
- const found=cart.find(i=>i.id===id);
- if(found)found.qty++;else cart.push({...food,qty:1});
- saveCart();updateCart();openCart();
+  if(!selectedRestaurant){
+    alert("Please choose a restaurant first.");
+    return;
+  }
+
+  if(!restaurantMenuIds.includes(id)){
+    alert("This food is not available in this restaurant menu.");
+    return;
+  }
+
+  if(cart.length&&cart[0].restaurant!==selectedRestaurant){
+    alert("Your cart contains food from another restaurant. Complete or clear that order first.");
+    return;
+  }
+
+  const food=foods.find(f=>f.id===id);
+  const price=getRestaurantPrice(id);
+  const found=cart.find(i=>i.id===id);
+
+  if(found){
+    found.qty++;
+  }else{
+    cart.push({
+      id:food.id,
+      name:food.name,
+      desc:food.desc,
+      img:food.img,
+      price:price,
+      qty:1,
+      restaurant:selectedRestaurant,
+      city:selectedCity
+    });
+  }
+
+  saveCart();
+  updateCart();
+  openCart();
 }
+
 function updateCart(){
- document.getElementById("cart-count").textContent=cart.reduce((s,i)=>s+i.qty,0);
- document.getElementById("cart-items").innerHTML=cart.length?cart.map(i=>`
- <div class="cart-item"><img src="${i.img}" alt="${i.name}">
- <div style="flex:1"><h4>${i.name}</h4><p>₹${i.price} each</p>
- <div class="qty"><button onclick="changeQty(${i.id},-1)">−</button>${i.qty}<button onclick="changeQty(${i.id},1)">+</button></div></div>
- <b>₹${i.price*i.qty}</b></div>`).join(""):'<p class="empty">Your cart is empty.</p>';
- const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
- document.getElementById("cart-total").textContent="₹"+total;
- document.getElementById("checkout-total").textContent="₹"+total;
+  document.getElementById("cart-count").textContent=
+    cart.reduce((s,i)=>s+i.qty,0);
+
+  document.getElementById("cart-items").innerHTML=cart.length
+    ?cart.map(i=>`
+      <div class="cart-item">
+        <img src="${i.img}" alt="${i.name}">
+        <div style="flex:1">
+          <h4>${i.name}</h4>
+          <p>₹${i.price} each</p>
+          <div class="qty">
+            <button onclick="changeQty(${i.id},-1)">−</button>
+            ${i.qty}
+            <button onclick="changeQty(${i.id},1)">+</button>
+          </div>
+        </div>
+        <b>₹${i.price*i.qty}</b>
+      </div>
+    `).join("")
+    :'<p class="empty">Your cart is empty.</p>';
+
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById("cart-total").textContent="₹"+total;
+  document.getElementById("checkout-total").textContent="₹"+total;
 }
-function changeQty(id,n){
- const item=cart.find(i=>i.id===id);
- if(item){item.qty+=n;if(item.qty<=0)cart=cart.filter(i=>i.id!==id);}
- saveCart();updateCart();
+
+function changeQty(id,change){
+  const item=cart.find(i=>i.id===id);
+  if(!item)return;
+
+  item.qty+=change;
+  if(item.qty<=0)cart=cart.filter(i=>i.id!==id);
+
+  saveCart();
+  updateCart();
 }
-function openCart(){document.getElementById("cart-drawer").classList.add("open");document.getElementById("overlay").classList.add("show");}
-function closeCart(){document.getElementById("cart-drawer").classList.remove("open");document.getElementById("overlay").classList.remove("show");}
+
+function openCart(){
+  document.getElementById("cart-drawer").classList.add("open");
+  document.getElementById("overlay").classList.add("show");
+}
+function closeCart(){
+  document.getElementById("cart-drawer").classList.remove("open");
+  document.getElementById("overlay").classList.remove("show");
+}
 function checkout(){
- if(!cart.length){alert("Please add food to your cart first.");return;}
- closeCart();document.getElementById("checkout-modal").classList.add("show");
-}
-function closeModal(id){document.getElementById(id).classList.remove("show");}
+  if(!cart.length){
+    alert("Please add food to your cart first.");
+    return;
+  }
 
+  closeCart();
+  document.getElementById("checkout-modal").classList.add("show");
+}
+function closeModal(id){
+  document.getElementById(id).classList.remove("show");
+}
+
+// PLACE ORDER
 document.getElementById("checkout-form").addEventListener("submit",function(e){
- e.preventDefault();
- if(!cart.length)return;
- const order={
-  id:"FC"+Date.now().toString().slice(-7),
-  customer:document.getElementById("customer-name").value,
-  phone:document.getElementById("customer-phone").value,
-  address:document.getElementById("customer-address").value,
-  payment:document.getElementById("payment-method").value,
-  total:cart.reduce((s,i)=>s+i.price*i.qty,0),
-  items:cart.map(i=>({name:i.name,qty:i.qty,price:i.price})),
-  stage:0,date:new Date().toLocaleString()
- };
- orders.unshift(order);saveOrders();
- cart=[];saveCart();updateCart();renderOrders();
- closeModal("checkout-modal");
- document.getElementById("success-message").textContent="Your order "+order.id+" has been saved!";
- document.getElementById("success-modal").classList.add("show");
- this.reset();
+  e.preventDefault();
+
+  if(!cart.length)return;
+
+  const restaurant=cart[0].restaurant;
+  const city=cart[0].city;
+
+  const order={
+    id:"FC"+Date.now().toString().slice(-7),
+    customer:document.getElementById("customer-name").value,
+    phone:document.getElementById("customer-phone").value,
+    address:document.getElementById("customer-address").value,
+    payment:document.getElementById("payment-method").value,
+    restaurant:restaurant,
+    city:city,
+    total:cart.reduce((s,i)=>s+i.price*i.qty,0),
+    items:cart.map(i=>({
+      name:i.name,
+      qty:i.qty,
+      price:i.price
+    })),
+    stage:0,
+    date:new Date().toLocaleString()
+  };
+
+  orders.unshift(order);
+  saveOrders();
+
+  cart=[];
+  saveCart();
+  updateCart();
+  renderOrders();
+
+  closeModal("checkout-modal");
+
+  document.getElementById("success-message").textContent=
+    "Your order "+order.id+" has been saved for "+restaurant+".";
+
+  document.getElementById("success-modal").classList.add("show");
+  this.reset();
 });
 
+// DEMO ORDER TRACKING
 function advanceOrder(id){
- const order=orders.find(o=>o.id===id);
- if(order&&order.stage<3){order.stage++;saveOrders();renderOrders();}
+  const order=orders.find(o=>o.id===id);
+  if(order&&order.stage<3){
+    order.stage++;
+    saveOrders();
+    renderOrders();
+  }
 }
+
 function renderOrders(){
- const box=document.getElementById("orders-list");
- if(!orders.length){box.innerHTML='<p class="empty">You have not placed any orders yet.</p>';return;}
- const stages=["Order Placed","Preparing Food","Out for Delivery","Delivered"];
- box.innerHTML=orders.map(o=>`
- <div class="order-card">
- <h3>Order #${o.id}</h3><p>Customer: ${o.customer}</p>
- <p>Address: ${o.address}</p><p>Payment: ${o.payment}</p>
- <p>Items: ${o.items.map(i=>i.name+" × "+i.qty).join(", ")}</p>
- <p><b>Total: ₹${o.total}</b></p><p>Order date: ${o.date}</p>
- <p><b>Tracking: ${stages[o.stage]||stages[0]}</b></p>
- ${o.stage<3?`<button onclick="advanceOrder('${o.id}')">Demo: Next Tracking Stage</button>`:"<p>✅ Order completed</p>"}
- </div>`).join("");
+  const box=document.getElementById("orders-list");
+
+  if(!orders.length){
+    box.innerHTML='<p class="empty">You have not placed any orders yet.</p>';
+    return;
+  }
+
+  const stages=[
+    "Order Placed",
+    "Preparing Food",
+    "Out for Delivery",
+    "Delivered"
+  ];
+
+  box.innerHTML=orders.map(o=>`
+    <div class="order-card">
+      <h3>Order #${o.id}</h3>
+      <p><b>Restaurant:</b> ${o.restaurant||"Not specified"}</p>
+      <p><b>City:</b> ${o.city||""}</p>
+      <p><b>Customer:</b> ${o.customer}</p>
+      <p><b>Delivery address:</b> ${o.address}</p>
+      <p><b>Phone:</b> ${o.phone}</p>
+      <p><b>Payment:</b> ${o.payment}</p>
+      <p><b>Items:</b> ${o.items.map(i=>i.name+" × "+i.qty).join(", ")}</p>
+      <p><b>Total:</b> ₹${o.total}</p>
+      <p><b>Date:</b> ${o.date}</p>
+      <p><b>Tracking:</b> ${stages[o.stage]||stages[0]}</p>
+      ${o.stage<3
+        ?`<button onclick="advanceOrder('${o.id}')">Demo: Next Tracking Stage</button>`
+        :"<p>✅ Order completed</p>"}
+    </div>
+  `).join("");
 }
 
-function findPlaces(){
- const city=document.getElementById("hotel-city").value;
- const type=document.getElementById("place-type").value;
- const name=document.getElementById("place-name").value.trim();
- const query=(name?name+" ":"")+type+" in "+city+", Tamil Nadu";
- const url="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(query);
- document.getElementById("hotel-result").innerHTML=
- `<p>Search results for <b>${query}</b></p><a href="${url}" target="_blank" rel="noopener">Open Google Maps →</a>`;
-}
-
+// MOBILE NAVIGATION
 document.getElementById("menu-toggle").addEventListener("click",()=>{
- document.getElementById("main-nav").classList.toggle("show");
+  document.getElementById("main-nav").classList.toggle("show");
 });
-document.querySelectorAll("#main-nav a").forEach(a=>a.addEventListener("click",()=>{
- document.getElementById("main-nav").classList.remove("show");
-}));
 
-renderCategories();
-renderFoods();
+document.querySelectorAll("#main-nav a").forEach(a=>{
+  a.addEventListener("click",()=>{
+    document.getElementById("main-nav").classList.remove("show");
+  });
+});
+
+// INITIAL DISPLAY
 updateCart();
 renderOrders();
+updateRestaurants();
 </script>
+
 </body>
 </html>
