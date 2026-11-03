@@ -1,253 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f7f3e9">
-  <title>FOOD CHEF — A little joy in every bite</title>
-  <meta name="description" content="Discover delicious snacks and order your favourites with FOOD CHEF.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FOOD CHEF – Premium Snacks & 3D Runway Experience</title>
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Michroma&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="announcement"><span>✦</span> Freshly made happiness, delivered to your doorstep <span>✦</span></div>
 
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="Food Chef home">
-      <span class="brand-mark">♨</span>
-      <span>FOOD<span class="brand-gold">CHEF</span><small>GOOD FOOD. GOOD MOOD.</small></span>
-    </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
-    <nav class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#story">Our story</a>
-      <a href="#menu">The menu</a>
-      <a href="#order">Order</a>
-      <a href="#track">Track order</a>
-    </nav>
-    <button class="cart-button" id="openCart">Bag <span id="cartCount">0</span> <b>↗</b></button>
+  <!-- Sticky Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand" onclick="scrollToSection('hero')">
+        <div class="logo-box">👨‍🍳</div>
+        <div class="brand-text">
+          <span class="brand-title">FOOD <span class="gold-text">CHEF</span></span>
+          <span class="brand-sub">Tamil Nadu Gourmet Snacks</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#menu">Snacks Menu</a>
+        <a href="#order">Order Food</a>
+        <a href="#tracking">Track Order</a>
+        <button class="cart-btn" onclick="toggleCart()">
+          🛒 Cart (<span id="cart-count">0</span>)
+        </button>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-wash"></div>
-      <div class="hero-copy reveal">
-        <p class="eyebrow"><span></span> A TASTE OF HAPPINESS</p>
-        <h1>Little bites.<br><em>Big</em> moments.</h1>
-        <p class="hero-description">From crispy favourites to sweet little treats — discover the kind of food that makes an ordinary day feel special.</p>
-        <div class="hero-actions">
-          <a class="button button-dark" href="#menu">Explore the menu <span>↗</span></a>
-          <a class="text-link" href="#story">Our little story <span>→</span></a>
-        </div>
-        <div class="hero-note">
-          <span class="note-stars">★★★★★</span>
-          <span>Made with care, served with joy</span>
-        </div>
+  <!-- Fullscreen Animated Hero -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <span class="badge">★ Serving All 38 Tamil Nadu Districts</span>
+      <h1 class="hero-heading">
+        Delicious Snacks, <br><span class="gold-text">Delivered Fresh!</span>
+      </h1>
+      <p class="hero-sub">
+        Your favorite snacks, just one order away. Savor piping hot samosas, crunchy masala vadas, momos, and decadent brownies.
+      </p>
+      <div class="hero-cta">
+        <a href="#order" class="btn btn-primary">Order Food Now</a>
+        <a href="#menu" class="btn btn-secondary">Explore Menu</a>
       </div>
-      <div class="hero-art">
-        <div class="hero-image-frame">
-          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=88" alt="Golden crispy Indian snacks">
-        </div>
-        <div class="float-sticker sticker-top">FRESH<br> & TASTY ✦</div>
-        <div class="float-sticker sticker-bottom"><span>₹</span> Good food<br>starts here</div>
-        <span class="orbit orbit-one"></span>
-        <span class="orbit orbit-two"></span>
+    </div>
+  </section>
+
+  <!-- Snacks Menu Section -->
+  <section id="menu" class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">Explore Our <span class="gold-text">Snacks Menu</span></h2>
+      <p class="section-sub">Choose from South Indian savouries, Indo-Chinese bites, fast food, and sweet bakery treats.</p>
+      
+      <!-- Category Tabs -->
+      <div class="filter-bar" id="category-tabs">
+        <button class="filter-tab active" onclick="filterCategory('All')">All</button>
+        <button class="filter-tab" onclick="filterCategory('South Indian')">South Indian</button>
+        <button class="filter-tab" onclick="filterCategory('Chinese')">Chinese</button>
+        <button class="filter-tab" onclick="filterCategory('Fast Food')">Fast Food</button>
+        <button class="filter-tab" onclick="filterCategory('Bakery & Sweets')">Bakery & Sweets</button>
+        <button class="filter-tab" onclick="filterCategory('Special Snacks')">Special Snacks</button>
       </div>
-      <div class="hero-bottom">
-        <span>SCROLL TO DISCOVER</span>
-        <span class="scroll-line"></span>
-        <span>01 / 04</span>
-      </div>
-    </section>
+    </div>
 
-    <section class="marquee" aria-label="Food Chef promise">
-      <div>MADE FRESH <b>✳</b> SHARED WITH LOVE <b>✳</b> GOOD FOOD, GOOD MOOD <b>✳</b> MADE FRESH <b>✳</b> SHARED WITH LOVE <b>✳</b></div>
-    </section>
+    <!-- Snacks Grid -->
+    <div id="snacks-grid" class="grid-container"></div>
+  </section>
 
-    <section class="story section-pad" id="story">
-      <div class="story-image reveal">
-        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85" alt="Freshly prepared food on a table">
-        <span class="image-caption">A LITTLE EXTRA LOVE IN EVERY SERVING</span>
-      </div>
-      <div class="story-copy reveal">
-        <p class="eyebrow">HELLO, FOOD LOVER</p>
-        <h2>Good food brings<br>us <em>closer.</em></h2>
-        <p>At FOOD CHEF, we believe the best moments often happen around good food. That is why we bring together familiar favourites, fun flavours and comforting little treats.</p>
-        <p>Pick your craving, add it to your bag and let the good mood begin.</p>
-        <a class="under-link" href="#menu">Find your favourite <span>↗</span></a>
-        <div class="story-sign">With love, <strong>FOOD CHEF ♡</strong></div>
-      </div>
-    </section>
+  <!-- Order Placement Form with 38 TN Districts -->
+  <section id="order" class="order-section">
+    <div class="form-card">
+      <h2 class="form-title">Direct Restaurant &amp; District Order</h2>
+      <p class="form-sub">Select your Tamil Nadu district and favorite hotel for doorstep dispatch.</p>
 
-    <section class="stats-band">
-      <div class="stat"><strong data-count="32">32+</strong><span>Delicious choices</span></div>
-      <div class="stat"><strong data-count="5">5</strong><span>Food categories</span></div>
-      <div class="stat"><strong>100%</strong><span>Made for happy cravings</span></div>
-    </section>
-
-    <section class="menu-section section-pad" id="menu">
-      <div class="section-heading reveal">
-        <div>
-          <p class="eyebrow">THE GOOD STUFF</p>
-          <h2>Find your <em>craving.</em></h2>
-        </div>
-        <p>From a quick evening snack to a sweet finish, there is something waiting for you.</p>
-      </div>
-
-      <div class="menu-tools">
-        <label class="search-box">
-          <span>⌕</span>
-          <input id="searchInput" type="search" placeholder="Search your favourite snack...">
-        </label>
-        <select id="sortSelect" aria-label="Sort food">
-          <option value="featured">Sort: Featured</option>
-          <option value="low">Price: Low to high</option>
-          <option value="high">Price: High to low</option>
-          <option value="az">Name: A to Z</option>
-        </select>
-      </div>
-
-      <div class="category-tabs" id="categoryTabs">
-        <button class="active" data-category="All">All snacks</button>
-        <button data-category="South Indian">South Indian</button>
-        <button data-category="Chinese">Chinese</button>
-        <button data-category="Fast Food">Fast food</button>
-        <button data-category="Bakery & Sweets">Bakery & sweets</button>
-        <button data-category="Special Snacks">Special snacks</button>
-      </div>
-
-      <div class="food-grid" id="foodGrid"></div>
-      <p class="menu-footnote">Images are illustrative. Availability and final order confirmation are handled by the demo checkout.</p>
-    </section>
-
-    <section class="feature-banner">
-      <div class="feature-photo"></div>
-      <div class="feature-content reveal">
-        <p class="eyebrow">YOUR CRAVING CALLED</p>
-        <h2>Something delicious<br>is just a few taps <em>away.</em></h2>
-        <a class="button button-light" href="#order">Place your order <span>↗</span></a>
-      </div>
-      <span class="banner-spark">✳</span>
-    </section>
-
-    <section class="order-section section-pad" id="order">
-      <div class="section-heading reveal">
-        <div>
-          <p class="eyebrow">LET'S MAKE IT OFFICIAL</p>
-          <h2>Your order, <em>your way.</em></h2>
-        </div>
-        <p>Add your details below to place a demo order. You can also add snacks directly from the menu.</p>
-      </div>
-
-      <div class="order-layout">
-        <form class="order-form" id="orderForm">
-          <div class="form-title"><span>01</span><h3>Delivery details</h3></div>
-
-          <div class="form-grid">
-            <label>Customer name
-              <input name="customerName" required placeholder="Your full name">
-            </label>
-            <label>Mobile number
-              <input name="mobile" required inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number">
-            </label>
-            <label>District
-              <select name="district" id="districtSelect" required>
-                <option value="">Choose your district</option>
-              </select>
-            </label>
-            <label>Restaurant / hotel name
-              <input name="hotel" required placeholder="Enter hotel or restaurant name">
-            </label>
-            <label class="full">Delivery address
-              <textarea name="address" rows="3" required placeholder="Door number, street, area, landmark..."></textarea>
-            </label>
-            <label class="full">Special instructions
-              <textarea name="instructions" rows="2" placeholder="Any extra notes? (optional)"></textarea>
-            </label>
+      <form id="order-form" onsubmit="handlePlaceOrder(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Customer Name *</label>
+            <input required id="cust-name" type="text" placeholder="e.g. Senthil Kumar" />
           </div>
 
-          <div class="form-title food-form-title"><span>02</span><h3>Your food selection</h3></div>
-          <p class="form-hint">Add items from the menu first, or choose an item here.</p>
-          <div class="manual-add">
-            <select id="manualFood"><option value="">Choose a snack</option></select>
-            <input id="manualQty" type="number" min="1" max="20" value="1" aria-label="Quantity">
-            <button type="button" class="button button-dark" id="manualAdd">Add item +</button>
+          <div class="form-group">
+            <label>Mobile Number (10 Digits) *</label>
+            <input required id="cust-mobile" type="tel" maxlength="10" placeholder="e.g. 9841023456" />
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Tamil Nadu District (All 38) *</label>
+            <select id="cust-district" required></select>
           </div>
 
-          <button type="submit" class="button button-gold submit-order">Place demo order <span>↗</span></button>
-          <p class="form-disclaimer">Demo website only: this form does not send your details to a restaurant or arrange real delivery.</p>
-        </form>
-
-        <aside class="order-summary">
-          <div class="summary-top">
-            <p class="eyebrow">YOUR LITTLE BAG</p>
-            <h3>Order summary</h3>
-            <span class="summary-icon">✳</span>
+          <div class="form-group">
+            <label>Hotel / Restaurant Name *</label>
+            <input required id="cust-resto" type="text" placeholder="e.g. Adyar Ananda Bhavan (A2B)" />
           </div>
-          <div id="summaryItems" class="summary-items">
-            <p class="empty-cart">Your bag is waiting for something tasty.</p>
-          </div>
-          <div class="summary-total"><span>Subtotal</span><strong id="subtotal">₹0</strong></div>
-          <div class="summary-total"><span>Delivery estimate</span><strong>₹0</strong></div>
-          <div class="summary-grand"><span>Total</span><strong id="total">₹0</strong></div>
-          <button type="button" class="text-link summary-cart-link" id="summaryOpenCart">Edit your bag <span>→</span></button>
-        </aside>
-      </div>
-    </section>
+        </div>
 
-    <section class="track-section section-pad" id="track">
-      <div class="track-intro reveal">
-        <p class="eyebrow">A LITTLE UPDATE</p>
-        <h2>Where's the <em>goodness?</em></h2>
-        <p>Enter your demo order ID to see its sample journey.</p>
-      </div>
-      <form id="trackForm" class="track-search">
-        <input id="trackId" placeholder="Example: FC123456" aria-label="Order ID">
-        <button class="button button-dark" type="submit">Track order ↗</button>
+        <div class="form-group">
+          <label>Delivery Address with Landmark *</label>
+          <textarea required id="cust-address" rows="2" placeholder="Door No, Street Name, Landmark, Pincode"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Special Instructions (Optional)</label>
+          <input id="cust-instructions" type="text" placeholder="e.g. Extra mint chutney, pack crispy samosas separately" />
+        </div>
+
+        <button type="submit" class="btn btn-primary submit-btn">
+          Confirm &amp; Place Order
+        </button>
       </form>
-      <div id="trackingResult" class="tracking-result">
-        <span class="track-spark">✳</span>
-        <p>Your order journey will appear here after you place an order.</p>
-      </div>
-      <p class="demo-note">Tracking is simulated for demonstration. It is not connected to a live restaurant or delivery partner.</p>
-    </section>
-  </main>
+    </div>
+  </section>
 
+  <!-- 6-Stage Order Tracking -->
+  <section id="tracking" class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">Live Order <span class="gold-text">Tracking</span></h2>
+      <p class="section-sub">Real-time telemetry from kitchen dispatch to your doorstep.</p>
+    </div>
+
+    <div class="tracker-card">
+      <div class="tracker-top">
+        <div>
+          <span class="track-tag">ORDER REFERENCE: #<span id="track-id">FC-84920</span></span>
+          <h3 id="track-name">Karthik Subramanian</h3>
+          <p id="track-resto">Adyar Ananda Bhavan • Chennai District</p>
+        </div>
+        <button class="btn btn-secondary" onclick="advanceStage()">Advance Stage (Demo)</button>
+      </div>
+
+      <!-- Animated 6 Stages -->
+      <div id="stages-container" class="stages-timeline"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
-    <div class="footer-top">
-      <a class="brand footer-brand" href="#home">
-        <span class="brand-mark">♨</span>
-        <span>FOOD<span class="brand-gold">CHEF</span><small>GOOD FOOD. GOOD MOOD.</small></span>
-      </a>
-      <h2>Stay hungry.<br><em>Stay happy.</em></h2>
-      <a class="back-top" href="#home">Back to top ↑</a>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> FOOD CHEF. Made with ♡</span>
-      <span>DELICIOUS MOMENTS START HERE</span>
-      <span>DEMO ORDERING EXPERIENCE</span>
-    </div>
+    <p>© 2026 FOOD CHEF. Premium golden-yellow snacks delivery across all 38 Tamil Nadu districts.</p>
   </footer>
 
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
-    <div class="drawer-head">
-      <div><p class="eyebrow">YOUR SELECTION</p><h3>Your little bag</h3></div>
-      <button id="closeCart" aria-label="Close cart">×</button>
-    </div>
-    <div id="drawerItems" class="drawer-items">
-      <p class="empty-cart">Your bag is empty. Let's fix that!</p>
-    </div>
-    <div class="drawer-bottom">
-      <div class="summary-grand"><span>Total</span><strong id="drawerTotal">₹0</strong></div>
-      <button class="button button-gold drawer-checkout" id="goCheckout">Continue to order ↗</button>
-      <p>Demo checkout · No payment collected</p>
-    </div>
-  </aside>
-
-  <div class="toast" id="toast" role="status"></div>
   <script src="script.js"></script>
 </body>
 </html>
