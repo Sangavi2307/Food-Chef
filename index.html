@@ -1,155 +1,531 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FOOD CHEF – Premium Snacks & 3D Runway Experience</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Michroma&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="style.css" />
+  <title>FOOD CHEF — Luxury Cinematic 3D Food Runway & Ordering</title>
+  <meta name="description" content="A luxury cinematic food ordering experience with an interactive 3D runway depth showcase, animated birthday cake commercial, 32-item menu, and live order tracking." />
+  <meta property="og:title" content="FOOD CHEF — Luxury Cinematic 3D Food Runway & Ordering" />
+  <meta property="og:description" content="A luxury cinematic food ordering experience with an interactive 3D runway depth showcase, animated birthday cake commercial, 32-item menu, and live order tracking." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts: Michroma & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Michroma&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
+  <!-- Preloader Curtain -->
+  <div class="wait" id="wait" aria-hidden="true">
+    <svg class="loader-hat" viewBox="0 0 24 24" fill="none" stroke="#E6B800" stroke-width="1.8">
+      <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/>
+      <line x1="6" y1="17" x2="18" y2="17"/>
+    </svg>
+    <div class="loader-bar"></div>
+  </div>
 
-  <!-- Sticky Navbar -->
-  <header class="navbar">
-    <div class="nav-container">
-      <div class="brand" onclick="scrollToSection('hero')">
-        <div class="logo-box">👨‍🍳</div>
-        <div class="brand-text">
-          <span class="brand-title">FOOD <span class="gold-text">CHEF</span></span>
-          <span class="brand-sub">Tamil Nadu Gourmet Snacks</span>
+  <div class="page">
+    <!-- Top Navigation Bar (3-Zone Contract) -->
+    <header id="siteHeader">
+      <div class="r1">
+        <!-- Zone 1: Wordmark with Golden Chef Hat -->
+        <a class="brand-lockup wide" href="#" aria-label="FOOD CHEF Home">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/>
+            <line x1="6" y1="17" x2="18" y2="17"/>
+          </svg>
+          <span class="brand-title">FOOD <span>CHEF</span></span>
+        </a>
+
+        <!-- Zone 2: Navigation Links -->
+        <nav class="tabs wide" aria-label="Primary Navigation">
+          <a class="on" href="#runwaySection">3D Runway</a>
+          <a href="#cakeSection">Celebration Cake</a>
+          <a href="#menuSection">Gourmet Menu</a>
+          <a href="#orderTracking">Order Tracker</a>
+          <a href="#tnHubs">Kitchen Hubs</a>
+        </nav>
+
+        <!-- Zone 3: Actions (Favorites & Cart) -->
+        <div class="acct wide">
+          <button class="acct-btn" id="btnViewFavorites" aria-label="View Saved Dishes">
+            <svg viewBox="0 0 24 24"><path d="M12 20S3.5 15 3.5 9A4.6 4.6 0 0 1 12 6.6 4.6 4.6 0 0 1 20.5 9C20.5 15 12 20 12 20Z"/></svg>
+            <span>Saved (<span id="favCount">0</span>)</span>
+          </button>
+          <button class="acct-btn cart-btn" id="btnOpenCart" aria-label="Open Cart Drawer">
+            <svg viewBox="0 0 24 24"><path d="M5 8h14l1 13H4Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+            <span>Cart</span>
+            <span class="badge-count" id="cartCount">0</span>
+          </button>
         </div>
       </div>
 
-      <nav class="nav-links">
-        <a href="#hero">Home</a>
-        <a href="#menu">Snacks Menu</a>
-        <a href="#order">Order Food</a>
-        <a href="#tracking">Track Order</a>
-        <button class="cart-btn" onclick="toggleCart()">
-          🛒 Cart (<span id="cart-count">0</span>)
-        </button>
+      <!-- Second Navigation Row: Culinary Department Shortcuts -->
+      <nav class="r2 wide" aria-label="Menu Categories">
+        <a href="#menuSection">Snacks</a>
+        <a href="#menuSection">Stone Oven Pizza</a>
+        <a href="#menuSection">Artisan Burgers</a>
+        <a href="#menuSection">Panini & Sandwiches</a>
+        <a href="#menuSection">Patisserie & Desserts</a>
+        <a href="#cakeSection">Celebration Cakes</a>
+        <a href="#menuSection">Artisan Drinks</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <!-- Fullscreen Animated Hero -->
-  <section id="hero" class="hero-section">
-    <div class="hero-content">
-      <span class="badge">★ Serving All 38 Tamil Nadu Districts</span>
-      <h1 class="hero-heading">
-        Delicious Snacks, <br><span class="gold-text">Delivered Fresh!</span>
-      </h1>
-      <p class="hero-sub">
-        Your favorite snacks, just one order away. Savor piping hot samosas, crunchy masala vadas, momos, and decadent brownies.
-      </p>
-      <div class="hero-cta">
-        <a href="#order" class="btn btn-primary">Order Food Now</a>
-        <a href="#menu" class="btn btn-secondary">Explore Menu</a>
-      </div>
-    </div>
-  </section>
+    <main>
+      <!-- =====================================================================
+           SECTION 2 & 3: CINEMATIC 3D FOOD RUNWAY (Maison Vell Architecture)
+           ===================================================================== -->
+      <section class="runway-section" id="runwaySection" aria-label="Cinematic 3D Food Runway">
+        <div class="runway-viewport">
+          <!-- Runway Stage -->
+          <div class="stage" id="stage" tabindex="0" aria-label="Interactive Food Runway. Drag, scroll or use arrow keys to change dishes.">
+            <!-- Perspective Line holding 6 models/dishes -->
+            <div class="line" id="line"></div>
 
-  <!-- Snacks Menu Section -->
-  <section id="menu" class="section-container">
-    <div class="section-header">
-      <h2 class="section-title">Explore Our <span class="gold-text">Snacks Menu</span></h2>
-      <p class="section-sub">Choose from South Indian savouries, Indo-Chinese bites, fast food, and sweet bakery treats.</p>
-      
-      <!-- Category Tabs -->
-      <div class="filter-bar" id="category-tabs">
-        <button class="filter-tab active" onclick="filterCategory('All')">All</button>
-        <button class="filter-tab" onclick="filterCategory('South Indian')">South Indian</button>
-        <button class="filter-tab" onclick="filterCategory('Chinese')">Chinese</button>
-        <button class="filter-tab" onclick="filterCategory('Fast Food')">Fast Food</button>
-        <button class="filter-tab" onclick="filterCategory('Bakery & Sweets')">Bakery & Sweets</button>
-        <button class="filter-tab" onclick="filterCategory('Special Snacks')">Special Snacks</button>
-      </div>
-    </div>
+            <!-- Intro Typography Overlay -->
+            <div class="intro">
+              <span class="intro-badge wide">Spring Summer 2027 Haute Cuisine</span>
+              <h2 class="wide">A Delicious World Awaits.</h2>
+              <p>Freshly prepared. Beautifully served. Delivered with love. Drag, scroll or swipe to walk our runway of handcrafted signature delicacies.</p>
+              <div class="intro-actions">
+                <a class="cta-primary wide" href="#menuSection">Explore 32 Dishes</a>
+                <a class="cta-secondary wide" href="#cakeSection">Watch 3D Cake</a>
+              </div>
+            </div>
 
-    <!-- Snacks Grid -->
-    <div id="snacks-grid" class="grid-container"></div>
-  </section>
+            <!-- Rolling Look / Dish Tag & Controls -->
+            <div class="tag">
+              <div class="look wide" aria-live="polite">
+                <span>Look</span>
+                <span class="win">
+                  <span class="roll" id="roll"></span>
+                </span>
+              </div>
+              <div class="dish-lead-title" id="activeDishTitle">Saffron Truffle Risotto</div>
+              <div class="dish-lead-price tabular" id="activeDishPrice">$38.00</div>
+              <div class="stage-nav-strip">
+                <button class="stage-arrow-btn" id="btnPrevRunway" aria-label="Previous Runway Dish">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <button class="stage-arrow-btn" id="btnNextRunway" aria-label="Next Runway Dish">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+                <button class="quick-order-btn wide" id="btnQuickOrderLook">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+                  Order This Look
+                </button>
+              </div>
+            </div>
 
-  <!-- Order Placement Form with 38 TN Districts -->
-  <section id="order" class="order-section">
-    <div class="form-card">
-      <h2 class="form-title">Direct Restaurant &amp; District Order</h2>
-      <p class="form-sub">Select your Tamil Nadu district and favorite hotel for doorstep dispatch.</p>
-
-      <form id="order-form" onsubmit="handlePlaceOrder(event)">
-        <div class="form-grid">
-          <div class="form-group">
-            <label>Customer Name *</label>
-            <input required id="cust-name" type="text" placeholder="e.g. Senthil Kumar" />
+            <!-- Custom Gold Ring Cursor -->
+            <div class="ring" id="ring"></div>
           </div>
 
-          <div class="form-group">
-            <label>Mobile Number (10 Digits) *</label>
-            <input required id="cust-mobile" type="tel" maxlength="10" placeholder="e.g. 9841023456" />
+          <!-- Synchronized Companion Product Rail (Right Column) -->
+          <aside class="rail" id="rail" aria-label="Complementary Dish Pairings">
+            <div class="rail-header wide">
+              <span>Runway Pairings</span>
+              <span>12 Items</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION 5: 3D BIRTHDAY CAKE CINEMATIC ADVERTISEMENT
+           ===================================================================== -->
+      <section class="cake-cinematic-section" id="cakeSection" aria-label="Cinematic 3D Birthday Cake">
+        <div class="cake-header-block">
+          <span class="cake-sub wide">3D Cinematic Experience</span>
+          <h2 class="wide">Make Every Celebration Sweeter.</h2>
+          <p>Watch our signature multi-tiered celebration cake separate into floating layers of Bavarian cream, dark Valrhona ganache, and golden almond sponge.</p>
+        </div>
+
+        <div class="cake-stage-container">
+          <!-- 3D Exploded Rig Viewport -->
+          <div class="cake-canvas-wrap" id="cakeCanvasWrap">
+            <div class="sparkle-particles" id="cakeSparkles"></div>
+
+            <div class="cake-3d-rig exploded" id="cake3dRig">
+              <!-- Marble Pedestal Base -->
+              <div class="pedestal"></div>
+
+              <!-- Layer 1: Base Almond Sponge -->
+              <div class="cake-layer cake-layer-base">
+                <div class="layer-disc disc-base"></div>
+              </div>
+
+              <!-- Layer 2: Bavarian Vanilla Cream -->
+              <div class="cake-layer cake-layer-cream">
+                <div class="layer-disc disc-cream"></div>
+              </div>
+
+              <!-- Layer 3: Middle Hazelnut Sponge -->
+              <div class="cake-layer cake-layer-sponge-mid">
+                <div class="layer-disc disc-sponge-mid"></div>
+              </div>
+
+              <!-- Layer 4: Dark Belgian Ganache -->
+              <div class="cake-layer cake-layer-ganache">
+                <div class="layer-disc disc-ganache"></div>
+              </div>
+
+              <!-- Layer 5: Piped Chantilly Rosettes -->
+              <div class="cake-layer cake-layer-piping">
+                <div class="layer-disc disc-piping"></div>
+              </div>
+
+              <!-- Layer 6: Golden Glaze Top with Flame Candle -->
+              <div class="cake-layer cake-layer-top">
+                <div class="layer-disc disc-gold-topper">
+                  <div class="candle-glow">
+                    <div class="candle-flame"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cake Details & Interactive Controls -->
+          <div class="cake-info-card">
+            <h3 class="wide">Celebration 3D Multi-Layer Cake</h3>
+            <span class="cake-quote">“Crafted for moments that deserve to be remembered forever.”</span>
+            <p style="font-size: 13.5px; color: var(--text-mid); line-height: 1.6;">
+              Slow-baked almond sponge soaked in Madagascar vanilla syrup, layered with dark chocolate ganache, fresh wild strawberry compote, and dusted with 24k gold leaf flakes.
+            </p>
+
+            <div class="cake-features">
+              <div class="cake-feature-row">
+                <div class="cake-feature-dot"></div>
+                <span>6 independently sculpted artisan pastry layers</span>
+              </div>
+              <div class="cake-feature-row">
+                <div class="cake-feature-dot"></div>
+                <span>Belgian Valrhona chocolate & fresh strawberries</span>
+              </div>
+              <div class="cake-feature-row">
+                <div class="cake-feature-dot"></div>
+                <span>Complimentary celebration candle & golden presentation box</span>
+              </div>
+            </div>
+
+            <div class="cake-controls">
+              <button class="btn-explode-toggle wide" id="btnToggleExplode">
+                Assemble Cake Layers
+              </button>
+              <button class="btn-cake-order wide" id="btnCakeOrder">
+                Order Celebration Cake · $65.00
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION 4: GOURMET FOOD MENU (32 ITEMS, 7 CATEGORIES, SEARCH & FILTERS)
+           ===================================================================== -->
+      <section class="menu-section" id="menuSection" aria-label="Gourmet Menu">
+        <div class="menu-header-bar">
+          <span class="menu-kicker wide">Culinary Repertoire</span>
+          <h2 class="wide">Gourmet Food Menu</h2>
+          <p>Explore 32 handcrafted recipes prepared to order with farm-fresh organic produce, artisanal cheeses, and authentic spices.</p>
+        </div>
+
+        <!-- Toolbar: Search Box & Category Filters -->
+        <div class="menu-toolbar">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="searchInput" placeholder="Search dish, ingredients or keywords..." />
+          </div>
+
+          <div class="category-pills" id="categoryPills">
+            <!-- Populated via script.js: All, Snacks, Pizza, Burgers, Sandwiches, Desserts, Cakes, Drinks -->
           </div>
         </div>
 
-        <div class="form-grid">
-          <div class="form-group">
-            <label>Tamil Nadu District (All 38) *</label>
-            <select id="cust-district" required></select>
+        <!-- Grid of 32 Food Cards -->
+        <div class="menu-grid" id="menuGrid">
+          <!-- Populated dynamically via script.js -->
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION 7: ANIMATED LIVE ORDER TRACKING
+           ===================================================================== -->
+      <section class="tracking-section" id="orderTracking" aria-label="Live Order Tracking">
+        <div class="tracking-inner">
+          <div class="tracking-top-bar">
+            <div class="tracking-id-block">
+              <h3 class="wide">Live Order Tracking</h3>
+              <p>Tracking Order <strong id="trackingDisplayId" class="tabular">FC-84920-TN</strong> · <span id="trackingHubText">Prepared by: Food Chef Grand Kitchen — Nungambakkam</span></p>
+            </div>
+            <div class="tracking-status-pill">
+              <div class="pulse-dot"></div>
+              <span id="trackingStatusText" class="wide">Order Confirmed</span>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label>Hotel / Restaurant Name *</label>
-            <input required id="cust-resto" type="text" placeholder="e.g. Adyar Ananda Bhavan (A2B)" />
+          <!-- Animated Scooter Road Track -->
+          <div class="scooter-track">
+            <div class="scooter-vehicle" id="scooterVehicle">
+              <div class="scooter-bubble wide">Hot & Fresh</div>
+              <svg class="scooter-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="5.5" cy="17.5" r="3.5"/>
+                <circle cx="18.5" cy="17.5" r="3.5"/>
+                <path d="M15 6h-3a2 2 0 0 0-2 2v4h7l2 4"/>
+                <path d="M9 18h6"/>
+                <path d="M19 17a3 3 0 0 0-3-3H9"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- 5 Progress Stages -->
+          <div class="timeline-stages">
+            <div class="timeline-progress-bar" id="timelineProgressBar" style="width: 0%;"></div>
+
+            <div class="stage-step active" id="trackStep0">
+              <div class="stage-node">1</div>
+              <span class="stage-label">Order Confirmed</span>
+              <span class="stage-time">Just now</span>
+            </div>
+
+            <div class="stage-step" id="trackStep1">
+              <div class="stage-node">2</div>
+              <span class="stage-label">Food Preparing</span>
+              <span class="stage-time">Est. 12 mins</span>
+            </div>
+
+            <div class="stage-step" id="trackStep2">
+              <div class="stage-node">3</div>
+              <span class="stage-label">Food Packed</span>
+              <span class="stage-time">Est. 20 mins</span>
+            </div>
+
+            <div class="stage-step" id="trackStep3">
+              <div class="stage-node">4</div>
+              <span class="stage-label">Out for Delivery</span>
+              <span class="stage-time">Est. 28 mins</span>
+            </div>
+
+            <div class="stage-step" id="trackStep4">
+              <div class="stage-node">5</div>
+              <span class="stage-label">Delivered</span>
+              <span class="stage-time">Enjoy meal</span>
+            </div>
+          </div>
+
+          <!-- Simulator Controls & Assigned Courier Info -->
+          <div class="tracking-meta-grid" id="tnHubs">
+            <div class="driver-card">
+              <div class="driver-avatar">K</div>
+              <div class="driver-info">
+                <h4>Karthik R. (Rating 4.9 ★)</h4>
+                <p>Premier Food Chef Courier · Electric Scooter #TN-01-FC-409</p>
+                <p style="margin-top: 4px; font-size: 11px; color: var(--gold-dark); font-weight: 600;">Contactless Delivery Enabled</p>
+              </div>
+            </div>
+
+            <div class="simulator-card">
+              <h4 style="font-size: 13px; font-weight: 600; color: var(--text-dark);">Demo Live Stage Simulator</h4>
+              <p style="font-size: 12px; color: var(--text-mid);">Test the complete 5-stage animated delivery progression:</p>
+              <div class="sim-btn-row">
+                <button class="btn-advance-sim wide" id="btnAdvanceSim">Advance Stage</button>
+                <button class="btn-reset-sim wide" id="btnResetSim">Reset Track</button>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
+    </main>
 
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h4 class="wide">FOOD <span>CHEF</span></h4>
+          <p>A luxury cinematic dining experience bringing runway culinary excellence to discerning patrons across Tamil Nadu.</p>
+          <p style="margin-top: 14px; font-size: 11px; color: var(--gold-dark); font-weight: 600;">100% Eco-Friendly Gold Foil Packaging</p>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="wide">Kitchen Hubs</h5>
+          <ul>
+            <li><a href="#tnHubs">Chennai Flagship</a></li>
+            <li><a href="#tnHubs">Coimbatore Central</a></li>
+            <li><a href="#tnHubs">Madurai Heritage</a></li>
+            <li><a href="#tnHubs">Tiruchirappalli Royal</a></li>
+            <li><a href="#tnHubs">Salem Cloud Kitchen</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="wide">Collections</h5>
+          <ul>
+            <li><a href="#runwaySection">3D Runway Lookbook</a></li>
+            <li><a href="#cakeSection">Celebration 3D Cake</a></li>
+            <li><a href="#menuSection">Stone Oven Pizzas</a></li>
+            <li><a href="#menuSection">Wagyu Smash Burgers</a></li>
+            <li><a href="#menuSection">Heritage Biryani Pots</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="wide">Concierge</h5>
+          <ul>
+            <li><a href="#orderTracking">Order Tracking</a></li>
+            <li><a href="#" id="footerCartLink">Shopping Cart</a></li>
+            <li><a href="#">Dietary & Allergens</a></li>
+            <li><a href="#">Artisan Suppliers</a></li>
+            <li><a href="#">Customer Care</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2027 FOOD CHEF. All rights reserved. Crafted with passion & golden excellence.</div>
+        <div class="tabular">Tamil Nadu Food Safety License: 12423001000845</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- =======================================================================
+       SLIDE-OUT CART DRAWER
+       ======================================================================= -->
+  <div class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart">
+    <div class="cart-header">
+      <h3 class="wide">Gourmet Selection</h3>
+      <button class="drawer-close-btn" id="btnCloseCart" aria-label="Close Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="cart-body" id="cartItemsList">
+      <!-- Populated via script.js -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="coupon-row">
+        <input type="text" id="couponInput" placeholder="Promo code (e.g. GOLDEN)" />
+        <button id="btnApplyCoupon" class="wide">Apply</button>
+      </div>
+
+      <div class="cart-summary-line">
+        <span>Items Subtotal</span>
+        <span id="cartSubtotal" class="tabular">$0.00</span>
+      </div>
+      <div class="cart-summary-line">
+        <span>Delivery Fee (Free over $50)</span>
+        <span id="cartDelivery" class="tabular">$0.00</span>
+      </div>
+      <div class="cart-summary-line">
+        <span>Tax & Packaging (5%)</span>
+        <span id="cartTax" class="tabular">$0.00</span>
+      </div>
+      <div class="cart-summary-line">
+        <span>Promo Discount</span>
+        <span id="cartDiscount" class="tabular">$0.00</span>
+      </div>
+      <div class="cart-summary-total">
+        <span>Final Total</span>
+        <span id="cartTotal" class="tabular">$0.00</span>
+      </div>
+
+      <button class="cart-checkout-btn wide" id="btnProceedCheckout">
+        <span>Proceed to Checkout</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       CUSTOMER CHECKOUT MODAL (TAMIL NADU DISTRICT-AWARE HUBS)
+       ======================================================================= -->
+  <div class="checkout-modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <div class="checkout-header">
+      <h3 class="wide" id="checkoutTitle">Confirm Delivery Address</h3>
+      <button class="drawer-close-btn" id="btnCloseCheckout" aria-label="Close Checkout">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <form class="checkout-form" id="checkoutForm">
+      <div class="form-row">
         <div class="form-group">
-          <label>Delivery Address with Landmark *</label>
-          <textarea required id="cust-address" rows="2" placeholder="Door No, Street Name, Landmark, Pincode"></textarea>
+          <label for="custName">Customer Full Name *</label>
+          <input type="text" id="custName" required placeholder="e.g. Priya Sundaram" />
         </div>
-
         <div class="form-group">
-          <label>Special Instructions (Optional)</label>
-          <input id="cust-instructions" type="text" placeholder="e.g. Extra mint chutney, pack crispy samosas separately" />
+          <label for="custPhone">Phone Number (10 Digits) *</label>
+          <input type="tel" id="custPhone" required placeholder="e.g. 98401 23456" pattern="[0-9]{10}" />
         </div>
-
-        <button type="submit" class="btn btn-primary submit-btn">
-          Confirm &amp; Place Order
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <!-- 6-Stage Order Tracking -->
-  <section id="tracking" class="section-container">
-    <div class="section-header">
-      <h2 class="section-title">Live Order <span class="gold-text">Tracking</span></h2>
-      <p class="section-sub">Real-time telemetry from kitchen dispatch to your doorstep.</p>
-    </div>
-
-    <div class="tracker-card">
-      <div class="tracker-top">
-        <div>
-          <span class="track-tag">ORDER REFERENCE: #<span id="track-id">FC-84920</span></span>
-          <h3 id="track-name">Karthik Subramanian</h3>
-          <p id="track-resto">Adyar Ananda Bhavan • Chennai District</p>
-        </div>
-        <button class="btn btn-secondary" onclick="advanceStage()">Advance Stage (Demo)</button>
       </div>
 
-      <!-- Animated 6 Stages -->
-      <div id="stages-container" class="stages-timeline"></div>
-    </div>
-  </section>
+      <div class="form-group">
+        <label for="custAddress">Delivery Street Address & Landmark *</label>
+        <textarea id="custAddress" rows="2" required placeholder="Flat 4B, Emerald Court, 14th Cross St..."></textarea>
+      </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2026 FOOD CHEF. Premium golden-yellow snacks delivery across all 38 Tamil Nadu districts.</p>
-  </footer>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="districtSelect">Tamil Nadu District *</label>
+          <select id="districtSelect" required>
+            <!-- Populated via script.js -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="hubSelect">Food Chef Artisan Kitchen Hub *</label>
+          <select id="hubSelect" required>
+            <!-- Dynamically populated based on chosen district -->
+          </select>
+          <span class="hub-note">Artisan kitchens curated per district</span>
+        </div>
+      </div>
 
-  <script src="script.js"></script>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="payMethod">Payment Method</label>
+          <select id="payMethod">
+            <option value="cod">Cash / UPI on Delivery (Recommended)</option>
+            <option value="card">Card on Delivery</option>
+            <option value="upi">Direct UPI Quick Pay</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="deliveryPref">Delivery Speed</label>
+          <select id="deliveryPref">
+            <option value="express">Express Premier (30-40 mins)</option>
+            <option value="scheduled">Scheduled for Dinner (7:30 PM)</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-confirm-order wide">
+        Confirm & Place Gourmet Order
+      </button>
+    </form>
+  </div>
+
+  <!-- =======================================================================
+       FOOD DETAIL POPUP MODAL
+       ======================================================================= -->
+  <div class="detail-modal" id="detailModal" role="dialog" aria-modal="true" aria-label="Dish Details">
+    <button class="drawer-close-btn" id="btnCloseDetail" style="position: absolute; top: 16px; right: 16px;" aria-label="Close Details">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div id="detailModalContent"></div>
+  </div>
+
+  <!-- Modal Backdrop Overlay -->
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Main Vanilla Script -->
+  <script type="module" src="./script.js"></script>
 </body>
 </html>
