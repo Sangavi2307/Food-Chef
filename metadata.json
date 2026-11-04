@@ -1,0 +1,6 @@
+{
+  "name": "FOOD CHEF — Luxury Cinematic 3D Food Runway & Ordering",
+  "description": "A luxury cinematic food ordering experience with an interactive 3D runway depth showcase, animated birthday cake commercial, 32-item menu, and live order tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
